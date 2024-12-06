@@ -1,0 +1,119 @@
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: whitesmoke;
+        color: rgb(31, 31, 31);
+    }
+
+    .sidebar {
+        height: 100vh;
+        width: 250px;
+        background-color: #1f1f1f;
+        padding-top: 60px;
+        position: fixed;
+    
+    }
+
+    .sidebar h2 {
+        color: #fff;
+        text-align: left;
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 15px 0 10px 20px;
+        color: #afaeae;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background-color 0.5s ease-in;
+    }
+
+    .sidebar a:hover {
+        color: #fff;
+        background-color: rgba(231, 231, 231, 0.2);       
+    }
+
+    .content {
+        margin-left: 250px;
+        padding: 40px;
+        padding-top: 30px;
+    }
+
+    .content h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .stat-card {
+        background-color: #2e2e2e;
+        color: rgb(255, 255, 255);
+        border-radius: 10px;
+        padding: 20px;
+        width: 23%;
+        min-width: 220px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s;
+        cursor: pointer;
+    }
+
+    .stat-card:hover {
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-card h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .stat-card p {
+        font-size: 18px;
+    }
+
+
+    .bg-primary { background-color: #3498db; }
+    .bg-success { background-color: #2ecc71; }
+    .bg-warning { background-color: #f39c12; }
+    .bg-danger { background-color: #e74c3c; }
+
+
+
+    @media (max-width: 768px) {
+        .row {
+            justify-content: center;
+        }
+
+        .stat-card {
+            width: 48%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sidebar {
+            width: 200px;
+        }
+
+        .content {
+            margin-left: 200px;
+        }
+
+        .stat-card {
+            width: 100%;
+        }
+    }
