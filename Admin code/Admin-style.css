@@ -1,5 +1,4 @@
 
-
     * {
         margin: 0;
         padding: 0;
@@ -28,31 +27,67 @@
         margin-bottom: 20px;
     }
 
-    .sidebar a {
+    .sidebar .section {
         display: block;
         padding: 15px 0 10px 20px;
         color: #afaeae;
         text-decoration: none;
+        position: relative;
+        padding-left: 20px;
         font-size: 16px;
         font-weight: 500;
-        transition: background-color 0.5s ease-in;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in;
     }
 
-    .sidebar a::before{
+    .section i {
+        margin-right: 8px; 
+    }
+    
+    .sidebar .section:hover {
+        color: #fff; 
+        background-color: rgba(231, 231, 231, 0.2); 
+    }
+    
+
+    .sidebar .section::before {
         position: absolute;
+        display: none; 
         content: '';
         top: 0;
         left: 0;
-        width: .25rem;
-        height: 10%;
-        background-color: #ee1b22;
+        width: 3px;
+        height: 100%; 
+        border-radius: 2px;
+        background-color: #377ae6;
+    }
+    
+    .sidebar .section:hover::before,
+    .sidebar .section:active::before {
+        display: block;
     }
 
-    .sidebar a:hover, a::before {
-        color: #fff;
-        background-color: rgba(231, 231, 231, 0.2);       
+    .head{
+        display: flex;
+       padding: auto 10px;
+       justify-content: space-between;
     }
 
+
+    .account{
+        display: flex;
+        font-size: 1.5rem;
+        gap: 2.5rem;
+        
+    }
+
+    .logout{
+        cursor: pointer;
+    }
+
+    .admin-acc{
+        cursor: pointer;
+    }
     .content {
         margin-left: 250px;
         padding: 40px;
