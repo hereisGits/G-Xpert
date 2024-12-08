@@ -77,16 +77,22 @@
     .account{
         display: flex;
         font-size: 1.5rem;
-        gap: 2.5rem;
-        
+        gap: 2.5rem;        
     }
 
     .logout{
         cursor: pointer;
     }
+    
+    .logout:hover{
+        color: lightcoral;
+    }
 
     .admin-acc{
         cursor: pointer;
+    }
+    .admin-acc:hover, .admin-acc:focus{
+        color: #3498db;
     }
     .content {
         margin-left: 250px;
