@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.login-container .admin-sec {
+    display: block;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.admin-sec i{
+    border: 2px solid;
+    border-radius: 150px;
+    padding: 10px;
+    font-size: 2rem;
+    color: #007bff;
+    margin: 5px;
+}
+.admin-sec p {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 550;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.admin-sec p::after {
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 0;
+    height: 2px; 
+    width: 100%;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.admin-sec p:hover::after {
+    transform: scaleX(1);
+    transform-origin: left; 
+}
+
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.login-container label::after{
+    content: ' *';
+    color: red;
+}
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transform: border-color 0.5s box-shadow 0.5s ease;
+}
+.login-container input:hover, 
+.login-container input:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background: #0056b3;
+}
