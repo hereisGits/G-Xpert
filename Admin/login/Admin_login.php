@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="Admin-style.css">
+    <link rel="stylesheet" href="Ad_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <?php require_once './fatch-data_con.php'; ?>
+    <?php require_once '../login/fatch_data.php'; ?>
 
-    <div class="status">
+    <div id="status">
         <?php if(!empty($message)) : ?>
             <p><?php echo '<i class="fa-solid fa-triangle-exclamation"></i> '. htmlspecialchars($message);?></p>
         <?php endif; ?>
@@ -23,20 +23,20 @@
         </div>
        
         <form action="#" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter username">
-            <span class="error">
-                <?php echo isset($error['username'])? $error['username'] : ''; ?>
-            </span>
+            <input type="text" id="username" name="username" placeholder="Enter username" value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
+            <div class="title"><span class="error"><?php echo isset($error['username'])? $error['username'] : ''; ?></span></div>
+            
 
-            <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter password">
-            <span class="error">
-                <?php echo isset($error['password'])? $error['password'] : ''; ?>
-            </span>
+            <div class="title"><span class="error"><?php echo isset($error['password'])? $error['password'] : ''; ?></span></div>
+            
 
             <button type="submit">Login</button>
         </form>
     </div>
+
+    <script src="Ad_script.js">
+
+    </script>
 </body>
 </html>
