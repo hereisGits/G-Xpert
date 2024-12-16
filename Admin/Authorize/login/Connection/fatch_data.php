@@ -1,6 +1,6 @@
 <?php
     require_once '../login/Admin_login.php';
-    // session_start();
+    session_start();
 $error = [];
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -31,11 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
                         if ($password == $row['password']) {
-                        // $_SESSION['username'] = $rew['username'];
-                        //    setcookie('admin_cookie', $row['username'], time() + (60 * 60), '/');
+                            $_SESSION['username'] = $rew['username'];
+                            setcookie('admin_cookie', $row['username'], time() + (60 * 60), '/');
 
-                        header('Location : ../Admin_Dashboard.php');
-                        exit;
+                            header('Location: Admin_Dashboard.php');
+
+                            exit;
                         } else {
                             $message = "Incorrect password! Try again.";
                         }

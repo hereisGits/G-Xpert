@@ -21,8 +21,8 @@
         <div class="head">
             <h1>Welcome, Admin</h1>
             <div class="account">
-                <div class="admin-acc"><i class="fa-solid fa-user-tie"></i></div>
-                <div class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                <div id="admin-acc"><i class="fa-solid fa-user-tie"></i></div>
+                <div id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
             </div>
         </div>
         <div class="row">

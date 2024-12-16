@@ -80,18 +80,18 @@
         gap: 2.5rem;        
     }
 
-    .logout{
+    #logout{
         cursor: pointer;
     }
     
-    .logout:hover{
+    #logout:hover{
         color: lightcoral;
     }
 
-    .admin-acc{
+    #admin-acc{
         cursor: pointer;
     }
-    .admin-acc:hover, .admin-acc:focus{
+    #admin-acc:hover, #admin-acc:focus{
         color: #3498db;
     }
     .content {
