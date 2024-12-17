@@ -12,26 +12,25 @@ body {
     align-items: center;
     height: 100vh;
 }
-#status {
-    /* display: none;  */
+#status-div {
     position: absolute;
     top: 20px; 
     right: 10px; 
-    padding: 20px 30px; 
-    border-radius: 8px; 
-    background-color: rgb(245, 112, 112); 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     z-index: 1000; 
 }
 
-#status p {
-    color: white; 
+ #status {
+    padding: 20px 30px; 
+    border-radius: 8px; 
+    color: rgb(255, 255, 255); 
     font-size: 16px; 
     font-weight: bold; 
     margin: 0; 
     display: flex; 
     align-items: center; 
     gap: 8px; 
+    background-color: rgb(245, 112, 112); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 #status i {
@@ -101,8 +100,7 @@ body {
     font-size: 12px; 
     margin-left: 10px; 
     display: flex; 
-    align-items: center; 
-    
+    align-items: center;     
 }
 
 .login-container input {

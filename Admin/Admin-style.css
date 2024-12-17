@@ -80,18 +80,22 @@
         gap: 2.5rem;        
     }
 
-    #logout{
+    #logout, a{
+        color: #1f1f1f;
         cursor: pointer;
+        transition: color 0.4s ease-in;
     }
     
-    #logout:hover{
+    #logout a:hover{
         color: lightcoral;
     }
 
-    #admin-acc{
+    #admin-acc, a{
+        color: #1f1f1f;
         cursor: pointer;
+        transition: color 0.4s ease-in;
     }
-    #admin-acc:hover, #admin-acc:focus{
+    #admin-acc a:hover, #admin-acc a:focus{
         color: #3498db;
     }
     .content {

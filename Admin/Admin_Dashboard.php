@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
+    header('Location: ./Authorize/login/Admin_login.php  ');
+    exit;
+}
+
+if (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
+    $_SESSION['username'] = $_COOKIE['admin_cookie'];
+
+    $connection = new mysqli('localhost', 'root', '', 'user_database');
+    if ($connection->connect_error) {
+        die('Database connection error: ' . $connection->connect_error);
+    }
+
+    $stmt = $connection->prepare('SELECT admin_id FROM admin_table WHERE username = ?');
+    $stmt->bind_param('s', $_SESSION['username']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $_SESSION['admin_id'] = $row['admin_id'];
+    }
+    $stmt->close();
+    $connection->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,16 +41,16 @@
         <div class="section"><i class="fa-solid fa-house"></i> Dashboard</div>
         <div class="section"><i class="fa-solid fa-user-gear"></i> Manage Users</div>
         <div class="section"><i class="fa-solid fa-book-open"></i> Manage Courses</div>
-        <div class="section"><i class="fa-solid fa-square-poll-vertical"></i></i> Reports</div>
+        <div class="section"><i class="fa-solid fa-square-poll-vertical"></i> Reports</div>
         <div class="section"><i class="fa-solid fa-gears"></i> Settings</div>
     </div>
 
     <div class="content">
         <div class="head">
-            <h1>Welcome, Admin</h1>
+            <h1>Welcome, <?php echo ucfirst($_SESSION['username']); ?></h1>
             <div class="account">
-                <div id="admin-acc"><i class="fa-solid fa-user-tie"></i></div>
-                <div id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                <div id="admin-acc"><a href=""><i class="fa-solid fa-user-tie"></i></a></div>
+                <div id="logout"><a href="Authorize/logout/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></div>
             </div>
         </div>
         <div class="row">

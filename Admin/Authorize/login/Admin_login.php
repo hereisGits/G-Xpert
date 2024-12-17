@@ -10,9 +10,9 @@
 <body>
     <?php require_once '../login/Connection/fatch_data.php'; ?>
 
-    <div id="status">
+    <div id="status-div">
         <?php if(!empty($message)) : ?>
-            <p><?php echo '<i class="fa-solid fa-triangle-exclamation"></i> '. htmlspecialchars($message);?></p>
+            <p id="status"><?php echo '<i class="fa-solid fa-triangle-exclamation"></i> '. htmlspecialchars($message);?></p>
         <?php endif; ?>
     </div>
 
