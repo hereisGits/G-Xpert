@@ -25,7 +25,7 @@
       if(now.getHours() < 12){
         document.getElementById('greeting').textContent = "Good Morning," + " " + "It's";
         document.getElementById('greeting').style.color = "#2ecc71";
-      }else if(now.getHours() < 18){
+      }else if(now.getHours() >= 12 && now.getHours() <= 18){
         document.getElementById('greeting').textContent = "Good Afternoon, " + " " + "It's"; 
         document.getElementById('greeting').style.color = "#0701B8";
       }else{

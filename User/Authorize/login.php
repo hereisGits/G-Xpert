@@ -12,7 +12,6 @@
 	<?php
         require_once 'Login_validate.php';
     ?>
-	<button id="goback" onclick="history.back();">Back</button>
 	<div class="full-display">
 		<div class="illustra">
             <img src="../Elements/illustra-small.jpg"  alt="Illustration" class="positioned-img">

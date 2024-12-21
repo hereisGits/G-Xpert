@@ -108,7 +108,7 @@
 					<img src="../Elements/illustra-landing.jpg" alt="landing_page" class="position_img">
 				</div>
             </section>
-			<div class="blue_nav"></div>
+			<!-- <div class="blue_nav"><h1  id="content">Hello there Welcome to our page</h1></div> -->
 
 			<section class="statistics">
 						<div class="stat">

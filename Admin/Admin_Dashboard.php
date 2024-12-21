@@ -84,7 +84,7 @@ if (isset($_SESSION['admin_id'])) {
                     <a href="Authorize/logout/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                     <span class="tooltip logout">Logout</span>
                 </div>
-                </div>
+            </div>
         </div>
 
     <div class="content-placeholder">
