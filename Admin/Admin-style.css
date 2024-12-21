@@ -67,23 +67,46 @@
         display: block;
     }
 
-    .head{
-        display: flex;
-       padding: auto 10px;
-       justify-content: space-between;
+    
+    .content {
+        margin-left: 250px;
     }
 
+    .content h1 {
+        text-align: left;
+        font-size: 28px;
+    }
+    .greet-div{
+        position: relative;
+        display: flex;
+        gap: 8px;
+    }
+    .content .dateTime{
+        text-align: left;
+        font-size: 14px;
+    }
 
+    .head{
+        padding: 25px 20px;
+        align-items: center;
+        display: flex;
+        padding: auto 10px;
+        box-shadow:  0 4px 8px rgba(0, 0, 0, 0.2);
+        justify-content: space-between;
+    }
+ 
     .account{
         display: flex;
         font-size: 1.5rem;
-        gap: 2.5rem;        
+        position: sticky; 
+        gap: 3rem;   
+        padding: 0 10px;     
     }
 
     #logout, a{
         color: #1f1f1f;
         cursor: pointer;
-        transition: color 0.4s ease-in;
+        transition: color 0.3s ease-in-out;
     }
     
     #logout a:hover{
@@ -93,23 +116,49 @@
     #admin-acc, a{
         color: #1f1f1f;
         cursor: pointer;
-        transition: color 0.4s ease-in;
+        transition: color 0.4s ease-in-out;
     }
     #admin-acc a:hover, #admin-acc a:focus{
         color: #3498db;
     }
-    .content {
-        margin-left: 250px;
-        padding: 40px;
-        padding-top: 30px;
-    }
 
-    .content h1 {
-        font-size: 32px;
-        margin-bottom: 30px;
-    }
+    #admin-acc, #logout {
+        position: relative;
+      }
+      .tooltip {
+        visibility: hidden;
+        position: absolute;
+        top: 100%; 
+        left: 50%; 
+        transform: translateX(-50%);
+        font-size: 14px;
+        font-weight: bold;
+        white-space: nowrap;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.4s ease-in;
+      }
+    
+    #admin-acc:hover .tooltip,
+    #logout:hover .tooltip {
+        visibility: visible;
+        opacity: 1; 
+     }
+
+    #admin-acc:hover  .profile {
+        color: #3498db;
+        cursor: default;
+     }
+
+    #logout:hover  .logout {
+        color: lightcoral;
+        cursor: default;
+     }
+
+
 
     .row {
+        padding:  20px 40px;
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
