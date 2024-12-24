@@ -2,6 +2,7 @@
 const loginBtn = document.getElementById("login");
 const signupBtn = document.getElementById("signup");
 
+
 loginBtn.onclick = () => {
     window.location.href = '../Authorize/login.php';
 };
@@ -9,6 +10,7 @@ loginBtn.onclick = () => {
 signupBtn.onclick = () => {
     window.location.href = '../Authorize/sign_up.php';
 };
+
 
 // For community
 const noCommunity = document.getElementById("community");
@@ -40,18 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.getElementById('content').style.position = 'absolute'; 
-let position = -200;
+// document.getElementById('content').style.position = 'absolute'; 
+// let position = -200;
 
-function animateContent() {
-    position += 1;
-    document.getElementById('content').style.left = position + 'px';
+// function animateContent() {
+//     position += 1;
+//     document.getElementById('content').style.left = position + 'px';
 
-    if (position > window.innerWidth) { 
-        position = -200;
-    }
+//     if (position > window.innerWidth) { 
+//         position = -200;
+//     }
 
-    requestAnimationFrame(animateContent);
-}
+//     requestAnimationFrame(animateContent);
+// }
 
-animateContent();
+// animateContent();
