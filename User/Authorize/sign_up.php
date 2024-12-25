@@ -10,12 +10,9 @@
 </head>
 <body>
     <?php
+        require_once 'signup_validate.php';
 		require_once '../Landing page/nav&footer/navebar.php';
 	?>
-
-    <?php
-        require_once 'signup_validate.php';
-    ?>
     
     <div class="full-display">
         <div class="illustra">

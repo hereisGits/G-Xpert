@@ -4,16 +4,18 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-.full-display{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.full-display {
     width: 100%;
-    max-width: 1200px;
-    padding: 20px;
-    gap: 10px;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    padding: 60px 0 80px 50px ;
+    gap: 20px; 
+    
 }
-
 .illustra{
     flex: 1;
     display: flex;
@@ -27,8 +29,7 @@
   }
   
 .signup-form {
-    flex: 1;
-    max-width: 350px;
+    width: 425px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -207,73 +208,3 @@ input[type="checkbox"] {
 .login-option a:hover {
     text-decoration: underline; 
 }
-
-
-@media(max-width: 500px){
-    .signup-form{
-        border: none;
-        padding: 1rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        margin-bottom: 5rem;
-    }
-
-    label{
-        font-size: 12px
-    }
-    
-    input{
-        height: 10px;
-        font-size: 10px;
-    }
-
-    .name-fields{
-        flex-direction: column;
-        display: flex;
-        gap: 1.5rem;
-
-    }
-    .name-fields .first-name, .last-name{
-        width: 100%;
-    }
-}
-@media (max-width: 950px) {
-    .full-display {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-
-    label{
-        font-size: 12px
-    }
-    
-    input{
-        height: 10px;
-        font-size: 10px;
-    }
-
-    .positioned-img {
-        width: 380px;
-        height: auto;
-        margin-top: 20rem;
-    }   
-        
-    .input-fields {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        width: 100%; 
-    }
-
-    .signup-form {
-        width: 90%;
-        padding: 1.2rem;
-    }
-    
-    .submit-btn {
-        padding: 10px;
-        font-size: 0.9rem;
-        align-self: center;
-    }
-}
-

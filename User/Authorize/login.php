@@ -10,13 +10,10 @@
 </head>
 <body>
 	<?php
-		require_once '../Landing page/nav&footer/navebar.php';
-	?>
-
-	<?php
         require_once 'Login_validate.php';
+		require_once '../Landing page/nav&footer/navebar.php';
     ?>
-	
+
 	<div class="full-display">
 		<div class="illustra">
             <img src="../Elements/illustra-small.jpg"  alt="Illustration" class="positioned-img">
