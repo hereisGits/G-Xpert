@@ -86,7 +86,7 @@
         position: relative;
         align-items: center;
         display: flex;
-        gap: 10px;
+
     }
 
     #search-icon{
@@ -94,15 +94,15 @@
         color: #333;
         background-color: #ffffff;
         border: 1px solid #333;
-        border-radius: 15px;
-        padding: 10px 10px 10px 15px;
+        border-radius: 20px;
+        padding: 10px 10px 10px 20px;
     }
 
-    #search{
+    input[type='search']{
+        padding: 8px;
         flex-wrap:nowrap;
         background-color: #ffffff;
         width: 500px;
-        padding-left: 10px;
         font-size: 14px;
         color: #333;
         cursor: text;
@@ -174,7 +174,7 @@
          
         <div class="search-div">
             <i id="search-icon" class="fa-solid fa-magnifying-glass">
-                <input type="text" id="search" placeholder="Search Courses">
+                <input type="search" id="search" placeholder="Search Courses">
             </i>
         </div>  
         <nav class="navbar">
