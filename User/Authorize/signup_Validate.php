@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once('Function/function_auth.php');
 
 
@@ -93,4 +94,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
+?>

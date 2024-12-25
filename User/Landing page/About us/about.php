@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - G-Xpert</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style-about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <div class="navbar">
-                <h1>#About Us</h1>
-        </div>
-    </header>
+    <?php
+        require_once '../Nav&footer/navebar.php';
+        ?>
+
+    <div class="about-header">
+            <h1>#About Us</h1>
+    </div>
 
     <div class="container">
         <div class="content">
@@ -72,80 +74,24 @@
             <div class="testimonials-container">
                 <div class="testimonial">
                     <p>"The team was professional and delivered on time. Highly recommended!"</p>
-                    <h3>- John Doe</h3>
+                    <h3>- Rahul Thakur</h3>
                 </div>
                 <div class="testimonial">
                     <p>"Their creativity and problem-solving skills are unmatched. Excellent work!"</p>
-                    <h3>- Jane Smith</h3>
+                    <h3>- Diraj Sharma</h3>
                 </div>
                 <div class="testimonial">
                     <p>"Outstanding experience from start to finish. Great collaboration!"</p>
-                    <h3>- Emily Davis</h3>
+                    <h3>- Nirsha Acharya</h3>
                 </div>
             </div>
         </section>
         
     </div>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-items">
-                <div class="item">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Team</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <h3>Community</h3>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Events</a></li>
-                        <li><a href="#">Partners</a></li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="item">
-                    <h3>Contact Details</h3>
-                    <div class="contact-item">
-                        <strong>Email:</strong> <a href="mailto:support@gxpert.com"> support@gxpert.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Tel:</strong> <a href="tel:9824356450"> +1‑XX‑XXX</a>
-                    </div>
-                    
-                    <div class="contact-item social-media">
-                        <h3>Follow Us:</h3>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook"></i></a> 
-                            <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-square-twitter"></i></a> 
-                            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
-                            <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-logo">
-                <div class="logo">
-                    <img src="../../Elements/footer-logo.svg" alt="G-Xpert Logo">
-                </div>            
-                <div class="copyright">
-                    <p>&copy; 2024 G-Xpert. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>            
-    </footer>
-
+    <?php
+        require_once '../Nav&footer/footer.php';
+        ?>
+        
 </body>
 </html>

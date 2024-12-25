@@ -10,6 +10,10 @@
 </head>
 <body>
     <?php
+		require_once '../Landing page/nav&footer/navebar.php';
+	?>
+
+    <?php
         require_once 'signup_validate.php';
     ?>
     
@@ -86,5 +90,10 @@
             </form>
         </div>
     </div>
+
+    <?php
+        require_once '../Landing page/nav&footer/footer.php';
+    ?>
+
 </body>
 </html>
