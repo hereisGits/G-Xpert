@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once('Function/function_auth.php');
+require_once('../Function/function_auth.php');
 
 
 $error = [];

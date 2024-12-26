@@ -4,19 +4,19 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="login.css">
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  	<title>G-Xpert | Login Page</title>
+  	<title>G-Xpert - Login Page</title>
 </head>
 <body>
 	<?php
-        require_once 'Login_validate.php';
-		require_once '../Landing page/nav&footer/navebar.php';
+        require_once 'login_validate.php';
+		require_once '../../Landing page/nav&footer/navebar.php';
     ?>
 
 	<div class="full-display">
 		<div class="illustra">
-            <img src="../Elements/illustra-small.jpg"  alt="Illustration" class="positioned-img">
+            <img src="../../Elements/illustra-small.jpg"  alt="Illustration" class="positioned-img">
         </div>
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
@@ -61,7 +61,7 @@
 	</div>
 
 	<?php
-		require_once '../Landing page/nav&footer/footer.php';
+		require_once '../../Landing page/nav&footer/footer.php';
 	?>
 
 </body>

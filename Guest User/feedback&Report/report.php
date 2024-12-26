@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System report</title>
+    <title>System report - Gxpert</title>
     <link rel="stylesheet" href="report-style.css">
 </head>
 <body>

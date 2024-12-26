@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Online Course  - Learn New Thing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Audiowide:wght@400&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -151,7 +151,7 @@
 
 <body>
     <?php 
-        $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course Seller/User";
+        $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller/Guest%20User/";
      ?>
 <header>
     <div class="nav">
@@ -198,11 +198,11 @@
         const sign = document.getElementById('signup');
 
         log.addEventListener('click', () => {
-            window.location.href = 'http://localhost/Server/Code/zProject/Course%20Seller/User/Authorize/login.php';
+            window.location.href = 'http://localhost/Server/Code/zProject/Course%20Seller/Guest%20User/Authorize/Log%20in/login.php';
         });
 
         sign.addEventListener('click', () => {
-            window.location.href = 'http://localhost/Server/Code/zProject/Course%20Seller/User/Authorize/sign_up.php';
+            window.location.href = 'http://localhost/Server/Code/zProject/Course%20Seller/Guest%20User/Authorize/Sign%20up/sign_up.php';
         });
 
     </script>

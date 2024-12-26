@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="sign_up.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <title>G-Xpert | Signup Page</title>
+    <title>G-Xpert - Signup Page</title>
 </head>
 <body>
     <?php
         require_once 'signup_validate.php';
-		require_once '../Landing page/nav&footer/navebar.php';
+		require_once '../../Landing page/nav&footer/navebar.php';
 	?>
     
     <div class="full-display">
         <div class="illustra">
-            <img src="../Elements/illustra.jpg" alt="Illustration" class="positioned-img">
+            <img src="../../Elements/illustra.jpg" alt="Illustration" class="positioned-img">
         </div>
         
         <div class="signup-form">
@@ -89,7 +89,7 @@
     </div>
 
     <?php
-        require_once '../Landing page/nav&footer/footer.php';
+        require_once '../../Landing page/nav&footer/footer.php';
     ?>
 
 </body>
