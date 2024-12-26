@@ -40,26 +40,22 @@
   setInterval(updateDateTime, 1000);
 
 
-  // for manage user
+// for manage user
 
-// function redirectToManageUser(){
-//   window.location.href = "Manage users/manage_user.php";
-// }
+function loadContent(url, targetElementId) {
+  let xhttps = new XMLHttpRequest();
 
-// function loadContent(url, targetElementId) {
-//   let xhttps = new XMLHttpRequest();
+  xhttps.onreadystatechange = () => {
+      if (xhttps.readyState == 4 && xhttps.status == 200) {
+          document.getElementById(targetElementId).innerHTML = xhttps.responseText;
+      }
+  };
 
-//   xhttps.onreadystatechange = () => {
-//       if (xhttps.readyState == 4 && xhttps.status == 200) {
-//           document.getElementById(targetElementId).innerHTML = xhttps.responseText;
-//       }
-//   };
-
-//   xhttps.open('POST', url, true);
-//   xhttps.send();
-// }
+  xhttps.open('POST', url, true);
+  xhttps.send();
+}
 
 
-// document.getElementById('manageUser').addEventListener('click', () => {
-//   loadContent('Manage users/manage_user.php', 'content');
-// });
+document.querySelector('manageUser').addEventListener('click', () => {
+  loadContent('./Manage users/manage_user.php', 'main');
+});
