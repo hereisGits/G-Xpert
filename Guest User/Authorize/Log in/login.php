@@ -52,7 +52,7 @@
 						<button type="submit" id="submit-btn" name="submit">Log in</button>
 
 						<div class="login-option">
-							<span>Don’t have an account? <a href="sign_up.php">Sign up</a></span>
+							<span>Don’t have an account? <a href="../Sign up/sign_up.php">Sign up</a></span>
 						</div>
 					</div>
 				</div>

@@ -80,7 +80,7 @@
                     <div class="form-buttons">
                         <button type="submit" class="submit-btn">Sign up</button>
                         <div class="login-option">
-                            <span>Do you have an account? <a href="login.php">Log in</a></span>
+                            <span>Do you have an account? <a href="../Log in/login.php">Log in</a></span>
                         </div>
                     </div>
                 </div>

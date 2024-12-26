@@ -129,7 +129,7 @@
 
 <body>
     <?php
-         $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course Seller/User";
+         $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller/Guest%20User/";
     ?>
 
     <footer>
