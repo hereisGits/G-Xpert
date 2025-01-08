@@ -1,2 +1,2 @@
 # G-Xpert
-This a platform for online course selling.
+The G-Xpert (Online Course Platform) is a web-based system designed to connect users with system and explore online courses. Users can register, browse, buy courses, and provide feedback, while admin can create, update, and manage their courses and users. This platform aims to make learning easy and accessible, providing a simple way for users to access educational content. It ensures smooth interactions between users and administrators.
