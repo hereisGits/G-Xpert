@@ -29,7 +29,6 @@
 
 
 table {
-    width: 80%;
     border-collapse: collapse;
     margin: 8px 0;
     margin: 0 auto;
@@ -59,11 +58,22 @@ tr:hover {
     background-color: #e1edfffa;
 }
 
+.full-name {
+    width: 300px; 
+  }
+
+.username, .action {
+    width: 200px; 
+  }
+
+
 .icons {
+    display: block;
+    margin: 0 auto;
     display: flex; 
-    gap: 10px;
-    justify-content: space-between; 
     align-items: center; 
+    justify-content: center;
+    gap: 30px;
     
 }
 
@@ -76,11 +86,6 @@ tr:hover {
 
 .icons i:hover {
     transform: scale(1.2); 
-}
-
-
-.icons .fa-pen-to-square {
-    color: #28a745; 
 }
 
 .icons .fa-eye-slash {

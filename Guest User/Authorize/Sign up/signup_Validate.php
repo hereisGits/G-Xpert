@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $_SESSION['username'] = $user_name; 
                         
                         setcookie('user_cookie', $user_name, time() + (10 * 24 * 60 * 60), '/');
-                        header('Location: ../User page/user_profile.php');
+                        header("Location: ../../../Registered%20User/user_dashboard.php");
                         exit();
                                                            
                     } else {

@@ -41,21 +41,8 @@
 
 
 // for manage user
+const content = document.querySelector(main);
 
-function loadContent(url, targetElementId) {
-  let xhttps = new XMLHttpRequest();
-
-  xhttps.onreadystatechange = () => {
-      if (xhttps.readyState == 4 && xhttps.status == 200) {
-          document.getElementById(targetElementId).innerHTML = xhttps.responseText;
-      }
-  };
-
-  xhttps.open('POST', url, true);
-  xhttps.send();
+function changeContent(){
+  
 }
-
-
-document.querySelector('manageUser').addEventListener('click', () => {
-  loadContent('./Manage users/manage_user.php', 'main');
-});

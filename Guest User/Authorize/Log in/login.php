@@ -39,7 +39,7 @@
 					</div>
 					<div class="password-field">
 						<label for="password" class="password-ask" id="label">Password</label>
-						<input type="password" id="password" name="password" placeholder="Enter your password" value="<?php echo isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''; ?>">
+						<input type="password" id="password" name="password" placeholder="Enter your password">
 						<span class="error">
 							<?php echo printErrorMsg($error, 'password'); ?>
 						</span>

@@ -30,30 +30,22 @@
                 echo "<table border = 1;>";
                     echo '<tr>
                             <th>User ID</th>
-                            <th>Full Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Created At</th>
-                            <th></th>
+                            <th class="full-name">Full Name</th>
+                            <th class="username">Username</th>
+                            <th class="action            ">Action</th>
                         </tr>';
                         
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr> 
                                 <td>' . $row['user_id'] . '</td>
                                 <td>' . $row['first_name'] . ' ' . $row['last_name'] . '</td>
-                                <td>' . $row['username'] . '</td>
-                                <td>' . $row['email'] . '</td>
-                                <td>' . $row['created_at'] . '</td>
+                                <td>' . $row['username'] . '</td>                              
                                 <td>
                                     <div class="icons">
                                         <div class="icon">
                                             <i class="fa-solid fa-eye-slash"></i>
                                             <span class="tooltip view">View</span>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            <span class="tooltip modify">Modify</span>
-                                        </div>
+                                        </div>                                    
                                         <div class="icon">
                                             <i class="fa-solid fa-user-lock"></i>
                                             <span class="tooltip lock">Suspend</span>

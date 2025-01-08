@@ -24,7 +24,7 @@ if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
         $stmt->close();
         $connection->close();
     }
-} 
+}
 ?>
 
 <!DOCTYPE html>
