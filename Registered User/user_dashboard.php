@@ -24,56 +24,18 @@ if (isset($_COOKIE['user_id']) && !isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <div class="nav">
-            <div class="nav-left">
-                <div class="img">
-                    <a href="user_dashboard.php">
-                        <img src="./Assets/nav-logo.svg" alt="G-Xpert logo">
-                    </a>
-                </div>
-                <div class="course-category">
-                    <p>Courses <i class="fa-solid fa-caret-down"></i></p>
-                </div>
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" name="search" id="search" placeholder="Search for courses...">
-                </div>
-            </div>            
-            <div class="nav-right">
-                <div class="mycart">
-                    <a href="cart.html" title="My Cart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
-                </div>
-                <div class="notify">
-                    <a href="notifications.html" title="Notifications">
-                        <i class="fa-solid fa-bell"></i>
-                    </a>
-                </div>
-                <div class="user-profile">
-                    <div class="profile">
-                        <a href="profile.html" title="My Profile">
-                            <i class="fa-solid fa-user"></i></p>
-                        </a>
-                    </div>
-                    <div class="user-logout">
-                        <a href="../Guest User/Authorize/Log in/Logout/logout.php" title="Logout">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </header>
     
+     <?php
+     require_once './head&foot/navebar.php';
+    ?>
+
     <main>
         <section class="hero">
             <div id="pic-container">
                 <img src="./Assets/user wallpaper.png" alt="wallpaper">
             </div>           
             <div class="hero-content">
+
                 <h1>Discover Your Path to Success</h1>
                 <p>Learn from industry experts and boost your skills with our curated courses.</p>
                 <div class="hero-buttons">

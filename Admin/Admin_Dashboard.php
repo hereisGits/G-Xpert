@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once './Manage users/Connection/db_connection.php';
+
 if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
     header('Location: ./Authorize/login/Admin_login.php');
     exit;
@@ -8,11 +10,6 @@ if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
 
 if (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
     $_SESSION['username'] = $_COOKIE['admin_cookie'];
-
-    $connection = new mysqli('localhost', 'root', '', 'user_database');
-    if ($connection->connect_error) {
-        die('Database connection error: ' . $connection->connect_error);
-    }
 
     $stmt = $connection->prepare('SELECT admin_id FROM admin_table WHERE username = ?');
     $stmt->bind_param('s', $_SESSION['username']);
@@ -27,13 +24,9 @@ if (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
 }
 
 if (isset($_SESSION['admin_id'])) {
-    $conn = new mysqli('localhost', 'root', '', 'user_database');
-    if ($conn->connect_error) {
-        die('Database connection error: ' . $conn->connect_error);
-    }
-
-    $query = "SELECT user_id FROM user_table";
-    $result = $conn->query($query);
+    $stmt = $connection->prepare("SELECT user_id FROM user_table");
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $total_users = 0;
     if ($result && $result->num_rows > 0) {
@@ -43,7 +36,7 @@ if (isset($_SESSION['admin_id'])) {
     }
     $_SESSION['total_users'] = $total_users;
 
-    $conn->close();
+    $connection->close();
 }
 ?>
 
@@ -59,14 +52,16 @@ if (isset($_SESSION['admin_id'])) {
 <body>
     <div class="sidebar">
         <h2>Admin Panel</h2>
-            <div class="section"><i class="fa-solid fa-house"></i> Dashboard</div>
-            <div class="section" id="manageUser"><i class="fa-solid fa-user-gear"></i> Manage Users</div>
-            <div class="section"><i class="fa-solid fa-book-open"></i> Manage Courses</div>
-            <div class="section"><i class="fa-solid fa-square-poll-vertical"></i> Reports</div>
-            <div class="section"><i class="fa-solid fa-gears"></i> Settings</div>
+        <ul>
+            <li><i class="fa-solid fa-house"></i> Dashboard</li>
+            <li><i class="fa-solid fa-user-gear"></i> Manage Users</li>
+            <li><i class="fa-solid fa-book-open"></i> Manage Courses</li>
+            <li><i class="fa-solid fa-square-poll-vertical"></i> Reports</li>
+            <li><i class="fa-solid fa-gears"></i> Settings</li>
+        </ul>
     </div>
 
-    <main>
+    <header>
         <div class="content">
             <div class="head">
                 <h1><span id="greet">Welcome, <?php echo ucfirst($_SESSION['username']); ?></span>
@@ -87,30 +82,32 @@ if (isset($_SESSION['admin_id'])) {
                     </div>
                 </div>
             </div>
-    
-        <div class="content-placeholder">
-                <div class="row">
-                    <div class="stat-card bg-primary">
-                        <h2>20</h2>
-                        <p>Active Users</p>
-                    </div>
-                    <div class="stat-card bg-success">
-                        <h2>12</h2>
-                        <p>Active Courses</p>
-                    </div>
-                    <div class="stat-card bg-warning">
-                        <h2><?php echo $_SESSION['total_users']; ?></h2>
-                        <p>Number of User on Site</p>
-                    </div>
-                    <div class="stat-card bg-danger">
-                        <h2>Rs. 5,200</h2>
-                        <p>Total Revenue</p>
+        </header>
+        
+        <main>   
+            <div class="content-placeholder">
+                    <div class="row">
+                        <div class="stat-card bg-primary">
+                            <h2>20</h2>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="stat-card bg-success">
+                            <h2>12</h2>
+                            <p>Active Courses</p>
+                        </div>
+                        <div class="stat-card bg-warning">
+                            <h2><?php echo $_SESSION[$total_users]?></h2>
+                            <p>Number of User on Site</p>
+                        </div>
+                        <div class="stat-card bg-danger">
+                            <h2>Rs. 5,200</h2>
+                            <p>Total Revenue</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-
+        </main> 
+        
     <script src="Admin.js"></script>
 </body>
 </html>

@@ -1,158 +1,145 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #229ed9;
+    --secondary-color: #1E1E1E;
+    --accent-color: #0FA958;
+    --text-color: #333;
+    --background-light: #f9f9f9;
+    --background-dark: #232424;
+    --button-hover: #3396fff6;
+    --font-large: 2.5rem;
+    --font-medium: 1.5rem;
+    --font-small: 1rem;
+    --spacing-small: 10px;
+    --spacing-medium: 20px;
+    --spacing-large: 30px;
+    --font-color:#fff;
+    --font-large: 36px;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    font-weight: 400;
-    overflow-x: hidden;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-color);
 }
 
 .container-main {
-    width: 1340px; 
-    max-width: 1920px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding-top: 10px;
+    padding: var(--spacing-medium);
 }
 
-.hero { 
-    justify-content: center;
-    align-items: center; 
-    text-align: center;
-    margin: 0 auto;
+.hero {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-medium);
 }
 
 .text_landing {
     flex: 1;
-    max-width: 500px; 
-    margin-left: 5vw;
+    max-width: 500px;
+    margin: 0 var(--spacing-medium);
     text-align: left;
 }
 
 .text_landing h1 {
+    font-size: var(--font-large);
+    color: var(--primary-color);
     text-transform: capitalize;
-    font-size: 2.5rem;
     cursor: default;
 }
 
 .text_landing p {
-    font-size: 1rem;
-    margin-top: 10px;
-    cursor: default;
+    font-size: var(--font-small);
+    margin-top: var(--spacing-small);
 }
 
-.text_landing button {    
-    margin-top: 30px;
+.text_landing button {
+    margin-top: var(--spacing-large);
     font-weight: 600;
-    border: 2px solid rgba(39, 110, 182, 0.363);
+    border: 2px solid var(--primary-color);
     background: transparent;
-    color: #229ed9;
+    color: var(--primary-color);
     padding: 16px 24px;
     cursor: pointer;
-    font-size: 16px;
     transition: background 0.5s, border 0.3s ease-in-out;
 }
 
 .text_landing button:hover {
-    color: #fff;
-    background-color: #229ed9;
-    border: 2px solid rgba(39, 110, 182, 0.363);    
+    color: var(--font-color);
+    background-color: var(--primary-color);
 }
 
-.illustra {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    z-index: -1;
-}
-
-.position_img {
-    float: right;
-    max-width: 85%; 
+.illustra img {
+    max-width: 85%;
     height: auto;
     object-fit: contain;
-    transform: scaleX(-1); 
+    transform: scaleX(-1);
 }
 
-
 .statistics {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    display: flex;    
-    background-color: #1E1E1E;
-    padding: 5%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-color);
+    padding: var(--spacing-large);
+    gap: var(--spacing-medium);
 }
 
 .stat {
-    padding: 24px;
+    padding: var(--spacing-medium);
     border-radius: 8px;
-    background-color: #232424;
+    background-color: var(--background-dark);
     text-align: center;
-    width: 250px;
+    width: 30%;
+    max-width: 400px;
 }
 
+
+
 .stat strong {
-    display: block;
-    font-size: 2rem ;
-    color: #0FA958;
-    margin-bottom: 5px;
-    text-align: center;
-    margin: 5px;
-    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-small);
+    font-size: var(--font-medium);
 }
 
 .stat p{
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #ffff;
-}
-
-.stat .star{
-    justify-content: center;
-    display: flex;
-    gap: 5px;
-}
-
-.course-categories {
-    text-align: center;
-    padding: 40px 20px;
+    color: var(--font-color);
 }
 
 .course-categories h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: var(--font-large);
+    text-align: center;
+    padding-top: 50px;
+    margin: var(--spacing-medium);
 }
 
 .categories {
     display: flex;
     justify-content: center;
-    gap: 15px;
     flex-wrap: wrap;
+    gap: var(--spacing-small);
 }
 
 .categories span {
-    padding: 8px 16px;
-    background: #f1f1f1;
+    padding: var(--spacing-small) var(--spacing-medium);
+    background: var(--background-light);
     border-radius: 20px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
 }
 
-.categories #fd{
-    background: #3396fff6;
-    color: #fff;
-}
-
 .categories span:hover {
-    background: #3396fff6;
+    background: var(--button-hover);
     color: #fff;
 }
 
@@ -160,11 +147,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
+    gap: var(--spacing-medium);
+    padding: var(--spacing-medium);
+    background-color: var(--background-light);
 }
-
 
 .course-card {
     background-color: #fff;
@@ -182,51 +168,29 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.course-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-.course-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Course Info */
-.course-info {
-    padding: 15px;
-}
-
 .course-info h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: var(--font-medium);
+    color: var(--text-color);
 }
 
 .course-info p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
-    line-height: 1.5;
+    font-size: var(--font-small);
+    color: var(--text-color);
 }
 
-
 .course-info button {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: #fff;
+    padding: var(--spacing-small) var(--spacing-medium);
     border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease-in-out;
 }
 
 .course-info button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover);
 }
-
 
 .team-chart {
     margin: 100px 0;
@@ -275,3 +239,23 @@ body {
     margin-bottom: 5px;
 }
 
+
+@media (max-width: 768px) {
+    .hero, .statistics, .course-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text_landing {
+        margin: var(--spacing-small) 0;
+        text-align: center;
+    }
+
+    .statistics .stat  {
+        width: 100%;
+    }
+
+    .stat .star img{
+        width: var(--font-small);
+    }
+}

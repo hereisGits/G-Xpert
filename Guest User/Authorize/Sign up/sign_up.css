@@ -134,7 +134,7 @@ input[type="checkbox"] {
 
 .terms-conditions{
     display: flex;
-    gap: 5px;    
+    gap: 10px;    
 }
 
 .term {
@@ -143,8 +143,6 @@ input[type="checkbox"] {
 }
 .terms-conditions #accept{
     font-size: 14px;
-    margin-top: 2px;
-    display: block;
 }
 
 .terms-conditions a {

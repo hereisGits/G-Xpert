@@ -39,10 +39,4 @@
   updateDateTime();
   setInterval(updateDateTime, 1000);
 
-
-// for manage user
-const content = document.querySelector(main);
-
-function changeContent(){
   
-}

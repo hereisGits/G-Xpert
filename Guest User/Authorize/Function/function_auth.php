@@ -14,7 +14,10 @@ function usernameValidate($username) {
 }
 
 function emailValidate($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+    $senitize_email = filter_var($email, FILTER_SANITIZE_EMAIL );
+    if(filter_var($senitize_email, FILTER_VALIDATE_EMAIL)){
+        return $senitize_email;
+    }
 }
 function passValidate($password) {
     if (strlen($password) <= 6) {

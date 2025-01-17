@@ -2,142 +2,155 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #f3f4f6;
+    --text-color: #333;
+    --font-color: #fff;
+    --bg-color: #fff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --font-family: 'Arial', sans-serif;
+}
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    height: 100vh;
 }
 
 
-.title {
-    width: 100%;
-    display: block;
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    z-index: auto;
+}
+
+.sidebar h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 20px; 
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-.title h1 {
-    color: #242424; 
-    font-size: 28px; 
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.title p {
-    color: #242424; 
-    font-size: 16px; 
-    margin: 10px 0 0; 
-}
-
-
-
-table {
-    border-collapse: collapse;
-    margin: 8px 0;
-    margin: 0 auto;
-    padding: 100px;
-    font-size: 16px;
-    text-align: left;
-}
-
-th, td{
-    padding: 10px;
-    border: 2px solid #ddd;
-}
-
-th {
-    background-color: #d6d6d6;
-    color: #303030;
-}
-
-td{
-    color: #202020;
-}
-tr:nth-child(odd) {
-    background-color: #ececec;
-}
-
-tr:hover {
-    background-color: #e1edfffa;
-}
-
-.full-name {
-    width: 300px; 
-  }
-
-.username, .action {
-    width: 200px; 
-  }
-
-
-.icons {
-    display: block;
-    margin: 0 auto;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    gap: 30px;
-    
-}
-
-.icons i {
-    font-size: 18px; 
-    color: #555; 
-    cursor: pointer; 
-    transition: transform 0.3s ease; 
-}
-
-.icons i:hover {
-    transform: scale(1.2); 
-}
-
-.icons .fa-eye-slash {
-    color: #2579d3; 
-}
-
-.icons .fa-user-lock {
-    color: #dc3545; 
-}
-
-.icons .fa-trash-can {
-    color: #6c757d; 
-}
-
-
-.icon {
-    position: relative;
-    display: inline-block;
+.sidebar ul li {
+    padding: 10px 15px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--font-color);
 }
 
-.tooltip {
-    visibility: hidden;
-    background-color: rgb(53, 53, 53);
-    color: #fff;
-    text-align: center;
-    padding: 5px 8px;
-    font-size: 14px;
-    border-radius: 5px;
+.sidebar ul li:hover {
+    background-color: #3e8e41;
+    border-radius: var(--border-radius);
+}
+
+.sidebar ul li i {
+    margin-right: 10px;
+    color: var(--font-color);
+}
+
+header {
+    background-color: var(--bg-color);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 250px);
+    position: fixed;
+    left: 250px;
+    top: 0;
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
+}
+
+header .head h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+header .account {
+    display: flex;
+    align-items: center;
+}
+
+header .account div {
+    margin-left: 20px;
+    position: relative;
+}
+
+header .account a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 20px;
+}
+
+header .account .tooltip {
     position: absolute;
-    bottom: 150%; 
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    white-space: nowrap;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    font-size: 12px;
+    display: none;
 }
 
-.icon .tooltip::after{
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 30%;
-    margin-left: -5px;
-    border-width: 6px;
-    border-style: solid;
-    border-color: #7e7d7d transparent transparent transparent;
+header .account div:hover .tooltip {
+    display: block;
 }
 
-.icon:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
+/* Main Content */
+main {
+    margin-top: 60px;
+    padding: 20px;
+    margin-left: 250px;
 }
 
+.content-placeholder .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.bg-primary {
+    background-color: #007bff;
+}
+
+.bg-success {
+    background-color: #28a745;
+}
+
+.bg-warning {
+    background-color: #ffc107;
+}
+
+.bg-danger {
+    background-color: #dc3545;
+}

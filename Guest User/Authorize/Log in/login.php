@@ -32,7 +32,7 @@
 				<div class="input-fields">
 					<div class="email-field">
 						<label for="email" class="email-ask" id="label">Email</label>
-						<input type="text" id="email" name="email" placeholder="Enter your email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+						<input type="email" id="email" name="email" placeholder="Enter your email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
 						<span class="error">
 							<?php echo printErrorMsg($error, 'email'); ?>
 						</span>
@@ -46,7 +46,7 @@
 					</div>
 					<div class="terms-conditions">
 						<input type="checkbox" id="terms" name="remember">
-						<label for="terms" id="remember">Remember me for 10 days</label>
+						<label for="terms" id="remember">Remember me</label>
 					</div>
 					<div class="form-buttons">
 						<button type="submit" id="submit-btn" name="submit">Log in</button>

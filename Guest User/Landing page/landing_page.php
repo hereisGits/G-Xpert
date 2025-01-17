@@ -62,7 +62,7 @@
                 
                 <section class="course-cards">
                     <div class="course-card">
-                        <img src="../Elements/5869395.jpg" alt="Course 1">
+                        <img src="" alt="Course 1">
                         <div class="course-info">
                             <h3>Web Development</h3>
                             <p>Learn to build websites from scratch with HTML, CSS, and JavaScript.</p>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="course-card">
-                        <img src="../Elements/course-2.jpg" alt="Course 2">
+                        <img src="" alt="Course 2">
                         <div class="course-info">
                             <h3>Graphic Design</h3>
                             <p>Master the art of visual communication with Adobe Illustrator and Photoshop.</p>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="course-card">
-                        <img src="../Elements/course-3.jpg" alt="Course 3">
+                        <img src="" alt="Course 3">
                         <div class="course-info">
                             <h3>Photography</h3>
                             <p>Learn to capture the perfect shot with our online photography course.</p>

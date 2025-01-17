@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!checkRequiredField($_POST['email'])) {
         $error['email'] = "Email is required.";
     } elseif (!emailValidate($_POST['email'])) {
-        $error['email'] = "Please enter a valid email address.";
+        $error['email'] = "Invalid email address.";
     }
     
     if (!checkRequiredField($_POST['password'])) {
@@ -24,26 +24,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die("Database Connection Failed: " . $connection->connect_error);
         }
 
-        $stmt = $connection->prepare("SELECT email, password, username FROM user_table WHERE email = ?");
+        $email =  $_POST['email'];
+        $password = $_POST['password'];
 
-        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-        $password = trim($_POST['password']);
+        $stmt = $connection->prepare("SELECT email, password, user_id, username FROM user_table WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['username'] = $row['username'];
             
-            if (!empty($row['password']) && password_verify($password, $row['password'])) {
+            if (isset($_POST['remember'])) {
+                    setcookie('user_cookie', $row['user_id'], time() + (24 * 60 * 60), "/", "", false, true); // 'secure' set to false for local testing
+                }  
                 
-                $_SESSION['user_id'] = $row['user_id'];
-                $_SESSION['username'] = $row['username'];
-                if (isset($_POST['remember'])) {
-                        setcookie('user_cookie', $row['user_id'], time() + (10 * 24 * 60 * 60), "/", "", false, true); // 'secure' set to false for local testing
-                    }
-                    
-                    header('Location: ../../../Registered%20User/user_dashboard.php');
+                if (!empty($row['password']) && password_verify($password, $row['password'])) {                
+                    header("Location: ../../../Registered User/user_dashboard.php");
                     exit();
             } else {
                 $error['password'] = "Incorrect password.";
