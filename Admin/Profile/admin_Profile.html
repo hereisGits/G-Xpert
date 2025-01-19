@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <link rel="stylesheet" href="Admin-profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Header Section -->
+        <div class="profile-header">
+            <div class="nav">
+                <img src="admin.jpg" alt="Admin Picture">
+                <div>
+                    <h2>Admin</h2>
+                    <p>Administrator</p>
+                </div>
+            </div>
+            <div class="goback">
+                <button onclick="history.back()">
+                    <i class="fa-solid fa-angle-left"></i> Back
+                </button>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="overview" onclick="switchTab('overview')">Overview</div>
+            <div class="tab" data-tab="settings" onclick="switchTab('settings')">Settings</div>
+        </div>
+
+        <div id="overview" class="section active">
+            <h3>Overview</h3>
+            <div class="detail">
+                <span class="detail-label">Username:</span> admin
+            </div>
+            <div class="detail">
+                <span class="detail-label">Role:</span> Super Admin
+            </div>
+            <div class="detail">
+                <span class="detail-label">Last Login:</span> Jan 18, 2025
+            </div>
+            <div class="detail">
+                <span class="detail-label">Join as Admin:</span> Dec 18, 2024
+            </div>
+        </div>
+
+        <div id="settings" class="section">
+            <h3>Settings</h3>
+            <p>Manage your profile settings here.</p>
+            <form action="update_profile.php" method="post" enctype="multipart/form-data" class="profile-form">
+                <div class="profile-picture-container">
+                    
+                    <img id="profile-preview" src="default-profile.jpg" alt="Profile Preview">
+                    <label for="profile" class="upload-label">Change Profile Picture</label>
+                    <input type="file" name="profile" id="profile" accept="image/*">
+                </div>
+
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter new username">
+        
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter new password">
+        
+                <label for="role">Role</label>
+                <select name="role" id="role">
+                    <option value="">Select role</option>
+                    <option value="superAdmin">Super Admin</option>
+                    <option value="admin" disabled>Admin</option>
+                </select>
+        
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+        </div>        
+    </div>
+
+    <script src="admin_profile.js"></script>
+</body>
+</html>

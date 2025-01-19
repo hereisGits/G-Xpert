@@ -1,0 +1,229 @@
+:root {
+    --font-family: 'Roboto', sans-serif;
+    --background-color: #f6f8fa;
+    --text-color: #333;
+    --primary-color: #0366d6;
+    --primary-hover-color: #024b9e;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --tab-border-color: #e1e4e8;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.goback {
+    position: relative;
+    float: right;
+}
+
+.goback button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; 
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.goback button:hover {
+    background-color: var(--primary-hover-color);
+}
+
+.goback button i {
+    font-size: 16px;
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.profile-header .nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-header .nav img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-header .nav h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.profile-header .nav p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    color: #586069;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid var(--tab-border-color);
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--primary-color);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab:hover {
+    background: #f6f8fa;
+}
+
+.tab.active {
+    border-bottom: 3px solid var(--primary-color);
+    color: #24292e;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.detail {
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--primary-hover-color);
+}
+
+.profile-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fefefe;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#profile-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: var(--primary-hover-color);
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="password"],
+.profile-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.profile-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.profile-form .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-form .btn:hover {
+    background-color: #218838;
+}

@@ -6,9 +6,7 @@ require_once './Manage users/Connection/db_connection.php';
 if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
     header('Location: ./Authorize/login/Admin_login.php');
     exit;
-}
-
-if (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
+} elseif (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
     $_SESSION['username'] = $_COOKIE['admin_cookie'];
 
     $stmt = $connection->prepare('SELECT admin_id FROM admin_table WHERE username = ?');
@@ -22,22 +20,17 @@ if (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
     $stmt->close();
     $connection->close();
 }
-
 if (isset($_SESSION['admin_id'])) {
-    $stmt = $connection->prepare("SELECT user_id FROM user_table");
+    $stmt = $connection->prepare("SELECT COUNT(*) AS total_users FROM user_table");
     $stmt->execute();
     $result = $stmt->get_result();
-
-    $total_users = 0;
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $total_users++;
-        }
+    if ($row = $result->fetch_assoc()) {
+        $_SESSION['total_users'] = $row['total_users'];
     }
-    $_SESSION['total_users'] = $total_users;
-
+    $stmt->close();
     $connection->close();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -69,11 +62,10 @@ if (isset($_SESSION['admin_id'])) {
                         <div id="greeting" class="dateTime"></div>
                         <div id="dateTime" class="dateTime"></div>
                     </div></h1>
-                
             
                 <div class="account">
                     <div id="admin-acc">
-                        <a href=""><i class="fa-solid fa-user-tie"></i></a>
+                        <a href="./Profile/admin_Profile.html"><i class="fa-solid fa-user-tie"></i></a>
                         <span class="tooltip profile">Profile</span>
                     </div>
                     <div id="logout">
@@ -84,26 +76,23 @@ if (isset($_SESSION['admin_id'])) {
             </div>
         </header>
         
-        <main>   
-            <div class="content-placeholder">
-                    <div class="row">
-                        <div class="stat-card bg-primary">
-                            <h2>20</h2>
-                            <p>Active Users</p>
-                        </div>
-                        <div class="stat-card bg-success">
-                            <h2>12</h2>
-                            <p>Active Courses</p>
-                        </div>
-                        <div class="stat-card bg-warning">
-                            <h2><?php echo $_SESSION[$total_users]?></h2>
-                            <p>Number of User on Site</p>
-                        </div>
-                        <div class="stat-card bg-danger">
-                            <h2>Rs. 5,200</h2>
-                            <p>Total Revenue</p>
-                        </div>
-                    </div>
+        <main class="content-placeholder">   
+            <div class="row">
+                <div class="stat-card bg-primary">
+                    <h2>20</h2>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-card bg-success">
+                    <h2>12</h2>
+                    <p>Active Courses</p>
+                </div>
+                <div class="stat-card bg-warning">
+                    <h2><?php echo isset($_SESSION['total_users']) ? $_SESSION['total_users'] : '0'; ?></h2>
+                    <p>Total Users</p>
+                </div>
+                <div class="stat-card bg-danger">
+                    <h2>Rs. 5,200</h2>
+                    <p>Total Revenue</p>
                 </div>
             </div>
         </main> 

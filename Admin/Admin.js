@@ -40,3 +40,10 @@
   setInterval(updateDateTime, 1000);
 
   
+  const profile = document.getElementById('admin-acc');
+  profile.addEventListener('click', () => {
+      console.log('Redirecting...');
+      window.location.href = 'admin_Profile.php';
+  });
+  
+  
