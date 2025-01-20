@@ -1,3 +1,10 @@
+const popup = document.querySelector('#status-div p'); 
+  if (popup) {
+      setTimeout(() => {
+          popup.style.display = 'none';
+      }, 2000);
+  }
+
 
   function switchTab(tabName) {
       const tabs = document.querySelectorAll('.tab');

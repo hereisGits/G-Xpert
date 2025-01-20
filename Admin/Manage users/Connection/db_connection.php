@@ -3,3 +3,4 @@
     if(!$connection){
         die('Database Connection Error:' .$connection->connect_error);
     }
+    

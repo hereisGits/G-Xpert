@@ -65,7 +65,7 @@ if (isset($_SESSION['admin_id'])) {
             
                 <div class="account">
                     <div id="admin-acc">
-                        <a href="./Profile/admin_Profile.html"><i class="fa-solid fa-user-tie"></i></a>
+                        <a href="./Profile/admin_Profile.php"><i class="fa-solid fa-user-tie"></i></a>
                         <span class="tooltip profile">Profile</span>
                     </div>
                     <div id="logout">
