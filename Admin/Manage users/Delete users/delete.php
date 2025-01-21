@@ -8,14 +8,14 @@ if (isset($_GET['id'])) {
     $query->bind_param('i', $user_id);
 
     if ($query->execute()) {
-        header("Location: ../manage_user.php?message=User deleted successfully");
+        header("Location: ./manage_user.php?message=User deleted successfully");
         exit;
     } else {
-        header("../Location: manage_user.php?error=Error deleting user");
+        header("Location: ./manage_user.php?error=Error deleting user");
         exit;
     }
 } else {
-    header("../Location: manage_user.php?error=No user ID provided");
+    header("Location: ./manage_user.php?error=No user ID provided");
     exit;
 }
 ?>

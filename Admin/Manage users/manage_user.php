@@ -9,6 +9,136 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<style>:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --table-header-bg: #2c3e50;
+    --table-row-bg: #ecf0f1;
+    --table-hover-bg:rgba(185, 218, 255, 0.47);
+    --icon-color: #34495e;
+    --tooltip-bg: #333;
+    --tooltip-text-color: #fff;
+    --button-bg: #3498db;
+    --button-hover-bg: #2980b9;
+}
+
+.user_content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 20px 40px;
+}
+
+.title h1 {
+    text-align: center;
+    font-size: 24px;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.title p {
+    text-align: center;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--table-header-bg);
+    color: #fff;
+}
+
+tr{
+    transition: background-color 0.3s ease-in-out;
+}
+
+tr:hover {
+    background-color: var(--table-hover-bg);
+}
+
+td {
+    border-bottom: 1.5px solid #ddd;
+}
+
+.empty {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 18px;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icon {
+    position: relative;
+    cursor: pointer;
+    color: var(--icon-color);
+    font-size: 18px;
+}
+
+.fa-eye-slash:hover {
+    color: blue;
+}
+
+.fa-user-lock:hover{
+    color: orange;    
+}
+
+.fa-trash-can:hover{
+    color: red;
+}
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    bottom: 30px;
+    left: -10px;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.tooltip::after{
+    content: " ";
+    position: absolute;
+    bottom: -5px;
+    left: 28%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--tooltip-bg);
+}
+
+.icon:hover .tooltip {
+    visibility: visible;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: var(--icon-hover-color);
+}
+</style>
 <body>
     <div class="user_content">
         <div class="title">

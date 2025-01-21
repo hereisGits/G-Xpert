@@ -20,17 +20,14 @@ if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
     $stmt->close();
     $connection->close();
 }
-if (isset($_SESSION['admin_id'])) {
-    $stmt = $connection->prepare("SELECT COUNT(*) AS total_users FROM user_table");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $_SESSION['total_users'] = $row['total_users'];
-    }
-    $stmt->close();
-    $connection->close();
-}
 
+$_SESSION['username'] = 'admin';
+
+// Default content for the dashboard
+$contentFile = './Dashboard/dashboard.php';
+if (isset($_GET['page'])) {
+    $contentFile = $_GET['page'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +35,7 @@ if (isset($_SESSION['admin_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" href="Admin-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -46,14 +43,13 @@ if (isset($_SESSION['admin_id'])) {
     <div class="sidebar">
         <h2>Admin Panel</h2>
         <ul>
-            <li><i class="fa-solid fa-house"></i> Dashboard</li>
-            <li><i class="fa-solid fa-user-gear"></i> Manage Users</li>
-            <li><i class="fa-solid fa-book-open"></i> Manage Courses</li>
-            <li><i class="fa-solid fa-square-poll-vertical"></i> Reports</li>
-            <li><i class="fa-solid fa-gears"></i> Settings</li>
+            <li><a href="#" data-page="./Dashboard/dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="#" data-page="./Manage users/manage_user.php"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
+            <li><a href="#" data-page="./Manage courses/manage_courses.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
+            <li><a href="#" data-page="./Reports/reports.php"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
+            <li><a href="#" data-page="./Settings/settings.php"><i class="fa-solid fa-gears"></i> Settings</a></li>
         </ul>
     </div>
-
     <header>
         <div class="content">
             <div class="head">
@@ -75,28 +71,12 @@ if (isset($_SESSION['admin_id'])) {
                 </div>
             </div>
         </header>
-        
-        <main class="content-placeholder">   
-            <div class="row">
-                <div class="stat-card bg-primary">
-                    <h2>20</h2>
-                    <p>Active Users</p>
-                </div>
-                <div class="stat-card bg-success">
-                    <h2>12</h2>
-                    <p>Active Courses</p>
-                </div>
-                <div class="stat-card bg-warning">
-                    <h2><?php echo isset($_SESSION['total_users']) ? $_SESSION['total_users'] : '0'; ?></h2>
-                    <p>Total Users</p>
-                </div>
-                <div class="stat-card bg-danger">
-                    <h2>Rs. 5,200</h2>
-                    <p>Total Revenue</p>
-                </div>
-            </div>
-        </main> 
-        
+
+
+    <main id="dynamic-content" class="dynamic-content" >
+        <?php include $contentFile; ?>
+    </main>
+
     <script src="Admin.js"></script>
 </body>
 </html>

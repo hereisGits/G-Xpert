@@ -39,6 +39,38 @@
   updateDateTime();
   setInterval(updateDateTime, 1000);
 
-  
-  
-  
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const listItems = document.querySelectorAll('.sidebar li'); 
+    const content = document.getElementById('dynamic-content'); 
+
+    listItems.forEach(li => {
+        li.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default behavior
+
+            const link = li.querySelector('a'); 
+            const page = link.getAttribute('data-page'); 
+
+            if (page) {
+                fetch(page)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Failed to load content');
+                        return response.text();
+                    })
+                    .then(data => {
+                        content.innerHTML = data; // Update dynamic content
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        content.innerHTML = '<p style="text-align:center; margin-top:20px; font-weight:550; color:#555;">Could not load content.</p>';
+                    });
+            }
+        });
+    });
+});
+
+
+              
+              
+              
