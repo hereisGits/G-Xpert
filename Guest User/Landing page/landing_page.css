@@ -1,4 +1,5 @@
-*{
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,185 +13,173 @@
     --background-light: #f9f9f9;
     --background-dark: #232424;
     --button-hover: #3396fff6;
-    --font-large: 2.5rem;
-    --font-medium: 1.5rem;
-    --font-small: 1rem;
-    --spacing-small: 10px;
-    --spacing-medium: 20px;
-    --spacing-large: 30px;
-    --font-color:#fff;
+    --font-color: #fff;
     --font-large: 36px;
 }
 
 body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    line-height: 1.6;
     background-color: var(--background-light);
     color: var(--text-color);
 }
 
 .container-main {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: var(--spacing-medium);
 }
 
 .hero {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
-    gap: var(--spacing-medium);
+    height: 100vh;
+    position: relative;
+    transition: background 1s ease-in-out; 
 }
 
 .text_landing {
-    flex: 1;
-    max-width: 500px;
-    margin: 0 var(--spacing-medium);
-    text-align: left;
+    position: relative;
+    top: -5rem;
+    left: 5rem;
+    max-width: 45%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
 
+
 .text_landing h1 {
-    font-size: var(--font-large);
-    color: var(--primary-color);
-    text-transform: capitalize;
-    cursor: default;
+    font-size: 2rem;
+    color: var(--text-color);
 }
 
 .text_landing p {
-    font-size: var(--font-small);
-    margin-top: var(--spacing-small);
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 2rem;
 }
 
 .text_landing button {
-    margin-top: var(--spacing-large);
-    font-weight: 600;
+    padding: 1rem 1.5rem;
+    background-color: var(--primary-color);
+    color: #fff;
     border: 2px solid var(--primary-color);
-    background: transparent;
-    color: var(--primary-color);
-    padding: 16px 24px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 550;
     cursor: pointer;
-    transition: background 0.5s, border 0.3s ease-in-out;
+    transition: background-color 0.3s ease;
 }
 
 .text_landing button:hover {
-    color: var(--font-color);
-    background-color: var(--primary-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
 }
 
-.illustra img {
-    max-width: 85%;
-    height: auto;
-    object-fit: contain;
-    transform: scaleX(-1);
-}
+
 
 .statistics {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
+    padding: 4rem 2rem;
     background-color: var(--secondary-color);
-    padding: var(--spacing-large);
-    gap: var(--spacing-medium);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    border-bottom: 1px solid #dddddd31;
 }
 
 .stat {
-    padding: var(--spacing-medium);
-    border-radius: 8px;
-    background-color: var(--background-dark);
+    width: 25%;
+    height: 8rem;
     text-align: center;
-    width: 30%;
-    max-width: 400px;
+    color: var(--font-color);
+    background: rgba(241, 241, 241, 0.178);
+    padding: 10px 20px;
+    border-radius: 8px;
+    gap: 20px;
 }
-
-
+.star{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .stat strong {
-    color: var(--accent-color);
-    margin-bottom: var(--spacing-small);
-    font-size: var(--font-medium);
+    display: block;
+    font-size: 2rem;
+    color: var(--accent-color);                    
+    margin-bottom: 0.5rem;
 }
 
-.stat p{
-    color: var(--font-color);
+.stars{
+    margin-left: 10px;
+}
+
+.star img {
+    width: 18px;
+    height: 18px;
+    margin: 0 2px;                   
+}
+
+.stat p {
+    color: var(--font-color);                    
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.course-categories {
+    margin: 0 auto;
+    align-items: center;
+    padding: 4rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 20px;
 }
 
 .course-categories h2 {
-    font-size: var(--font-large);
-    text-align: center;
-    padding-top: 50px;
-    margin: var(--spacing-medium);
+    text-align: left;
+    padding-right: 2rem;
+    font-size: 2rem;
+    color: var(--font-color);
+    margin-bottom: 1.5rem;
+    cursor: pointer;
 }
 
 .categories {
+    list-style: none;
     display: flex;
-    justify-content: center;
+    padding: 0;
+    margin: 0 ;
     flex-wrap: wrap;
-    gap: var(--spacing-small);
+    gap: 20px;
 }
 
-.categories span {
-    padding: var(--spacing-small) var(--spacing-medium);
-    background: var(--background-light);
-    border-radius: 20px;
+.categories li {
+    color: var(--font-color);
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    padding: 8px 20px;
+    border: 2px solid var(--font-color);
+    border-radius: 2rem;
+    background-color: transparent;
+    transition: all 0.3s ease;
 }
 
-.categories span:hover {
-    background: var(--button-hover);
-    color: #fff;
-}
-
-.course-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-medium);
-    padding: var(--spacing-medium);
-    background-color: var(--background-light);
-}
-
-.course-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 300px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.course-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.course-info h3 {
-    font-size: var(--font-medium);
-    color: var(--text-color);
-}
-
-.course-info p {
-    font-size: var(--font-small);
-    color: var(--text-color);
-}
-
-.course-info button {
+.categories li:hover {
     background-color: var(--primary-color);
     color: #fff;
-    padding: var(--spacing-small) var(--spacing-medium);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    border-color: var(--primary-color);
 }
 
-.course-info button:hover {
-    background-color: var(--button-hover);
-}
 
 .team-chart {
     margin: 100px 0;
@@ -237,25 +226,4 @@ body {
     font-size: 0.9em;
     color: #666;
     margin-bottom: 5px;
-}
-
-
-@media (max-width: 768px) {
-    .hero, .statistics, .course-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .text_landing {
-        margin: var(--spacing-small) 0;
-        text-align: center;
-    }
-
-    .statistics .stat  {
-        width: 100%;
-    }
-
-    .stat .star img{
-        width: var(--font-small);
-    }
 }

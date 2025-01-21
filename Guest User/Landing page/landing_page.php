@@ -16,88 +16,65 @@
         ?>
     
     <main>
-        <div class="container-main">    
-                <section class="hero">
-                    <div class="text_landing">
-                        <h1>Unlock Your Potential</h1>
-                        <p>– Learn, Grow, and Succeed with G-Xpert</p>
-                        <button>Explore Courses</button>
-                    </div>               
-                    <div class="illustra">
-                        <img src="../Elements/illustra-landing.jpg" alt="landing_page" class="position_img">
-                    </div>
-                </section>
+        <div class="container-main">
+            <section class="hero">
+                <div class="text_landing">
+                    <h1>Unlock Your Potential</h1>
+                    <p>Learn, Grow, and Succeed with G-Xpert</p>
+                    <button>Explore Courses</button>
+                </div>
+            </section>
 
-                <section class="statistics">
-                    <div class="stat">
-                        <strong>1.2k+</strong>
-                        <p>Members</p>
-                    </div>
-                    <div class="stat">
-                        <strong>1k+</strong>
-                        <p>Purchased</p>
-                    </div>
-                    <div class="stat">
+            <section class="statistics">
+                <div class="stat">
+                    <strong>1.2k+</strong>
+                    <p>Members</p>
+                </div>
+                <div class="stat">
+                    <strong>1k+</strong>
+                    <p>Purchased</p>
+                </div>
+                <div class="stat">
                         <div class="star">
-                            <strong>3.5</strong>
+                            <strong>3.5</strong>                        
+                        <div class="stars">
                             <img src="../Elements/star.svg" alt="Star">
                             <img src="../Elements/star.svg" alt="Star">
                             <img src="../Elements/star.svg" alt="Star">
-                            <img src="../Elements/haft-star.svg" alt="Half Star">                                    
+                            <img src="../Elements/haft-star.svg" alt="Half Star">
                         </div>
-                        <p>Rating</p>
-                    </div>
-                </section>
+                        </div>
+                    <p>Rating</p>
+                </div>
+            </section>
 
-                <section class="course-categories">
-                    <h2>Explore Online Courses</h2>
-                    <div class="categories">
-                        <span id="fd">Featured</span>
-                        <span>Development</span>
-                        <span>Arts & Design</span>
-                        <span>Digital Marketing</span>
-                        <span>Personal Development</span>
-                    </div>
-                </section>
-                
-                <section class="course-cards">
-                    <div class="course-card">
-                        <img src="" alt="Course 1">
-                        <div class="course-info">
-                            <h3>Web Development</h3>
-                            <p>Learn to build websites from scratch with HTML, CSS, and JavaScript.</p>
-                            <button>Enroll Now</button>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <img src="" alt="Course 2">
-                        <div class="course-info">
-                            <h3>Graphic Design</h3>
-                            <p>Master the art of visual communication with Adobe Illustrator and Photoshop.</p>
-                            <button>Enroll Now</button>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <img src="" alt="Course 3">
-                        <div class="course-info">
-                            <h3>Photography</h3>
-                            <p>Learn to capture the perfect shot with our online photography course.</p>
-                            <button>Enroll Now</button>
-                        </div>
-                    </div>
-                
-            </div>
+            <section class="course-categories">
+                <h2>Explore<br> Online<br> Courses</h2>
+                <div></div>
+                <ul class="categories">
+                    <li>Development</li>
+                    <li>Arts & Design</li>
+                    <li>Digital Marketing</li>
+                    <li>Personal Development</li>
+                    <li>Business</li>
+                    <li>Health & Fitness</li>
+                    <li>Music</li>
+                    <li>Photography</li>
+                    <li>Finance</li>
+                    <li>Technology</li>
+                    <li>More..</li>
+                </ul>
+            </section>
 
-        <div class="team-div">
+
             <section class="team-chart">
                 <h1 id="team">Our Team</h1>
                 <div class="team-container">
                     <div class="team-member">
                         <img src="../Elements/male.jpg" alt="Team Member 1">
                         <h2>Gaurav</h2>
-                        <p>CEO & Founder & Developer</p>
+                        <p>Developer</p>
                     </div>
-                    
                     <div class="team-member">
                         <img src="../Elements/female.jpg" alt="Team Member 2">
                         <h2>Sofia</h2>
@@ -107,6 +84,7 @@
             </section>
         </div>
     </main>
+
 
     <?php
         require_once './Nav&footer/footer.php'; 
