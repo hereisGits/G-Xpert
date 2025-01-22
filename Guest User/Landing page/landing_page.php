@@ -18,7 +18,26 @@
     <main>
         <div class="container-main">
             <section class="hero">
-                <div class="text_landing">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                  <img src="../Elements/Slides/slide1.png" alt="Slide 1">
+                </div>
+
+                <div class="mySlides fade">
+                  <img src="../Elements/Slides/slide2.png" alt="Slide 2">
+                </div>
+
+                <div class="mySlides fade">
+                  <img src="../Elements/Slides/slide3.png" alt="Slide 3">
+                </div>
+
+                <div class="dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+
+                 <div class="text_landing">
                     <h1>Unlock Your Potential</h1>
                     <p>Learn, Grow, and Succeed with G-Xpert</p>
                     <button>Explore Courses</button>
@@ -26,44 +45,48 @@
             </section>
 
             <section class="statistics">
-                <div class="stat">
-                    <strong>1.2k+</strong>
-                    <p>Members</p>
-                </div>
-                <div class="stat">
-                    <strong>1k+</strong>
-                    <p>Purchased</p>
-                </div>
-                <div class="stat">
-                        <div class="star">
-                            <strong>3.5</strong>                        
-                        <div class="stars">
-                            <img src="../Elements/star.svg" alt="Star">
-                            <img src="../Elements/star.svg" alt="Star">
-                            <img src="../Elements/star.svg" alt="Star">
-                            <img src="../Elements/haft-star.svg" alt="Half Star">
-                        </div>
-                        </div>
-                    <p>Rating</p>
+                <div class="div-stat">
+                    <div class="stat">
+                        <strong>1.2k+</strong>
+                        <p>Members</p>
+                    </div>
+                    <div class="stat">
+                        <strong>1k+</strong>
+                        <p>Purchased</p>
+                    </div>
+                    <div class="stat">
+                            <div class="star">
+                                <strong>3.5</strong>                        
+                            <div class="stars">
+                                <img src="../Elements/star.svg" alt="Star">
+                                <img src="../Elements/star.svg" alt="Star">
+                                <img src="../Elements/star.svg" alt="Star">
+                                <img src="../Elements/haft-star.svg" alt="Half Star">
+                            </div>
+                            </div>
+                        <p>Rating</p>
+                    </div>
                 </div>
             </section>
 
             <section class="course-categories">
-                <h2>Explore<br> Online<br> Courses</h2>
-                <div></div>
-                <ul class="categories">
-                    <li>Development</li>
-                    <li>Arts & Design</li>
-                    <li>Digital Marketing</li>
-                    <li>Personal Development</li>
-                    <li>Business</li>
-                    <li>Health & Fitness</li>
-                    <li>Music</li>
-                    <li>Photography</li>
-                    <li>Finance</li>
-                    <li>Technology</li>
-                    <li>More..</li>
-                </ul>
+                <div class="div-course">
+                    <h2>Explore<br> Online<br> Courses</h2>
+                    <div></div>
+                    <ul class="categories">
+                        <li>Development</li>
+                        <li>Arts & Design</li>
+                        <li>Digital Marketing</li>
+                        <li>Personal Development</li>
+                        <li>Business</li>
+                        <li>Health & Fitness</li>
+                        <li>Music</li>
+                        <li>Photography</li>
+                        <li>Finance</li>
+                        <li>Technology</li>
+                        <li>More..</li>
+                    </ul>
+                </div>
             </section>
 
 
@@ -86,9 +109,9 @@
     </main>
 
 
-    <?php
-        require_once './Nav&footer/footer.php'; 
-    ?>
+    <?php 
+            require_once './Nav&footer/footer.php'; 
+     ?>
 
     <script src="landing_page.js"></script>
 </body>

@@ -27,31 +27,26 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: var(--font-family);
             line-height: 1.6;
             background-color: var(--background-color);
         }
 
-        header {
-            width: 100%;
-            background: var(--background-color);
-            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
         .nav {
+            width: 100%;
+            padding: 15px 20px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav .nav-items{
             margin: 0 auto;
             max-width: 1400px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
+            align-items: center;            
         }
-
 
         .logo img {
             height: 45px;
@@ -83,16 +78,6 @@
         .navbar ul li a:hover {
             color: var(--primary-color);
             text-decoration: none;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        .hamburger i {
-            font-size: 24px;
-            color: var(--secondary-color);
         }
 
         .chard{
@@ -232,32 +217,31 @@
     ?>
     <header>
         <div class="nav">
-            <div class="logo">
-                <a href="<?php echo $base_url; ?>/Landing%20page/landing_page.php">
-                    <img src="<?php echo $base_url; ?>/Landing%20page/nav&footer/logo/nav-logo.svg" alt="Logo">
-                </a>
-            </div>
-            <div class="search-div">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" id="search" placeholder="Search Courses" aria-label="Search Courses">
-            </div>           
-                <nav class="navbar">
-                    <div class="chard">
-                        <a href="#" title="Add in Card">
-                            <i class="fa-solid fa-cart-shopping" aria-label="Cart"></i>
-                        </a>
-                    </div>
-                    <ul>
-                        <li><a href="#" id="cnav-txt">Courses <i class="fa-solid fa-caret-down"></i></a></li>
-                        <li><a href="<?php echo $base_url; ?>/Landing%20page/About%20us/about.php" id="nav-txt">About</a></li>
-                    </ul>
-                </nav>
-            <div class="buttons">
-                <button id="login">Login</button>
-                <button id="signup">Signup</button>
-            </div>
-            <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
+            <div class="nav-items">
+                <div class="logo">
+                    <a href="<?php echo $base_url; ?>/Landing%20page/landing_page.php">
+                        <img src="<?php echo $base_url; ?>/Landing%20page/nav&footer/logo/nav-logo.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="search-div">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" id="search" placeholder="Search Courses" aria-label="Search Courses">
+                </div>           
+                    <nav class="navbar">
+                        <div class="chard">
+                            <a href="#" title="Add in Card">
+                                <i class="fa-solid fa-cart-shopping" aria-label="Cart"></i>
+                            </a>
+                        </div>
+                        <ul>
+                            <li><a href="#" id="cnav-txt">Courses <i class="fa-solid fa-caret-down"></i></a></li>
+                            <li><a href="<?php echo $base_url; ?>/Landing%20page/About%20us/about.php" id="nav-txt">About</a></li>
+                        </ul>
+                    </nav>
+                <div class="buttons">
+                    <button id="login">Login</button>
+                    <button id="signup">Signup</button>
+                </div>
             </div>
         </div>
     </header>
@@ -265,7 +249,6 @@
     <script>
         const log = document.getElementById('login');
         const sign = document.getElementById('signup');
-        const hamburger = document.querySelector('.hamburger');
         const navbar = document.querySelector('.navbar');
 
         log.addEventListener('click', () => {
@@ -276,9 +259,6 @@
             window.location.href = '<?php echo $base_url; ?>/Authorize/Sign%20up/sign_up.php';
         });
 
-        hamburger.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-        });
     </script>
 </body>
 </html>
