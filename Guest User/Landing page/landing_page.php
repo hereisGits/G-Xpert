@@ -71,7 +71,7 @@
 
             <section class="course-categories">
                 <div class="div-course">
-                    <h2>Explore<br> Online<br> Courses</h2>
+                    <h2>Explore Online Courses</h2>
                     <div></div>
                     <ul class="categories">
                         <li>Development</li>

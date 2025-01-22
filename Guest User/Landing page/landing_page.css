@@ -304,6 +304,11 @@ body {
     .text_landing p {
       font-size: 12px;
     }
+
+    .div-course h2{
+      text-align: center;
+      padding: 10px;
+    }
   
     .statistics .div-stat {
       flex-direction: column;
@@ -370,6 +375,11 @@ body {
     .stat {
       width: 100%;
       height: auto;
+    }
+    
+    .div-course h2{
+      text-align: center;
+      padding: 10px;
     }
   
     .course-categories .div-course {
