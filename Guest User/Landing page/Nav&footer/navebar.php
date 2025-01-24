@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Responsive Navbar</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<style>:root {
+<style>
+:root {
     --primary-color: #229ed9;
     --secondary-color: #333;
     --background-color: #ffffff;
@@ -26,8 +27,8 @@ body {
 
 .nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 15px 20px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     background-color: var(--background-color);
@@ -35,6 +36,13 @@ body {
 
 .logo img {
     height: 40px;
+}
+
+.nav-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .search-div {
@@ -75,6 +83,14 @@ body {
   cursor: pointer;
 }
 
+.about, .dropbtn{
+    font-weight: 500;
+}
+
+.about:hover,.about:active{
+    color: var(--primary-color);
+} 
+
 .dropdown {
   float: left;
   overflow: hidden;
@@ -113,10 +129,11 @@ body {
   display: block;
 }
 
-.row{
+.row {
     display: inline-block;
     padding: 10px;
 }
+
 .column {
   float: left;
   justify-content: space-between;
@@ -147,6 +164,7 @@ body {
     display: flex;
     gap: 20px;
 }
+
 .buttons button {
     padding: 8px 16px;
     font-size: 14px;
@@ -158,11 +176,13 @@ body {
     cursor: pointer;
     transition: background 0.5s ease;
 }
+
 .buttons button:hover {
     background: none;
     color: var(--hover-color);
     border: 1px solid var(--hover-color);
 }
+
 .hamburger {
     display: none;
     font-size: 24px;
@@ -174,7 +194,6 @@ body {
         display: none;
     }
     .navbar {
-        display: none;
         position: absolute;
         top: 60px;
         right: 20px;
@@ -182,11 +201,14 @@ body {
         background: var(--background-color);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         padding: 10px;
-        width: 250px;
+        width: 350px;
+        z-index: 2;
+        justify-content: center;
     }
     .navbar.active {
-        display: flex;
+        display: block;
     }
+
     .hamburger {
         display: block;
     }
@@ -194,72 +216,94 @@ body {
 </style>
 </head>
 <body>
+    <?php 
+        $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller/Guest%20User";
+    ?>
     <header>
         <div class="nav">
             <div class="logo">
-                <img src="logo.png" alt="Logo">
+                 <a href="<?php echo $base_url; ?>/Landing page/landing_page.php">
+                    <img src="<?php echo $base_url; ?>/Landing page/Nav&footer/logo/nav-logo.svg" alt="Logo">
+                </a>
             </div>
-            <div class="search-div">
-                <input type="search" placeholder="Search Courses">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <div class="navbar">               
-                <div class="dropdown">
-                    <button class="dropbtn">Courses
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <div class="header">
-                            <h2>Our Courses</h2>
-                        </div>   
-                        <div class="row">
-                            <div class="column">
-                                <h3>Programming</h3>
-                                <a href="#">Javscript</a>
-                                <a href="#">Python</a>
-                                <a href="#">Java</a>
+            <div class="nav-items">
+                <div class="search-div">
+                    <input type="search" placeholder="Search Courses">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="navbar">               
+                    <div class="dropdown">
+                        <button class="dropbtn">Courses
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="header">
+                                <h2>Our Courses</h2>
+                            </div>   
+                            <div class="row">
+                                <div class="column">
+                                    <h3>Programming</h3>
+                                    <a href="#">Javscript</a>
+                                    <a href="#">Python</a>
+                                    <a href="#">Java</a>
                                 </div>
                                 <div class="column">
-                                <h3>Design</h3>
-                                <a href="#">Graphic Design</a>
-                                <a href="#">UI/UX</a>
-                                <a href="#">Web Design</a>
+                                    <h3>Design</h3>
+                                    <a href="#">Graphic Design</a>
+                                    <a href="#">UI/UX</a>
+                                    <a href="#">Web Design</a>
                                 </div>
                                 <div class="column">
-                                <h3>Marketing </h3>
-                                <a href="#">Digital Marketing</a>
-                                <a href="#">SEO</a>
-                                <a href="#">Content Marketing</a>
+                                    <h3>Marketing </h3>
+                                    <a href="#">Digital Marketing</a>
+                                    <a href="#">SEO</a>
+                                    <a href="#">Content Marketing</a>
                                 </div>
                                 <div class="column">
-                                <h3>Personal Development</h3>
-                                <a href="#">Communication skill</a>
-                                <a href="#">Leadership</a>
-                                <a href="#">Habits Management</a>
+                                    <h3>Personal Development</h3>
+                                    <a href="#">Communication skill</a>
+                                    <a href="#">Leadership</a>
+                                    <a href="#">Habits Management</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <div class="dropdown">
-                    <a href="#" class="dropdown-link">About</a>
-                </div>
-                <div class="buttons">
-                    <button>Login</button>
-                    <button>Signup</button>
+                    <div class="dropdown">
+                        <a href="<?php echo $base_url; ?>/Landing page/About us/about.php" class="about">About</a>
+                    </div>
+                    <div class="buttons">
+                        <button id="loginbtn">Login</button>
+                        <button id="signupbtn">Signup</button>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <script>
+        const login = document.querySelector('#loginbtn');
+        const signup= document.querySelector('#signupbtn');
+
+        login.addEventListener('click', ()=>{
+            console.log('clicked');            
+            window.location.href = '<?php echo $base_url; ?>/Authorize/Log%20in/login.php';
+        });
+        
+        signup.addEventListener('click', ()=>{
+            console.log('clicked');
+            window.location.href = '<?php echo $base_url; ?>/Authorize/Sign%20up/sign_up.php';
+        });
+
         const hamburger = document.querySelector('.hamburger');
         const navbar = document.querySelector('.navbar');
 
         hamburger.addEventListener('click', () => {
+            console.log('clicked');
             navbar.classList.toggle('active');
+            
         });
     </script>
 </body>

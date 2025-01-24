@@ -102,7 +102,7 @@ td {
     color: red;
 }
 
-.tooltip {
+.tooltips {
     visibility: hidden;
     position: absolute;
     bottom: 30px;
@@ -115,7 +115,7 @@ td {
     white-space: nowrap;
 }
 
-.tooltip::after{
+.tooltips::after{
     content: " ";
     position: absolute;
     bottom: -5px;
@@ -126,7 +126,7 @@ td {
     border-top: 5px solid var(--tooltip-bg);
 }
 
-.icon:hover .tooltip {
+.icon:hover .tooltips {
     visibility: visible;
 }
 
@@ -170,18 +170,18 @@ a:hover {
                                 <div class="icons">
                                     <div class="icon">
                                         <i class="fa-solid fa-eye-slash"></i>
-                                        <span class="tooltip view">View</span>
+                                        <span class="tooltips view">View</span>
                                     </div>                                    
                                     <div class="icon">
                                         <i class="fa-solid fa-user-lock"></i>
-                                        <span class="tooltip lock">Suspend</span>
+                                        <span class="tooltips lock">Suspend</span>
                                     </div>
                                     <div class="icon">
                                         <a href="./Delete users/delete.php?id=' . $row['user_id'] . '" 
                                            onclick="return confirm(\'Are you sure you want to delete this user?\');">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
-                                        <span class="tooltip delete">Delete</span>
+                                        <span class="tooltips delete">Delete</span>
                                     </div>
                                 </div>
                             </td>
