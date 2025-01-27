@@ -45,7 +45,7 @@ if (isset($_GET['page'])) {
         <ul>
             <li><a href="#" data-page="./Dashboard/dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
             <li><a href="#" data-page="./Manage users/manage_user.php"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
-            <li><a href="#" data-page="./Manage course/manage_course.html"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
+            <li><a href="#" data-page="./Manage course/manage_course.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
             <li><a href="#" data-page="./Reports/reports.php"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
             <li><a href="#" data-page="./Settings/settings.php"><i class="fa-solid fa-gears"></i> Settings</a></li>
         </ul>

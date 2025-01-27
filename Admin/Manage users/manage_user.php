@@ -9,7 +9,8 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<style>:root {
+<style>
+:root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --table-header-bg: #2c3e50;
@@ -144,8 +145,7 @@ a:hover {
         <div class="title">
             <h1>Manage Users</h1>
             <p>Perform operations such as view, modify, suspend & delete</p>
-        </div>
-
+         </div>
         <?php
             require_once './Connection/db_connection.php';
             $query = $connection->prepare('SELECT * FROM user_table');
@@ -177,14 +177,15 @@ a:hover {
                                         <span class="tooltips lock">Suspend</span>
                                     </div>
                                     <div class="icon">
-                                        <a href="./Delete users/delete.php?id=' . $row['user_id'] . '" 
-                                           onclick="return confirm(\'Are you sure you want to delete this user?\');">
-                                            <i class="fa-solid fa-trash-can"></i>
+                                        <a href="/server/Code/zProject/Course%20Seller/Admin/Manage%20users/Remove%20users/delete.php?id=<?php echo $user_id;?>"
+                                            onclick="return confirm(\'Are you sure you want to delete this user?\');">
+                                                <i class="fa-solid fa-trash-can"></i>
                                         </a>
+
                                         <span class="tooltips delete">Delete</span>
                                     </div>
                                 </div>
-                            </td>
+                            </td>]
                           </tr>';                                            
                 }
                 echo "</table>";

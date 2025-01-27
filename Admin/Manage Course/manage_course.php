@@ -65,6 +65,53 @@
     textarea:hover, textarea:focus{
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+    .upload-label {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .upload-label:hover {
+        background-color: #0056b3;
+    }
+
+
+    input[type="file"] {
+        display: none;
+    }
+
+
+    label[for="thumbnail"] {
+        font-size: 16px;
+        color: white;
+        margin-bottom: 5px;
+    }
+
+
+    #thumbnailPreview {
+        display: none;
+        max-width: 200px;
+        margin-top: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .upload-label i {
+        margin-left: 8px;
+        font-size: 18px;
+    }
+
+
+    input[type="file"]:focus {
+        outline: none;
+        box-shadow: 0 0 3px #007BFF;
+    }
     .char-count{
         font-size: smaller;
         margin: 3px 0 15px 5px;
@@ -131,6 +178,15 @@
         <div  class="card">
             <section id="form">
                 <form id="uploadForm">
+
+                    <label for="video" class="upload-label">Upload Video <i class="fa-solid fa-video"></i></label>
+                    <input type="file" name="video" id="video" accept="video/*" required>
+
+
+                    <label for="thumbnail" class="upload-label">Thumbnail <i class="fa-solid fa-image"></i></label>
+                    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" required>
+                    <img id="thumbnailPreview" style="display: none; max-width: 200px; margin-top: 10px;">
+
                     <label for="courseTitle">Course Title:</label>
                     <input type="text" id="courseTitle" name="courseTitle" required placeholder="Enter course title">
                     <div class="char-count">
@@ -147,13 +203,6 @@
 
                     <label for="schedule">Schedule:</label>
                     <input type="datetime-local" id="schedule" name="schedule">
-
-                    <label for="thumbnail">Thumbnail:</label>
-                    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" required>
-                    <img id="thumbnailPreview" style="display: none; max-width: 200px; margin-top: 10px;">
-
-                    <label for="fileUpload">Upload File:</label>
-                    <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.doc,.docx,.ppt,.pptx" required>
 
                     <div class="progress-bar">
                         <div></div>
@@ -189,7 +238,7 @@
             if (charCount <= 20) {
                 titleCount.textContent = charCount; 
             } else {
-                e.target.value = e.target.value.substring(0, 20); // Block extra input
+                e.target.value = e.target.value.substring(0, 20); 
                 titleErrorDisplay.style.display='block'
             }
         });
