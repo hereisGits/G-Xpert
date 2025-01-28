@@ -6,195 +6,100 @@
     <title>Manage Users</title>
     <link rel="stylesheet" href="manage_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
-        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+          integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-<style>
-:root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --table-header-bg: #2c3e50;
-    --table-row-bg: #ecf0f1;
-    --table-hover-bg:rgba(185, 218, 255, 0.47);
-    --icon-color: #34495e;
-    --tooltip-bg: #333;
-    --tooltip-text-color: #fff;
-    --button-bg: #3498db;
-    --button-hover-bg: #2980b9;
-}
-
-.user_content {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #fff;
-    margin-top: 20px;
-    padding: 20px 40px;
-}
-
-.title h1 {
-    text-align: center;
-    font-size: 24px;
-    color: var(--primary-color);
-    margin: 0;
-}
-
-.title p {
-    text-align: center;
-    font-size: 14px;
-    color: #7f8c8d;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-}
-
-th {
-    background-color: var(--table-header-bg);
-    color: #fff;
-}
-
-tr{
-    transition: background-color 0.3s ease-in-out;
-}
-
-tr:hover {
-    background-color: var(--table-hover-bg);
-}
-
-td {
-    border-bottom: 1.5px solid #ddd;
-}
-
-.empty {
-    text-align: center;
-    color: #e74c3c;
-    font-size: 18px;
-}
-
-.icons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.icon {
-    position: relative;
-    cursor: pointer;
-    color: var(--icon-color);
-    font-size: 18px;
-}
-
-.fa-eye-slash:hover {
-    color: blue;
-}
-
-.fa-user-lock:hover{
-    color: orange;    
-}
-
-.fa-trash-can:hover{
-    color: red;
-}
-
-.tooltips {
-    visibility: hidden;
-    position: absolute;
-    bottom: 30px;
-    left: -10px;
-    background-color: var(--tooltip-bg);
-    color: var(--tooltip-text-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-.tooltips::after{
-    content: " ";
-    position: absolute;
-    bottom: -5px;
-    left: 28%;
-    transform: translateX(-50%);
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid var(--tooltip-bg);
-}
-
-.icon:hover .tooltips {
-    visibility: visible;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:hover {
-    color: var(--icon-hover-color);
-}
-</style>
 <body>
-    <div class="user_content">
-        <div class="title">
-            <h1>Manage Users</h1>
-            <p>Perform operations such as view, modify, suspend & delete</p>
-         </div>
-        <?php
-            require_once './Connection/db_connection.php';
-            $query = $connection->prepare('SELECT * FROM user_table');
-            $query->execute();
-            $result = $query->get_result();
 
-            if ($result->num_rows > 0) {
-                echo "<table>";
-                echo '<tr>
-                        <th class="id">User ID</th>
-                        <th class="full-name">Full Name</th>
-                        <th class="username">Username</th>
-                        <th class="action">Action</th>
-                      </tr>';
-                      
-                while ($row = $result->fetch_assoc()) {
-                    echo '<tr> 
-                            <td id = "id">' . $row['user_id'] . '</td>
-                            <td>' . $row['first_name'] . ' ' . $row['last_name'] . '</td>
-                            <td>' . $row['username'] . '</td>                              
-                            <td>
-                                <div class="icons">
-                                    <div class="icon">
-                                        <i class="fa-solid fa-eye-slash"></i>
-                                        <span class="tooltips view">View</span>
-                                    </div>                                    
-                                    <div class="icon">
-                                        <i class="fa-solid fa-user-lock"></i>
-                                        <span class="tooltips lock">Suspend</span>
-                                    </div>
-                                    <div class="icon">
-                                        <a href="/server/Code/zProject/Course%20Seller/Admin/Manage%20users/Remove%20users/delete.php?id=<?php echo $user_id;?>"
-                                            onclick="return confirm(\'Are you sure you want to delete this user?\');">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                        </a>
+<div class="user_content">
+    <div class="title">
+        <h1>Manage Users</h1>
+        <p>Perform actions like view, suspend, and delete</p>
+    </div>
 
-                                        <span class="tooltips delete">Delete</span>
-                                    </div>
-                                </div>
-                            </td>]
-                          </tr>';                                            
+    <!-- Alerts -->
+    <div id="alertBox" class="alert"></div>
+
+    <?php
+    require_once './Connection/db_connection.php';
+    $query = $connection->prepare('SELECT * FROM user_table');
+    $query->execute();
+    $result = $query->get_result();
+
+    if ($result->num_rows > 0) {
+        echo '<table>';
+        echo '<tr>
+                <th>User ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Status</th>
+                <th>Actions</th>
+                <th>Suspension Time</th>
+              </tr>';
+
+        while ($row = $result->fetch_assoc()) {
+            $suspensionTimeLeft = "Not Suspended";
+            if (isset($row['status']) && $row['status'] == 'suspended' && isset($row['suspended_until'])) {
+                $timeDiff = strtotime($row['suspended_until']) - time();
+                if ($timeDiff > 0) {
+                    $daysLeft = floor($timeDiff / (60 * 60 * 24));
+                    $hoursLeft = floor(($timeDiff % (60 * 60 * 24)) / (60 * 60));
+                    $suspensionTimeLeft = "{$daysLeft} days {$hoursLeft} hours";
+                } else {
+                    $suspensionTimeLeft = "Suspension Expired";
                 }
-                echo "</table>";
-            } else {
-                echo '<div class="empty">Data is not found</div>';
             }
 
-            $connection->close();
-        ?>    
-    </div>
+            echo '<tr>
+                    <td>' . $row['user_id'] . '</td>
+                    <td>' . htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) . '</td>
+                    <td>' . htmlspecialchars($row['email']) . '</td>
+                    <td>' . htmlspecialchars($row['username']) . '</td>
+                    <td>' . htmlspecialchars($row['status'] ?? 'Active') . '</td>
+                    <td class="actions">
+                        <div class="icons";>
+                        <span class="icon" title="Suspend" onclick="suspendUser(' . $row['user_id'] . ')"><i id="suspand" class="fa-solid fa-user-lock"></i></span>
+                        <span class="icon" title="Delete"><a href="delete_user.php?id=' . $row['user_id'] . '" 
+                            onclick="return confirm(\'Are you sure you want to delete this user?\');"><i id="delete" class="fa-solid fa-trash"></i></a></span>
+                        </div>
+                     </td>
+                    <td id="suspensionTime' . $row['user_id'] . '">' . $suspensionTimeLeft . '</td>
+                  </tr>';
+        }
+        echo '</table>';
+    } else {
+        echo '<p style="text-align: center; color: #888;">No users found</p>';
+    }
+
+    $connection->close();
+    ?>
+
+</div>
+
+<script>
+    function suspendUser(userId) {
+        fetch(`suspend_user.php?id=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                const alertBox = document.getElementById('alertBox');
+                if (data.success) {
+                    document.getElementById(`suspensionTime${userId}`).innerText = "30 days 0 hours";
+                    alertBox.textContent = "User suspended successfully!";
+                    alertBox.className = "alert success";
+                } else {
+                    alertBox.textContent = "Failed to suspend user!";
+                    alertBox.className = "alert error";
+                }
+                alertBox.style.display = "block";
+                setTimeout(() => alertBox.style.display = "none", 5000);
+            })
+            .catch(error => {
+                console.error(error);
+                alert("An error occurred. Please try again.");
+            });
+    }
+</script>
+
 </body>
 </html>

@@ -119,10 +119,10 @@ body {
 }
 
 .dropdown-content .header {
-  background: var(--primary-color);
-  padding: 8px;
-  color: white;
+  padding: 15px;
+  color: var(--secondary-color);
   user-select: none;
+  border-bottom: 1px solid #ccc;
 }
 
 .dropdown:hover .dropdown-content {
@@ -139,6 +139,10 @@ body {
   justify-content: space-between;
   padding: 15px;
   height: 200px;
+}
+.column h3{
+    margin-top: -10px;
+    margin-bottom: 15px;
 }
 
 .column a {

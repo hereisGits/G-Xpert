@@ -40,14 +40,18 @@ if (isset($_GET['page'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <?php 
+        $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller/Admin";
+    ?>
+
     <div class="sidebar">
         <h2>Admin Panel</h2>
         <ul>
-            <li><a href="#" data-page="./Dashboard/dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-            <li><a href="#" data-page="./Manage users/manage_user.php"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
-            <li><a href="#" data-page="./Manage course/manage_course.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
-            <li><a href="#" data-page="./Reports/reports.php"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
-            <li><a href="#" data-page="./Settings/settings.php"><i class="fa-solid fa-gears"></i> Settings</a></li>
+            <li><a href="<?php echo $base_url; ?>/Dashboard/dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="<?php echo $base_url; ?>/Manage%20users/manage_user.php" target="_parent"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
+            <li><a href="<?php echo $base_url; ?>/Manage%20Course/manage_course.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
+            <li><a href="#"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
+            <li><a href="#"><i class="fa-solid fa-gears"></i> Settings</a></li>
         </ul>
     </div>
     <header>

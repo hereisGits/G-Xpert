@@ -1,0 +1,133 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --table-header-bg: #2c3e50;
+    --table-row-bg: #ecf0f1;
+    --table-hover-bg: rgba(185, 218, 255, 0.47);
+    --icon-color: #34495e;
+    --tooltip-bg: #333;
+    --tooltip-text-color: #fff;
+    --button-bg: #3498db;
+    --button-hover-bg: #2980b9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+    margin: 20px;
+}
+
+.user_content {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+
+.title {
+    border-bottom: 1px solid #3333339a;
+    width: 100%;
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.title p {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1.5px solid #ddd;
+}
+
+th {
+    background-color: var(--table-header-bg);
+    color: #fff;
+}
+
+tr {
+    transition: background-color 0.3s ease-in-out;
+}
+
+tr:hover {
+    background-color: var(--table-hover-bg);
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.icon {
+    margin: 0 auto;
+    justify-content: spa;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    color: var(--icon-color);
+    font-size: 18px;
+}
+
+#suspand:hover {
+    color: #e08610;
+}
+
+#delete:hover {
+    color: #e41212;
+}
+
+.alert.success {
+    background-color: #2ecc71;
+    color: white;
+    border: 1px solid #27ae60;
+}
+
+.alert.error {
+    background-color: #e74c3c;
+    color: white;
+    border: 1px solid #c0392b;
+}
+
+.empty {
+    margin-top: 50px;
+    text-align: center;
+    color: #e74c3c;
+    font-size: 18px;
+    opacity: 60%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+

@@ -8,14 +8,14 @@ if (isset($_GET['id'])) {
     $query->bind_param('i', $user_id);
 
     if ($query->execute()) {
-        header("Location: /server/Code/zProject/Course%20Seller/Admin/Admin_dashboard.php?message=User deleted successfully");
+        header("Location: /Server/Code/zProject/Course%20Seller/Admin./Manage%20users/manage_user.php?message=User deleted successfully");
         exit;
     } else {
-        header("Location: /server/Code/zProject/Course%20Seller/Admin/Admin_dashboard.?error=Error deleting user");
+        header("Location: /Server/Code/zProject/Course%20Seller/Admin./Manage%20users/manage_user.php?error=Error deleting user");
         exit;
     }
 } else {
-    header("Location: /server/Code/zProject/Course%20Seller/Admin/Admin_dashboard.?error=No user ID provided");
+    header("Location: /Server/Code/zProject/Course%20Seller/Admin./Manage%20users/manage_user.php?error=No user ID provided");
     exit;
 }
 ?>
