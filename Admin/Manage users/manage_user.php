@@ -16,8 +16,7 @@
         <h1>Manage Users</h1>
         <p>Perform actions like view, suspend, and delete</p>
     </div>
-
-    <!-- Alerts -->
+    
     <div id="alertBox" class="alert"></div>
 
     <?php
