@@ -25,13 +25,21 @@ body {
     background-color: var(--background-color);
 }
 
+#header{
+    width: 100%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color);
+    z-index: 10;
+}
+
 .nav {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-    background-color: var(--background-color);
 }
 
 .logo img {
@@ -223,7 +231,7 @@ body {
     <?php 
         $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller/Guest%20User";
     ?>
-    <header>
+    <header id="header">
         <div class="nav">
             <div class="logo">
                  <a href="<?php echo $base_url; ?>/Landing page/landing_page.php">

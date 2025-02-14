@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (charCount > maxChars) input.value = input.value.substring(0, maxChars);
         });
     }
-    setupCharCount('courseTitle', 'charCount', 'T-error', 20);
+    setupCharCount('courseTitle', 'charCount', 'T-error', 30);
     setupCharCount('description', 'DecharCount', 'D-error', 100);
 
     document.getElementById("video").addEventListener("change", function(event) {

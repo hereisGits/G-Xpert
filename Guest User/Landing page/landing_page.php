@@ -18,6 +18,10 @@
     <main>
         <div class="container-main">
             <section class="hero">
+            <div class="button">
+                    <div class="prebtn" title="Previous" ><i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="nextbtn" title="Next" ><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
             <div class="slideshow-container">
                 <div class="mySlides fade">
                   <img src="../Elements/Slides/slide1.png" alt="Slide 1">
@@ -29,12 +33,6 @@
 
                 <div class="mySlides fade">
                   <img src="../Elements/Slides/slide3.png" alt="Slide 3">
-                </div>
-
-                <div class="dots">
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
                 </div>
 
                  <div class="text_landing">
@@ -87,6 +85,10 @@
                         <li>More..</li>
                     </ul>
                 </div>
+            </section>
+            
+            <section class="video_list">
+                
             </section>
 
 

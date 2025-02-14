@@ -51,17 +51,17 @@ unset($_SESSION['success']);
 
                 <section class="media_details">
                     <label for="courseTitle">Course Title:</label>
-                    <input type="text" id="courseTitle" name="courseTitle" placeholder="Enter course title" value="<?php echo isset($_POST['courseTitle']) ? htmlspecialchars($_POST['courseTitle']) : ''; ?>">
+                    <input type="text" id="courseTitle" name="courseTitle" placeholder="Enter course title" >
                     <div class="error-div">
                         <div class="char-count">
-                            <p>Characters: <span id="charCount"> 0</span> / 20</p>
+                            <p>Characters: <span id="charCount"> 0</span> / 30</p>
                             <p id="T-error" class="error"> (Character limit exceeded!)</p>
                         </div>
                         <p id="courseTitle-error" class="error-message">Course title is required.</p>                                
                     </div>
                     
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" placeholder="Enter course description"><?php echo isset($_POST['description']) ? htmlspecialchars($_POST['description']) : ''; ?></textarea>
+                    <textarea id="description" name="description" placeholder="Enter course description"></textarea>
                     <div class="error-div">
                         <div class="char-count">
                             <p>Characters: <span id="DecharCount"> 0</span> / 100</p>
@@ -73,13 +73,13 @@ unset($_SESSION['success']);
                     <div class="price-box">
                         <div class="price">
                             <label for="price">Price:(Rs)</label>
-                            <input type="number" id="price" name="price" placeholder="000.00" value="<?php echo isset($_POST['price']) ? htmlspecialchars($_POST['price']) : ''; ?>">
+                            <input type="number" id="price" name="price" placeholder="000.00" >
                             <p id="max-char">Max-price: Rs. 2000</p>
                             <p id="price-error" class="error-message">Price is required.</p>
                         </div>
                         <div class="schedule">
                             <label for="schedule">Schedule:</label>
-                            <input type="datetime-local" id="schedule" name="schedule" value="<?php echo isset($_POST['schedule']) ? htmlspecialchars($_POST['schedule']) : ''; ?>">
+                            <input type="datetime-local" id="schedule" name="schedule" >
                             <p id="schedule-error" class="error-message">Please select a future schedule.</p>
                         </div>
                     </div>

@@ -19,14 +19,14 @@ if ($result->num_rows > 0) {
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <div class='course-content'>
-                            <h4>" . htmlspecialchars($row['title']) . "</h4>
-                            <p>" . htmlspecialchars($row['description']) . "</p>
+                            <div class='course-content'>
+                                <h4>" . htmlspecialchars($row['title']) . "</h4>
+                                <p class ='description'>" . htmlspecialchars($row['description']) . "</p>
+                            </div>
                             <div class='upload_date'>
                                 <p class='price'> <i class='fa-solid fa-indian-rupee-sign'></i> " . htmlspecialchars($row['price']) . "</p>
                                 <p>" . htmlspecialchars($row['uploaded_at']) . "</p>
                             </div>
-                        </div>
                     </div>";
     }
 } else {

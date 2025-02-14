@@ -1,42 +1,32 @@
-let slideIndex = 1;
-showSlides(slideIndex);
+const slides = document.querySelectorAll('.mySlides'); 
+let count = 0;
 
+slides.forEach((slide, index) => {
+    slide.style.left = `${index * 100}%`;
+});
 
-// Function to jump to a specific slide
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function slideImg() {
+  slides.forEach((myslide) => {
+    myslide.style.transform = `translateX(-${count * 100}%)`;
+  });
 }
 
-// Main function to handle the slideshow
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-
-  // Wrap around slide index
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-
-  // Hide all slides
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-
-  // Deactivate all dots
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-
-  // Show the active slide and activate the corresponding dot
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-}
-
-// Set interval to move to the next slide every 5 seconds
 setInterval(() => {
-  currentSlide(1);
-}, 5000); // 5000ms = 5 seconds
+  count = (count + 1) % slides.length;
+  slideImg();
+}, 10000);
+
+// Get buttons
+const previousBtn = document.querySelector(".prebtn");
+const nextBtn = document.querySelector(".nextbtn");
+
+
+previousBtn.addEventListener("click", () => {
+  count = count > 0 ? count - 1 : slides.length - 1; 
+  slideImg();
+});
+
+nextBtn.addEventListener("click", () => {
+  count = (count + 1) % slides.length; 
+  slideImg();
+});

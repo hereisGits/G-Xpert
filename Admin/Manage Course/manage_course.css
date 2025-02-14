@@ -240,7 +240,7 @@ button:hover {
 .course-list {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 40px;
     background: #f8f8f8;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -260,18 +260,19 @@ button:hover {
 }
 
 .course-item {
+    max-width: 300px;
     display: inline-block;
-    width: auto;
+    width: 100%;
+    max-height: 300px;
     gap: 20px;
     background: white;
     padding: 15px;
-    border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .course-item:hover {
-    transform: translateY(-5px);
+    /* transform: translateY(-5px); */
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -296,15 +297,22 @@ button:hover {
     color: #333;
     font-weight: bold;
 }
-
-.course-content .price {
-    font-weight: 600;
-    font-size: 14px;
-    color: rgb(2, 141, 2);
-    margin-top: 8px;
-    line-height: 1.5;
-    flex-wrap: wrap;
+.course-content .description {
+    color: #7f8c8d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: auto;
+    transition: color 0.3s ease-in, text-overflow 0.5s ease-in-out, white-space 0.5s ease-in-out;
 }
+
+.course-content .description:hover {
+    color: #2c3e50;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
+
 
 .upload_date {
     display: flex;
@@ -316,7 +324,20 @@ button:hover {
     font-style: italic;
     text-align: right;
     border-top: 1px solid #ddd;
+    padding-top: 5px; 
+    position: relative;
+    width: 100%; 
 }
+
+.upload_date .price {
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(2, 141, 2);
+    margin-top: 8px;
+    line-height: 1.5;
+    flex-wrap: wrap;
+}
+
 
 .no-courses {
     text-align: center;
@@ -329,6 +350,11 @@ button:hover {
     .media_details {
         order: initial;
         flex: 1 1 100%;
+    }
+
+    .price-box{
+        flex-direction: column;
+        width: 100%;
     }
 
     form {
