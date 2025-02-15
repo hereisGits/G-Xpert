@@ -17,9 +17,11 @@
         <div class="content">
             <div class="article">
                 <h2>About G-Xpert</h2>
-                <p>At G-Xpert, we are more than just an e-learning platform. We are a community of passionate learners and educators dedicated to innovation, collaboration, and personal growth. Our approach combines cutting-edge technology with practical learning to ensure an impactful experience for all users.</p>
-                <p>We continuously evolve by integrating the latest industry trends, expert-led insights, and interactive methodologies. Our goal is to create a space where anyone, from beginners to professionals, can develop their skills efficiently.</p>
-            </div>
+                <p>At G-Xpert, we're more than an e-learning platform—we're a community of learners and educators focused on innovation and growth. 
+                    Our university project combines cutting-edge technology with practical learning to create an impactful experience for everyone.</p>
+                <p>We integrate the latest trends, expert insights, and interactive methods to help users, from beginners to professionals, develop skills efficiently. 
+                    Our goal is to make learning accessible, practical, and effective for real-world success.</p>
+             </div>
 
             <div class="values">
                 <h2>What Drives Us</h2>

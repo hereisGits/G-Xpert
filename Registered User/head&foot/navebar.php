@@ -367,7 +367,7 @@ body {
                        </div>
                    </div>
                 </div>
-                <a href="#">Support</a>
+                <a href="#">Mylearning</a>
                 <a href="<?php echo $base_url; ?>/Registered%20User/About us/about_us.php">About</a>
                 <a href="#" class="notify-bell" title="message"><i class="fa-regular fa-bell"></i></a>
                 <div class="profile-dropdown">
