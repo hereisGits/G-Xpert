@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <?php require_once '../Nav&footer/navebar.php'; ?>
+    <?php require_once '../head&foot/navebar.php'; ?>
  <div class="about-header">
         <h1>#Who We Are</h1>
     </div>
@@ -35,12 +35,12 @@
             <h1 id="team">Meet Our Leaders</h1>
             <div class="team-container">
                 <div class="team-member">
-                    <img src="../../Elements/male.jpg" alt="Gaurav">
+                    <img src="../Assets/male.jpg" alt="Gaurav">
                     <h2>Gaurav</h2>
                     <p>CEO & Founder | Visionary Strategist</p>
                 </div>
                 <div class="team-member">
-                    <img src="../../Elements/female.jpg" alt="Sofia">
+                    <img src="../Assets/female.jpg" alt="Sofia">
                     <h2>Sofia</h2>
                     <p>UI/UX Designer | User Experience Specialist</p>
                 </div>
@@ -54,6 +54,6 @@
         </section>
     </div>
 
-    <?php require_once '../Nav&footer/footer.php'; ?>
+    <?php require_once '../head&foot/footer.php'; ?>
 </body>
 </html>

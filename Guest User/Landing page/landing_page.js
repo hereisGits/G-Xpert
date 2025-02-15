@@ -11,10 +11,10 @@ function slideImg() {
   });
 }
 
-setInterval(() => {
-  count = (count + 1) % slides.length;
-  slideImg();
-}, 10000);
+// setInterval(() => {
+//   count = (count + 1) % slides.length;
+//   slideImg();
+// }, 10000);
 
 // Get buttons
 const previousBtn = document.querySelector(".prebtn");
