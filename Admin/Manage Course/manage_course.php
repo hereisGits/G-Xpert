@@ -87,13 +87,9 @@ unset($_SESSION['success']);
             </form>
         </div>
 
-        <section class="card course-list">
-            <h1>Available Courses</h1>
-            <div class="video-list">
-                    <?php require_once 'course media/fetch_course.php';
-                        echo $content;
-                        echo $emptyContent; ?>
-            </div>
+        <section>            
+            <h1 style="text-align: center; margin-top: 40px; padding: 20px;">🎓 Available Courses</h1>
+            <?php require_once 'course media/fetch_course.php';?>            
         </section>
     </div>
     <script src="manage_course.js"></script>

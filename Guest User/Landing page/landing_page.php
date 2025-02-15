@@ -87,8 +87,9 @@
                 </div>
             </section>
             
-            <section class="video_list">
-                
+            <section class="video-section">
+                <div class="video-list">
+                </div>
             </section>
 
 

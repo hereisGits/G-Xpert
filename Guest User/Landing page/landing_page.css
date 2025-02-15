@@ -1,29 +1,29 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --primary-color: #229ed9;
-    --secondary-color: #1E1E1E;
-    --accent-color: #0FA958;
-    --text-color: #333;
-    --background-light: #f9f9f9;
-    --background-dark: #232424;
-    --button-hover: #3396fff6;
-    --font-color: #fff;
-    --font-large: 36px;
-    --max-width: 1400px;
+  --primary-color: #229ed9;
+  --secondary-color: #1E1E1E;
+  --accent-color: #0FA958;
+  --text-color: #333;
+  --background-light: #f9f9f9;
+  --background-dark: #232424;
+  --button-hover: #3396fff6;
+  --font-color: #fff;
+  --font-large: 36px;
+  --max-width: 1400px;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: var(--background-light);
-    color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: var(--background-light);
+  color: var(--text-color);
 }
 
 .hero {
@@ -94,325 +94,271 @@ body {
   color: #ffffff9c;
 }
 
-
-
 .text_landing {
-    position: absolute;
-    top: 80px;
-    left: 8rem;
-    width: 30%;
-    text-align: left;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 0;
+  position: absolute;
+  top: 80px;
+  left: 8rem;
+  width: 30%;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 0;
 }
 
 .text_landing h1 {
-    font-size: 2rem;
-    color: var(--text-color);
+  font-size: 2rem;
+  color: var(--text-color);
 }
 
 .text_landing p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 2rem;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 2rem;
 }
 
 .text_landing button {
-    padding: 1rem 1.5rem;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 550;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 1rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .text_landing button:hover {
-    color: var(--primary-color);
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
-}
-.statistics {
-    width: 100%;
-    padding: 4rem 2rem;
-    background-color: var(--secondary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #dddddd31;
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
 }
 
-.statistics .div-stat{
-    margin: 0 auto;
-    max-width: var(--max-width);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.statistics {
+  width: 100%;
+  padding: 4rem 2rem;
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #dddddd31;
+}
+
+.statistics .div-stat {
+  margin: 0 auto;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .stat {
-    width: 25%;
-    height: 8rem;
-    text-align: center;
-    color: var(--font-color);
-    background: rgba(241, 241, 241, 0.178);
-    padding: 10px 20px;
-    border-radius: 8px;
-    gap: 20px;
+  width: 25%;
+  height: 8rem;
+  text-align: center;
+  color: var(--font-color);
+  background: rgba(241, 241, 241, 0.178);
+  padding: 10px 20px;
+  border-radius: 8px;
+  gap: 20px;
 }
-.star{
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.star {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stat strong {
-    display: block;
-    font-size: 2rem;
-    color: var(--accent-color);                    
-    margin-bottom: 0.5rem;
+  display: block;
+  font-size: 2rem;
+  color: var(--accent-color);                    
+  margin-bottom: 0.5rem;
 }
 
-.stars{
-    margin-left: 10px;
+.stars {
+  margin-left: 10px;
 }
 
 .star img {
-    width: 18px;
-    height: 18px;
-    margin: 0 2px;                   
+  width: 18px;
+  height: 18px;
+  margin: 0 2px;                   
 }
 
 .stat p {
-    color: var(--font-color);                    
-    font-size: 1.2rem;
-    font-weight: 500;
+  color: var(--font-color);                    
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .course-categories {
-    width: 100%;
-    padding: 4rem 5rem;
-    background-color: var(--secondary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 4rem 5rem;
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.course-categories .div-course{
-    max-width: var(--max-width);
-    margin: 0 auto;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+.course-categories .div-course {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .course-categories h2 {
-    text-align: left;
-    padding-right: 2rem;
-    font-size: 2rem;
-    color: var(--font-color);
-    margin-bottom: 1.5rem;
-    cursor: pointer;
+  text-align: left;
+  padding-right: 2rem;
+  font-size: 2rem;
+  color: var(--font-color);
+  margin-bottom: 1.5rem;
+  cursor: pointer;
 }
 
 .categories {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0 ;
-    flex-wrap: wrap;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0 ;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .categories li {
-    color: var(--font-color);
-    cursor: pointer;
-    padding: 8px 20px;
-    border: 2px solid var(--font-color);
-    border-radius: 2rem;
-    background-color: transparent;
-    transition: all 0.3s ease;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 8px 20px;
+  border: 2px solid var(--font-color);
+  border-radius: 2rem;
+  background-color: transparent;
+  transition: all 0.3s ease;
 }
 
 .categories li:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-    border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
 }
 
+.video-section {
+  width: 100%;
+}
+
+.video-list {
+  margin: 20px auto;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
 
 .team-chart {
-    margin: 100px 0;
-    text-align: center;
-    padding: 30px 20px;
+  margin: 20px 50px 50px;
+  text-align: center;
+  background-color: linear-gradient(to right, rgb(160, 63, 144), purple);;
 }
 
 .team-chart h1 {
-    font-size: 2.5em;
-    margin-bottom: 70px;
-    color: #444;
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #444;
 }
 
 .team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
 }
 
 .team-member {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    padding: 20px;
-    text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 20px;
+  text-align: center;
 }
 
 .team-member img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #ddd;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
 }
 
-
 .team-member h2 {
-    font-size: 1.2em;
-    color: #222;
+  font-size: 1.2em;
+  color: #222;
 }
 
 .team-member p {
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 5px;
 }
 
-
+/* Media Queries */
 @media (max-width: 768px) {
-    .text_landing {
+  .text_landing {
       width: 50%;
       left: 4rem;
       top: 60px;
       padding: 1.5rem;
-    }
-  
-    .text_landing h1 {
-      font-size: 1.5rem;
-    }
-  
-    .text_landing p {
-      font-size: 12px;
-    }
+  }
 
-    .div-course h2{
+  .text_landing h1 {
+      font-size: 1.5rem;
+  }
+
+  .text_landing p {
+      font-size: 12px;
+  }
+
+  .div-course h2 {
       text-align: center;
       padding: 10px;
-    }
-  
-    .statistics .div-stat {
+  }
+
+  .statistics .div-stat {
       flex-direction: column;
       gap: 2rem;
-    }
-  
-    .stat {
+  }
+
+  .stat {
       width: 80%;
-    }
-  
-    .course-categories .div-course {
+  }
+
+  .course-categories .div-course {
       flex-direction: column;
       gap: 2rem;
-    }
-  
-    .categories li {
+  }
+
+  .categories li {
       padding: 6px 16px;
       font-size: 14px;
-    }
-  
-    .team-chart h1 {
+  }
+
+  .team-chart h1 {
       font-size: 2rem;
-    }
-  
-    .team-member {
+  }
+
+  .team-member {
       width: 150px;
-    }
-  
-    .team-member img {
+  }
+
+  .team-member img {
       width: 80px;
       height: 80px;
-    }
-  
-    .team-member h2 {
-      font-size: 1em;
-    }
-  
-    .team-member p {
-      font-size: 0.8em;
-    }
   }
-  
 
-  @media (max-width: 480px) {
-    .text_landing {
-      width: 90%;
-      left: 1rem;
-      top: 40px;
-      padding: 1rem;
-    }
-  
-    .text_landing h1 {
-      font-size: 1.2rem;
-    }
-  
-    .text_landing p {
-      font-size: 10px;
-    }
-  
-    .statistics .div-stat {
-      gap: 1rem;
-    }
-  
-    .stat {
-      width: 100%;
-      height: auto;
-    }
-    
-    .div-course h2{
-      text-align: center;
-      padding: 10px;
-    }
-  
-    .course-categories .div-course {
-      padding: 0 1rem;
-    }
-  
-    .categories li {
-      padding: 4px 12px;
-      font-size: 12px;
-    }
-  
-    .team-chart h1 {
-      font-size: 1.5rem;
-    }
-  
-    .team-member {
-      width: 120px;
-    }
-  
-    .team-member img {
-      width: 60px;
-      height: 60px;
-    }
-  
-    .team-member h2 {
-      font-size: 0.9em;
-    }
-  
-    .team-member p {
-      font-size: 0.7em;
-    }
+  .team-member h2 {
+      font-size: 1em;
   }
-  
+
+  .team-member p {
+      font-size: 0.8em;
+  }
+}

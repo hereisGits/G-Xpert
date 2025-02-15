@@ -25,7 +25,7 @@ body {
     background-color: var(--background-color);
 }
 
-#header{
+#header {
     width: 100%;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     background-color: var(--background-color);
@@ -46,9 +46,8 @@ body {
     height: 40px;
 }
 
-.nav-items{
+.nav-items {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
@@ -61,6 +60,7 @@ body {
     padding: 5px 10px;
     width: 300px;
 }
+
 .search-div input {
     border: none;
     outline: none;
@@ -68,108 +68,98 @@ body {
     font-size: 14px;
     padding: 5px;
 }
+
 .search-div i {
     color: var(--secondary-color);
     cursor: pointer;
 }
 
 .navbar {
-  overflow: hidden;
-  font-family: var(--font-family);
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .navbar a {
-  float: left;
-  font-size: 16px;
-  color: var(--secondary-color); 
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  cursor: pointer;
+    font-size: 16px;
+    color: var(--secondary-color); 
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.about, .dropbtn{
+.about, .dropbtn {
     font-weight: 500;
 }
 
-.about:hover,.about:active{
+.about:hover, .about:active {
     color: var(--primary-color);
 } 
 
 .dropdown {
-  float: left;
-  overflow: hidden;
+    position: relative;
 }
 
 .dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: var(--secondary-color); 
-  padding: 14px 16px;
-  background-color: inherit;
-  font: inherit;
-  margin: 0;
-  cursor: pointer;
-  transition: dropdown 0.5s ease;
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: var(--secondary-color); 
+    padding: 14px 16px;
+    background-color: inherit;
+    font: inherit;
+    margin: 0;
+    cursor: pointer;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  right: 10px;
-  background-color: var(--background-color); 
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: var(--background-color); 
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 10px; 
+    min-width: 200px; 
 }
 
 .dropdown-content .header {
-  padding: 15px;
-  color: var(--secondary-color);
-  user-select: none;
-  border-bottom: 1px solid #ccc;
+    padding: 15px 15px 5px 15px;
+    color: var(--secondary-color);
+    user-select: none;
+    border-bottom: 1px solid #ccc;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 .row {
-    display: inline-block;
-    padding: 10px;
+    display: flex;
+    padding: 20px;
 }
 
 .column {
-  float: left;
-  justify-content: space-between;
-  padding: 15px;
-  height: 200px;
+    width: 150px;
+    flex: 1;
+    width: 200px;
 }
-.column h3{
+
+.column h3 {
     margin-top: -10px;
     margin-bottom: 15px;
 }
 
 .column a {
-  float: none;
-  color: black;
-  padding: 5px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
 }
 
 .column a:hover {
-  background-color: #ddd;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+    background-color: #ddd;
 }
 
 .buttons {
@@ -205,6 +195,7 @@ body {
     .search-div {
         display: none;
     }
+
     .navbar {
         position: absolute;
         top: 60px;
@@ -212,16 +203,25 @@ body {
         flex-direction: column;
         background: var(--background-color);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-        width: 350px;
+        padding: 20px;
+        align-items: center;
         z-index: 2;
-        justify-content: center;
+        display: none;
+        overflow: auto;
     }
+
     .navbar.active {
-        display: block;
+        display: flex;
     }
 
     .hamburger {
+        display: block;
+    }
+
+    .dropbtn{
+        display: none;
+    }
+    .about{
         display: block;
     }
 }
@@ -274,12 +274,6 @@ body {
                                     <a href="#">SEO</a>
                                     <a href="#">Content Marketing</a>
                                 </div>
-                                <div class="column">
-                                    <h3>Personal Development</h3>
-                                    <a href="#">Communication skill</a>
-                                    <a href="#">Leadership</a>
-                                    <a href="#">Habits Management</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -297,25 +291,20 @@ body {
 
     <script>
         const login = document.querySelector('#loginbtn');
-        const signup= document.querySelector('#signupbtn');
-
-        login.addEventListener('click', ()=>{
-            console.log('clicked');            
-            window.location.href = '<?php echo $base_url; ?>/Authorize/Log%20in/login.php';
-        });
-        
-        signup.addEventListener('click', ()=>{
-            console.log('clicked');
-            window.location.href = '<?php echo $base_url; ?>/Authorize/Sign%20up/sign_up.php';
-        });
-
+        const signup = document.querySelector('#signupbtn');
         const hamburger = document.querySelector('.hamburger');
         const navbar = document.querySelector('.navbar');
 
+        login.addEventListener('click', () => {
+            window.location.href = '<?php echo $base_url; ?>/Authorize/Log%20in/login.php';
+        });
+
+        signup.addEventListener('click', () => {
+            window.location.href = '<?php echo $base_url; ?>/Authorize/Sign%20up/sign_up.php';
+        });
+
         hamburger.addEventListener('click', () => {
-            console.log('clicked');
             navbar.classList.toggle('active');
-            
         });
     </script>
 </body>
