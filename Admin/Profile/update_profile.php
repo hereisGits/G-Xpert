@@ -2,7 +2,7 @@
 session_start();
 require_once '../Manage users/Connection/db_connection.php';
 
-if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
+if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['user_cookie'])) {
     header('Location: ../Authorize/login/Admin_login.php');
     exit;
 }

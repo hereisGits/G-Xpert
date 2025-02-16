@@ -373,7 +373,7 @@ body {
                 <div class="profile-dropdown">
                     <button class="profile-btn"><span class="profile_name"><?php echo $initials;?></span></button>
                     <div class="profile-dropdown-content">
-                        <a href="#">Settings</a>
+                        <a href="<?php echo $base_url;?>/Registered%20User/profile%20setting/setting.php">Settings</a>
                         <a href="<?php echo $base_url;?>/Guest%20User/Authorize/Log%20in/Logout/logout.php">Logout</a>
                     </div>
                 </div>

@@ -2,13 +2,13 @@
 session_start();
 
 
-if (!isset($_SESSION['user_id']) && !isset($_COOKIE['user_id'])) {
+if (!isset($_SESSION['user_id']) && !isset($_COOKIE['user_cookie'])) {
     header("Location: ../Guest User/Authorize/Log in/login.php");
     exit();
 }
 
-if (isset($_COOKIE['user_id']) && !isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = $_COOKIE['user_id'];
+if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
+    $_SESSION['user_id'] = $_COOKIE['user_cookie'];
 }
 ?>
 
