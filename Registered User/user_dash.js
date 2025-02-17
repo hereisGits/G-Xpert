@@ -1,3 +1,4 @@
+
 window.onload = function () {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '../Admin/Manage Course/course media/fetch_course.php', true);
@@ -14,4 +15,4 @@ window.onload = function () {
     };
   
     xhr.send();
-  };
+};

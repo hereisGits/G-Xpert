@@ -1,4 +1,4 @@
-/* General Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,17 +7,54 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
+    background-color: whitesmoke;
     color: #333;
     line-height: 1.6;
-    display: flex;
     gap: 20px;
-    padding: 20px;
 }
+
+#status-div {
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    font-size: 20px;
+  }
+  .error {
+    padding: 20px 30px;
+    border-radius: 8px;
+    color: #fff;
+    background-color: rgb(245, 112, 112);
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .success {
+    top: 0;
+    padding: 20px 30px;
+    border-radius: 8px;
+    color: #fff;
+    background-color: rgba(45, 185, 52, 0.84);
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  #status i {
+    font-size: 20px;
+    color: white;
+  }
+
 
 .settings-container {
     flex: 1;
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: 1000px;
     background: #fff;
     padding: 20px;
@@ -48,24 +85,24 @@ body {
 .userinfo #username::before{
     content: '@';
 }
-
-.profile-btn {
-    width: 90px;
-    height: 90px;
+.profile {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
     border-radius: 50%;
-    background-color: #000000;
-    color: #fff;
-    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+.profile .profile_name {
+    font-size: 2.5em;
     font-weight: bold;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    text-align: center; 
-    line-height: 90px; 
-}
-
-.profile-btn .profile_name {
-    display: inline-block; 
-}
+    color: #fff;
+  }
+  
 
 .userinfo p {
     margin: 5px 0;
@@ -81,18 +118,20 @@ body {
 
 button[type="submit"] {
     text-align: right;
-    background-color: #007bff;
+    background-color: #da0000fb;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 550;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #b40d0da9;
 }
 
 
@@ -109,7 +148,7 @@ button[type="submit"]:hover {
     border: none;
     color: #666;
     font-size: 16px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .tab.active {
@@ -121,7 +160,7 @@ button[type="submit"]:hover {
     color: #007bff;
 }
 
-/* Sections */
+
 .section {
     display: none;
     padding: 20px;
@@ -147,25 +186,32 @@ button[type="submit"]:hover {
     display: block;
     margin-bottom: 5px;
     color: #555;
+    font-weight: 550;
 }
 
 .section input[type="text"],
 .section input[type="email"],
 .section input[type="password"] {
+    outline: none;
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    transition: border 0.5s ease-in-out;
+}
+
+.input-box:hover{
+    border: 1px solid #0056b3;
 }
 
 .section input[readonly] {
     background-color: #eee;
     cursor: not-allowed;
+    user-select: none;
 }
 
-/* Profile Picture Upload */
 .profile-picture-container {
     margin-bottom: 20px;
 }

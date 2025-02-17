@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['user_cookie'])) {
     header('Location: ../Authorize/login/Admin_login.php');
     exit;
 }
-// Retrieve the admin ID dynamically
+
 $admin_id = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : $_COOKIE['admin_cookie'];
 
 $query = $connection->prepare('SELECT admin_id, username, role, profile_path, created_at, updated_at FROM admin_table WHERE admin_id = ?');

@@ -23,9 +23,7 @@ if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-     <?php
-     require_once './head&foot/navebar.php';
-    ?>
+     <?php require_once './head&foot/navebar.php'; ?>
 
     <div class="container">
         <div id="pic-container">
@@ -64,9 +62,7 @@ if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
     </div>
 
 
-    <?php 
-        require_once './head&foot/footer.php';
-    ?>
+    <?php require_once './head&foot/footer.php';?>
     <script src="user_dash.js"></script>
 </body>
 </html>

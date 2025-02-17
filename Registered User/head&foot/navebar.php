@@ -4,7 +4,14 @@
     }
     $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller";
 
+    if (!isset($_SESSION['user_id']) && !isset($_COOKIE['user_cookie'])) {
+        header("Location: ../Guest User/Authorize/Log in/login.php");
+        exit();
+    }
     
+    if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
+        $_SESSION['user_id'] = $_COOKIE['user_cookie'];
+    }
     $connection = new mysqli('localhost', 'root', '', 'user_database');
     if(!$connection){
         die('Database Connection Error:' .$connection->connect_error);
@@ -19,8 +26,6 @@
 
     if ($user) {
         $initials = strtoupper(substr($user['first_name'], 0, 1) . substr($user['last_name'], 0, 1));
-    } else {
-        $initials = "U"; //default user
     }
 ?>
 
@@ -51,7 +56,6 @@
 
 body {
     line-height: 1.6;
-    background-color: var(--background-color);
 }
 
 #header {
@@ -243,13 +247,16 @@ body {
 .profile-dropdown .profile-btn {
     border: none;
     outline: none;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
     border-radius: 50%;
-    padding: 10px;
-    background-color: #0c0c0c;
-    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
 }
 
 .profile-dropdown-content {
@@ -280,6 +287,13 @@ body {
 
 .profile-dropdown:hover .profile-dropdown-content {
     display: block;
+}
+
+#logout{
+    color: red;
+}
+#logout:hover{
+    background-color: rgba(217, 34, 34, 0.1);
 }
 
 .hamburger {
@@ -371,10 +385,12 @@ body {
                 <a href="<?php echo $base_url; ?>/Registered%20User/About us/about_us.php">About</a>
                 <a href="#" class="notify-bell" title="message"><i class="fa-regular fa-bell"></i></a>
                 <div class="profile-dropdown">
-                    <button class="profile-btn"><span class="profile_name"><?php echo $initials;?></span></button>
+                    <button class="profile-btn">
+                        <span class="profile_name"><?php echo $initials;?></span>
+                    </button>
                     <div class="profile-dropdown-content">
                         <a href="<?php echo $base_url;?>/Registered%20User/profile%20setting/setting.php">Settings</a>
-                        <a href="<?php echo $base_url;?>/Guest%20User/Authorize/Log%20in/Logout/logout.php">Logout</a>
+                        <a href="<?php echo $base_url;?>/Guest%20User/Authorize/Log%20in/Logout/logout.php" id="logout">Logout</a>
                     </div>
                 </div>
             </div>
@@ -388,6 +404,7 @@ body {
     hamburger.addEventListener('click', () => {
         navbar.classList.toggle('active');
     });
+
 </script>
 </body>
 </html>

@@ -4,7 +4,6 @@ require_once 'course media/upload_course.php';
 $message = isset($_SESSION['message']) ? $_SESSION['message'] : "";
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : "";
 
-// Clear session messages after displaying
 unset($_SESSION['message']);
 unset($_SESSION['success']);
 ?>
