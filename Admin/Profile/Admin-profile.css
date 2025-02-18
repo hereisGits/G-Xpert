@@ -56,9 +56,60 @@ body {
     color: var(--text-color);
 }
 
+.container{
+    display: block;
+    max-width: 1400px;
+    margin: 0 auto;
+    
+}
+
+header.content {
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.head{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 2px 20px;
+}
+
+.head h1 {
+    font-size: 20px;
+    color: #333;
+}
+
+.account {
+    display: flex;
+    gap: 50px;
+}
+
+.account a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 22px;
+    transition: all 0.2s ease-in;
+}
+
+.account #profile:hover{
+    color: #3498db;
+}
+
+.account #logout:hover {
+    color: #e74c3c;
+}
+
 .profile-container {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 20px;
     background: #ffffff;
     border-radius: 12px;

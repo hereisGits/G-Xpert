@@ -17,7 +17,16 @@
             <p id="status" class="success"><?php echo '<i class="fa-solid fa-check-circle"></i> ' . htmlspecialchars($success); ?></p>
         <?php } ?>
     </div>
-
+    <div class="container">
+    <header class="content">
+        <div class="head">
+            <h1>Welcome, <?php echo ucfirst($_SESSION['username']); ?></h1>
+            <div class="account">
+                <a href="admin_Profile.php" title="Profile" id="profile"><i class="fa-solid fa-user-tie"></i></a>
+                <a href="../Authorize/logout/logout.php" title="Logout" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </header>
 
     <div class="profile-container">
         <div class="profile-header">
@@ -88,6 +97,7 @@
                 <button type="submit" class="btn">Save Changes</button>
             </form>
         </div>
+    </div>
     </div>
 
     <script src="admin_profile.js"></script>

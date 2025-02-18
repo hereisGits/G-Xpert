@@ -7,7 +7,14 @@ if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['user_cookie'])) {
     exit;
 }
 
-$admin_id = isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : $_COOKIE['admin_cookie'];
+if (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
+    $_SESSION['admin_id'] = $_COOKIE['admin_cookie'];
+}
+
+$admin_id = $_SESSION['admin_id'] ?? null;
+if (!$admin_id) {
+    die("Admin ID is missing.");
+}
 
 $query = $connection->prepare('SELECT admin_id, username, role, profile_path, created_at, updated_at FROM admin_table WHERE admin_id = ?');
 $query->bind_param('i', $admin_id);
@@ -22,19 +29,16 @@ if ($result->num_rows > 0) {
     $created_at = htmlspecialchars($row['created_at']);
     $updated_at = htmlspecialchars($row['updated_at']);
 } else {
-    $message = "No admin profile found.";
-    exit;
+    die("No admin profile found.");
 }
 
-// Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = htmlspecialchars($_POST['username']);
     $password = $_POST['password']; 
     $role = htmlspecialchars($_POST['role']);
-
     $updated_at = date('Y-m-d H:i:s'); 
 
-    // Handle profile image upload
+    $profileImagePath = $image; 
     if (isset($_FILES['profile']) && $_FILES['profile']['error'] === UPLOAD_ERR_OK) {
         $uploadDir = 'uploads/';
         $fileTmpPath = $_FILES['profile']['tmp_name'];
@@ -45,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (in_array(strtolower($fileExtension), $allowedExtensions)) {
+
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
             }
@@ -52,45 +57,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (move_uploaded_file($fileTmpPath, $uploadFilePath)) {
                 $profileImagePath = $uploadFilePath;
             } else {
-                $message = "Error moving the uploaded file.";
-                exit;
+                die("Error moving the uploaded file.");
             }
         } else {
-            $message = "Invalid file type.";
-            exit;
+            die("Invalid file type.");
         }
-    } else {
-        $profileImagePath = $image;
     }
 
-    $query = 'UPDATE admin_table SET username = ?, role = ?, updated_at = ?';
+    $queryStr = 'UPDATE admin_table SET username = ?, role = ?, updated_at = ?';
     $params = [$username, $role, $updated_at];
     $types = 'sss';
 
     if (!empty($profileImagePath)) {
-        $query .= ', profile_path = ?';
+        $queryStr .= ', profile_path = ?';
         $params[] = $profileImagePath;
         $types .= 's';
     }
 
     if (!empty($password)) {
-        $hashedPassword = $password;
-        $query .= ', password = ?';
-        $params[] = $password;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $queryStr .= ', password = ?';
+        $params[] = $hashedPassword;
         $types .= 's';
     }
 
-    $query .= ' WHERE admin_id = ?';
+    $queryStr .= ' WHERE admin_id = ?';
     $params[] = $admin_id;
     $types .= 'i';
 
-    $stmt = $connection->prepare($query);
+    $stmt = $connection->prepare($queryStr);
+    if (!$stmt) {
+        die("Failed to prepare statement: " . $connection->error);
+    }
+    
     $stmt->bind_param($types, ...$params);
 
     if ($stmt->execute()) {
         $success = 'Updated successfully';
     } else {
-        $message = "Error updating profile: " . $stmt->error;
+        die("Error updating profile: " . $stmt->error);
     }
 }
 ?>

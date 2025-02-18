@@ -45,7 +45,7 @@ if (isset($_SESSION['admin_id'])) {
             color: var(--card-text-color);
             border-radius: 10px;
             padding: 20px;
-            width: 23%;
+            width: 20%;
             min-width: 220px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
