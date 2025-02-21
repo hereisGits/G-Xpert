@@ -28,6 +28,7 @@ $_SESSION['username'] = $_SESSION['username'] ?? 'admin';
   <title>Admin Panel</title>
   <link rel="stylesheet" href="Admin-style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <?php 
@@ -37,13 +38,12 @@ $_SESSION['username'] = $_SESSION['username'] ?? 'admin';
     <div class="sidebar">
       <h2>Admin Dashboard</h2>
       <ul>
-        <li><a href="#" id="dashboard" data-url="./Dashboard/dashboard.php"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
-        <li><a href="#" id="manageUser" data-url="Manage Course/manage_course.php"><i class="fa-solid fa-user-gear"></i> <span>Manage Users</span></a></li>
-        <li><a href="#" id="manageCourse" data-url="Manage users/manage_user.php"><i class="fa-solid fa-book-open"></i> <span>Manage Courses</span></a></li>
-        <li><a href="#" id="report" data-url="./Reports/reports.php"><i class="fa-solid fa-square-poll-vertical"></i> <span>Reports</span></a></li>
-        <li><a href="#" id="setting" data-url="./Settings/settings.php"><i class="fa-solid fa-gears"></i> <span>Settings</span></a></li>
-      </ul>
-      
+        <li><a href="#" id="dashboard" data-url="Dashboard/dashboard.php"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+        <li><a href="#" id="manageUser" data-url="Manage%20users\manage_user.php"><i class="fa-solid fa-user-gear"></i> <span>Manage Users</span></a></li>
+        <li><a href="#" id="manageCourse" data-url="Manage%20Course\manage_course.php"><i class="fa-solid fa-book-open"></i> <span>Manage Courses</span></a></li>
+        <li><a href="#" id="report" data-url="Report/reports.php"><i class="fa-solid fa-square-poll-vertical"></i> <span>Reports</span></a></li>
+        <li><a href="#" id="setting" data-url="Settings/settings.php"><i class="fa-solid fa-gears"></i> <span>Settings</span></a></li>
+      </ul>      
     </div>
     <header class="content">
         <div class="head">
@@ -59,7 +59,7 @@ $_SESSION['username'] = $_SESSION['username'] ?? 'admin';
     </header>
 
     <main id="dynamic-content">
-        <?php include './Dashboard/dashboard.php'; ?>
+        <div class="loader" style="display: none;"></div>
     </main>
 </div>
 <script src="Admin.js"></script>

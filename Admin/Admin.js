@@ -19,30 +19,37 @@ function scrollleft() {
 }
  scrollleft();
 
- document.addEventListener("DOMContentLoaded", () => {
-  const dynamicContent = document.getElementById("dynamic-content");
-  const baseURL = window.location.origin + "/server/Code/zProject/Course%20Seller/Admin/";
 
-  document.querySelectorAll(".sidebar a").forEach(link => {
-      link.addEventListener("click", function (e) {
-          e.preventDefault();
-          const pageUrl = new URL(this.dataset.url, baseURL).href;
+ $(document).ready(function () {
+  // Load last visited page or default to dashboard
+  var lastUrl = localStorage.getItem("lastPage") || $('#dashboard').data('url');
+  $('#dynamic-content').load(lastUrl);
 
-          fetch(pageUrl)
-              .then(res => res.text())
-              .then(data => {
-                  dynamicContent.innerHTML = data;
-                  history.pushState({ page: pageUrl }, "", pageUrl);
-              })
-              .catch(err => console.error("Error:", err));
+  $('ul li a').click(function (e) {
+    e.preventDefault();
+    var url = $(this).attr('data-url');
+
+    if (url) {
+      localStorage.setItem("lastPage", url); // Store last visited page
+      $(".loader").show(); // Show loader
+      $("#dynamic-content").html(""); // Clear previous content
+      $.get(url, function (data) {
+        $(".loader").hide(); // Hide loader
+        $("#dynamic-content").html(data);
+      }).fail(function () {
+        $(".loader").hide();
+        $("#dynamic-content").html("<p>Error loading content!</p>");
       });
-  });
-
-  window.addEventListener("popstate", (e) => {
-      if (e.state?.page) {
-          fetch(e.state.page)
-              .then(res => res.text())
-              .then(data => dynamicContent.innerHTML = data);
-      }
+    } else {
+      $("#dynamic-content").html("<p>Content is not added yet!</p>");
+    }
   });
 });
+
+
+
+
+
+
+
+

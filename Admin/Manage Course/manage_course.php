@@ -14,7 +14,7 @@ unset($_SESSION['success']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Management System</title>
-    <link rel="stylesheet" href="manage_course.css">
+    <link rel="stylesheet" href="/Server/Code/zProject/Course%20Seller/Admin/Manage%20Course/manage_course.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
@@ -91,6 +91,66 @@ unset($_SESSION['success']);
             <?php require_once 'course media/fetch_course.php';?>            
         </section>
     </div>
-    <script src="manage_course.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.querySelector('#status-div p'); 
+    if (popup) {
+        setTimeout(() => popup.style.display = 'none', 5000);
+    }
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        document.getElementById("uploadForm").reset();
+        document.getElementById("videoPreview").style.display = "none";
+    });
+
+    function setupCharCount(inputId, countId, errorId, maxChars) {
+        const input = document.getElementById(inputId);
+        const countDisplay = document.getElementById(countId);
+        const errorDisplay = document.getElementById(errorId);
+
+        input.addEventListener('input', () => {
+            const charCount = input.value.length;
+            countDisplay.textContent = charCount;
+            errorDisplay.style.display = charCount > maxChars ? 'block' : 'none';
+            if (charCount > maxChars) input.value = input.value.substring(0, maxChars);
+        });
+    }
+    setupCharCount('courseTitle', 'charCount', 'T-error', 30);
+    setupCharCount('description', 'DecharCount', 'D-error', 100);
+
+    document.getElementById("video").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        const videoPreview = document.getElementById("videoPreview");
+        videoPreview.style.display = file ? "block" : "none";
+        if (file) videoPreview.src = URL.createObjectURL(file);
+    });
+
+    document.getElementById("uploadForm").addEventListener("submit", (event) => {
+        let isValid = true;
+
+        function validateInput(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const errorMessage = document.getElementById(errorId);
+            errorMessage.style.display = input.value.trim() ? 'none' : 'block';
+            if (!input.value.trim()) isValid = false;
+        }
+    
+        validateInput("courseTitle", "courseTitle-error");
+        validateInput("description", "description-error");
+        validateInput("price", "price-error");
+    
+        const videoInput = document.getElementById("video");
+        if (!videoInput.files.length) {
+            if (isValid) {
+                alert('Error: Please upload a video!');
+            }
+            isValid = false;
+        }
+    
+        if (!isValid) event.preventDefault();
+    });
+
+});
+</script>
 </body>
 </html>
