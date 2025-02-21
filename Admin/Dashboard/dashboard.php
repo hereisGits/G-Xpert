@@ -18,59 +18,85 @@ if (isset($_SESSION['admin_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        :root {
-            --stat-card-bg-color: #2e2e2e;
-            --stat-card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-            --card-text-color: rgb(255, 255, 255);
-            --blue-color: #3498db;
-            --success-color: #2ecc71;
-            --warning-color: #f39c12;
-            --danger-color: #e74c3c;
-            --font-size-large: 28px;
-        }
-              
+</head>
+<style>
+    :root {
+    --stat-card-bg-color: #2e2e2e;
+    --stat-card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    --card-text-color: rgb(255, 255, 255);
+    --blue-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --font-size-large: 28px;
+}
 
-       .row {
-            padding: 20px 40px;
-            margin: 0 auto;
-            justify-content: center;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+.row {
+    padding: 20px 40px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-        .stat-card {
-            background-color: var(--stat-card-bg-color);
-            color: var(--card-text-color);
-            border-radius: 10px;
-            padding: 20px;
-            width: 20%;
-            min-width: 220px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: box-shadow 0.3s;
-            cursor: pointer;
-        }
+.stat-card {
+    background-color: var(--stat-card-bg-color);
+    color: var(--card-text-color);
+    border-radius: 10px;
+    padding: 20px;
+    width: 20%;
+    min-width: 220px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
 
-        .stat-card:hover {
-            box-shadow: var(--stat-card-hover-shadow);
-        }
+.stat-card:hover {
+    box-shadow: var(--stat-card-hover-shadow);
+    transform: scale(1.05);
+}
 
-        .stat-card h2 {
-            font-size: var(--font-size-large);
-            margin-bottom: 10px;
-        }
+.stat-card h2 {
+    font-size: var(--font-size-large);
+    margin-bottom: 10px;
+}
 
-        .stat-card p {
-            font-size: 18px;
-        }
+.stat-card p {
+    font-size: 18px;
+}
 
-        .bg-primary { background-color: var(--blue-color); }
-        .bg-success { background-color: var(--success-color); }
-        .bg-warning { background-color: var(--warning-color); }
-        .bg-danger { background-color: var(--danger-color); }
-    </style>
+.bg-primary { background-color: var(--blue-color); }
+.bg-success { background-color: var(--success-color); }
+.bg-warning { background-color: var(--warning-color); }
+.bg-danger { background-color: var(--danger-color); }
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-card {
+        width: 100%; 
+        max-width: 350px; 
+        padding: 15px;
+    }
+
+    .stat-card:hover {
+        transform: none; 
+    }
+
+    .stat-card h2 {
+        font-size: 24px;
+    }
+
+    .stat-card p {
+        font-size: 16px;
+    }
+}
+</style>
 </head>
 <body>
     <div class="row">

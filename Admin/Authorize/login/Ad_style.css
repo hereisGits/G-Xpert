@@ -68,7 +68,9 @@ body {
     overflow: hidden;
     position: relative;
     margin-bottom: 10px;
+    color: #007bff;
 }
+
 .admin-sec p {
     position: relative;
     display: inline-block;

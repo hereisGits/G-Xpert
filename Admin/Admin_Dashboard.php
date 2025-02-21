@@ -19,6 +19,7 @@ if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
 }
 $_SESSION['username'] = $_SESSION['username'] ?? 'admin';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,13 +36,14 @@ $_SESSION['username'] = $_SESSION['username'] ?? 'admin';
 <div class="container">
     <div class="sidebar">
       <h2>Admin Dashboard</h2>
-        <ul>
-            <li><a href="#"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-            <li><a href="#"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
-            <li><a href="#"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
-            <li><a href="#"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
-            <li><a href="#"><i class="fa-solid fa-gears"></i> Settings</a></li>
-        </ul>
+      <ul>
+        <li><a href="#" id="dashboard" data-url="./Dashboard/dashboard.php"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+        <li><a href="#" id="manageUser" data-url="Manage Course/manage_course.php"><i class="fa-solid fa-user-gear"></i> <span>Manage Users</span></a></li>
+        <li><a href="#" id="manageCourse" data-url="Manage users/manage_user.php"><i class="fa-solid fa-book-open"></i> <span>Manage Courses</span></a></li>
+        <li><a href="#" id="report" data-url="./Reports/reports.php"><i class="fa-solid fa-square-poll-vertical"></i> <span>Reports</span></a></li>
+        <li><a href="#" id="setting" data-url="./Settings/settings.php"><i class="fa-solid fa-gears"></i> <span>Settings</span></a></li>
+      </ul>
+      
     </div>
     <header class="content">
         <div class="head">
@@ -51,13 +53,16 @@ $_SESSION['username'] = $_SESSION['username'] ?? 'admin';
                 <a href="Authorize/logout/logout.php" title="Logout" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
             </div>
         </div>
+        <div id="time">
+                <div id="timeDate"></div>
+        </div>
     </header>
 
     <main id="dynamic-content">
         <?php include './Dashboard/dashboard.php'; ?>
     </main>
 </div>
-
+<script src="Admin.js"></script>
 </body>
 </html>
 
