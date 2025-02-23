@@ -21,30 +21,38 @@ function scrollleft() {
 
 
  $(document).ready(function () {
-  // Load last visited page or default to dashboard
-  var lastUrl = localStorage.getItem("lastPage") || $('#dashboard').data('url');
+  var lastUrl = localStorage.getItem("lastPage");
+  var isFirstVisit = sessionStorage.getItem("firstVisit") === null;
+
+  if (isFirstVisit || !lastUrl) {
+      lastUrl = $('#dashboard').data('url'); // Set dashboard as default
+      sessionStorage.setItem("firstVisit", "no"); // Mark visit
+  }
+
   $('#dynamic-content').load(lastUrl);
 
   $('ul li a').click(function (e) {
-    e.preventDefault();
-    var url = $(this).attr('data-url');
+      e.preventDefault();
+      var url = $(this).attr('data-url');
 
-    if (url) {
-      localStorage.setItem("lastPage", url); // Store last visited page
-      $(".loader").show(); // Show loader
-      $("#dynamic-content").html(""); // Clear previous content
-      $.get(url, function (data) {
-        $(".loader").hide(); // Hide loader
-        $("#dynamic-content").html(data);
-      }).fail(function () {
-        $(".loader").hide();
-        $("#dynamic-content").html("<p>Error loading content!</p>");
-      });
-    } else {
-      $("#dynamic-content").html("<p>Content is not added yet!</p>");
-    }
+      if (url) {
+          localStorage.setItem("lastPage", url); // Store last visited page
+          $(".loader").show();
+          $("#dynamic-content").html("");
+          $.get(url, function (data) {
+              $(".loader").hide();
+              $("#dynamic-content").html(data);
+          }).fail(function () {
+              $(".loader").hide();
+              $("#dynamic-content").html("<p>Error loading content!</p>");
+          });
+      } else {
+          $("#dynamic-content").html("<p>Content is not added yet!</p>");
+      }
   });
 });
+
+
 
 
 

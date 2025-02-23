@@ -59,7 +59,6 @@ $_SESSION['username'] = $_SESSION['username'] ?? 'admin';
     </header>
 
     <main id="dynamic-content">
-        <div class="loader" style="display: none;"></div>
     </main>
 </div>
 <script src="Admin.js"></script>
