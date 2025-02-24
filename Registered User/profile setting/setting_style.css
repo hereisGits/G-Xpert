@@ -118,7 +118,7 @@ body {
 
 button[type="submit"] {
     text-align: right;
-    background-color: #da0000fb;
+    background-color: #007bff;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -130,7 +130,10 @@ button[type="submit"] {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
-button[type="submit"]:hover {
+.saveChange:hover {
+    background-color: #0056b3;
+}
+.logout-btn:hover {
     background-color: #b40d0da9;
 }
 

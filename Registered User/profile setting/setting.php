@@ -88,7 +88,7 @@
                 <label for="updated_at">Updated At:</label>
                 <input type="text" id="updated_at" name="updated_at" value="<?php echo  $updated_at; ?>" required readonly>
                 
-                <button type="submit">Save Changes</button>
+                <button type="submit" class="saveChange">Save Changes</button>
             </form>
         </div>
     </div>
