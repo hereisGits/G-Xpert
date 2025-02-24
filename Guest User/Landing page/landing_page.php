@@ -1,3 +1,6 @@
+<?php 
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,38 +10,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Audiowide:wght@400&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <title>Online Course  - Learn New Thing</title>
+    <title>Online Course - Learn New Thing</title>
 </head>
 <body>
 
-    <?php
-        require_once './Nav&footer/navebar.php';
-        ?>
+    <?php require_once './Nav&footer/navebar.php'; ?>
     
     <main>
         <div class="container-main">
             <section class="hero">
-            <div class="button">
-                    <div class="prebtn" title="Previous" ><i class="fa-solid fa-chevron-left"></i></div>
-                    <div class="nextbtn" title="Next" ><i class="fa-solid fa-chevron-right"></i></div>
-            </div>
-            <div class="slideshow-container">
-                <div class="mySlides fade">
-                  <img src="../Elements/Slides/slide1.png" alt="Slide 1">
+                <div class="button">
+                    <div class="prebtn" title="Previous"><i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="nextbtn" title="Next"><i class="fa-solid fa-chevron-right"></i></div>
                 </div>
-
-                <div class="mySlides fade">
-                  <img src="../Elements/Slides/slide2.png" alt="Slide 2">
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="../Elements/Slides/slide1.png" alt="Slide 1">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="../Elements/Slides/slide2.png" alt="Slide 2">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="../Elements/Slides/slide3.png" alt="Slide 3">
+                    </div>
                 </div>
-
-                <div class="mySlides fade">
-                  <img src="../Elements/Slides/slide3.png" alt="Slide 3">
-                </div>
-
-                 <div class="text_landing">
+                <div class="text_landing">
                     <h1>Unlock Your Potential</h1>
                     <p>Learn, Grow, and Succeed with G-Xpert</p>
-                    <button>Explore Courses</button>
+                    
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <button onclick="window.location.href='video.php'">Explore Courses</button>
+                    <?php else: ?>
+                        <button onclick="showLoginAlert()">Explore Courses</button>
+                    <?php endif; ?>
+
                 </div>
             </section>
 
@@ -53,22 +58,23 @@
                         <p>Purchased</p>
                     </div>
                     <div class="stat">
-                            <div class="star">
-                                <strong>3.5</strong>                        
+                        <div class="star">
+                            <strong>3.5</strong>                        
                             <div class="stars">
                                 <img src="../Elements/star.svg" alt="Star">
                                 <img src="../Elements/star.svg" alt="Star">
                                 <img src="../Elements/star.svg" alt="Star">
                                 <img src="../Elements/haft-star.svg" alt="Half Star">
                             </div>
-                            </div>
+                        </div>
                         <p>Rating</p>
                     </div>
                 </div>
             </section>
 
             <section class="course-categories">
-                <div class="div-course">
+                <div class="div-course" 
+                     <?php if (!isset($_SESSION['user_id']))?> onclick="showLoginAlert()">
                     <h2>Explore Online Courses</h2>
                     <div></div>
                     <ul class="categories">
@@ -89,9 +95,9 @@
             
             <section class="video-section">
                 <div class="video-list">
+
                 </div>
             </section>
-
 
             <section class="team-chart">
                 <h1 id="team">Our Team</h1>
@@ -111,10 +117,14 @@
         </div>
     </main>
 
+    <?php require_once './Nav&footer/footer.php'; ?>
 
-    <?php 
-            require_once './Nav&footer/footer.php'; 
-     ?>
+    <script>
+    function showLoginAlert() {
+        alert("You must log in to access this feature! 🚫");
+        window.location.href = "/Server/Code/zProject/Course%20Seller/Guest%20User/Authorize/Log%20in/login.php";
+    }
+    </script>
 
     <script src="landing_page.js"></script>
 </body>

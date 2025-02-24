@@ -233,7 +233,7 @@ body {
     ?>
     <header id="header">
         <div class="nav">
-            <div class="logo">
+            <div class="logo" title="Home">
                  <a href="<?php echo $base_url; ?>/Landing page/landing_page.php">
                     <img src="<?php echo $base_url; ?>/Landing page/Nav&footer/logo/nav-logo.svg" alt="Logo">
                 </a>
