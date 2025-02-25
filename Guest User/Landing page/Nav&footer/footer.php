@@ -179,7 +179,7 @@
                 </div>
             </div>
             <div class="footer-logo">
-                <div class="logo">
+                <div class="logo"  title="Home">
                 <a href="<?php echo $base_url; ?>/Landing%20page/landing_page.php">
                 <img src="<?php echo $base_url; ?>/Landing%20page/nav&footer/logo/footer-logo.svg" alt="Logo">
             </a>

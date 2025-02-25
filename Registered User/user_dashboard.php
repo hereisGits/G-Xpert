@@ -33,7 +33,7 @@ if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
             <h1>Discover Your Path to Success</h1>
             <div class="hero-buttons">
                 <a href="#" class="btn-primary">Start Learning</a>
-                <a href="#" class="btn-secondary">Explore Courses</a>
+                <a href="./Courses/videos.php" class="btn-secondary">Explore Courses</a>
             </div>
         </div>
         <section class="course-categories">
