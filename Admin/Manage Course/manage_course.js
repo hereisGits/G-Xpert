@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const popup = document.querySelector('#status-div p'); 
     if (popup) {

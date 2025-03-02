@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Users</title>
     <link rel="stylesheet" href="/Server/Code/zProject/Course%20Seller/Admin/Manage%20users/manage_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+          integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
 
@@ -18,11 +21,6 @@
 
     <?php
     require_once './Connection/db_connection.php';
-    
-    if (!isset($connection)) {
-        die("Database connection error.");
-    }
-    
     $query = $connection->prepare('SELECT * FROM user_table');
     $query->execute();
     $result = $query->get_result();
@@ -37,17 +35,20 @@
                 <th>Status</th>
                 <th>Actions</th>
                 <th>Suspension Time</th>
-              </tr>';
+            </tr>';
 
         while ($row = $result->fetch_assoc()) {
             $suspensionTimeLeft = "Not Suspended";
-            $status = !empty($row['status']) ? $row['status'] : 'Active';
+            $suspendedUntilTimestamp = null;
 
-            if ($status == 'suspended' && !empty($row['suspended_until'])) {
-                $timeDiff = strtotime($row['suspended_until']) - time();
+            if (isset($row['status']) && $row['status'] == 'suspended' && isset($row['suspended_until'])) {
+                $suspendedUntilTimestamp = strtotime($row['suspended_until']);
+                $timeDiff = $suspendedUntilTimestamp - time();
                 if ($timeDiff > 0) {
                     $daysLeft = floor($timeDiff / (60 * 60 * 24));
-                    $suspensionTimeLeft = "{$daysLeft} days";
+                    $hoursLeft = floor(($timeDiff % (60 * 60 * 24)) / (60 * 60));
+                    $minutesLeft = floor(($timeDiff % (60 * 60)) / 60);
+                    $suspensionTimeLeft = "{$daysLeft} days {$hoursLeft} hours {$minutesLeft} minutes";
                 } else {
                     $suspensionTimeLeft = "Suspension Expired";
                 }
@@ -58,19 +59,21 @@
                     <td>' . htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) . '</td>
                     <td>' . htmlspecialchars($row['email']) . '</td>
                     <td>' . htmlspecialchars($row['username']) . '</td>
-                    <td id="status' . $row['user_id'] . '">' . htmlspecialchars($status) . '</td>
+                    <td id="status' . $row['user_id'] . '">' . htmlspecialchars($row['status']) . '</td>
                     <td class="actions">
-                        <div class="icons">
-                            <span class="icon" title="Suspend" onclick="openSuspendModal(' . $row['user_id'] . ')">
-                                <i class="fa-solid fa-user-lock"></i> suspend
-                            </span>
-                            <span class="icon" title="Delete" onclick="deleteUser(' . $row['user_id'] . ')">
-                                <i class="fa-solid fa-trash"></i> delete
-                            </span>
+                        <div class="icons">';
+
+            if ($row['status'] === 'suspended') {
+                echo '<span class="icon" title="Unsuspend" onclick="unsuspendUser(' . $row['user_id'] . ')"><i id="unsuspend" class="fa-solid fa-user-check"></i></span>';
+            } else {
+                echo '<span class="icon" title="Suspend" onclick="suspendUser(' . $row['user_id'] . ')"><i id="suspend" class="fa-solid fa-user-lock"></i></span>';
+            }
+
+            echo '<span class="icon" title="Delete" onclick="deleteUser(' . $row['user_id'] . ')"><i id="delete" class="fa-solid fa-trash"></i></span>
                         </div>
                     </td>
-                    <td id="suspensionTime' . $row['user_id'] . '">' . $suspensionTimeLeft . '</td>
-                  </tr>';
+                    <td id="suspensionTime' . $row['user_id'] . '" data-suspended-until="' . $suspendedUntilTimestamp . '">' . $suspensionTimeLeft . '</td>
+                </tr>';
         }
         echo '</table>';
     } else {
@@ -79,26 +82,69 @@
 
     $connection->close();
     ?>
-</div>
 
-<div id="suspendModal" class="modal">
-    <div class="modal-content">
-        <form id="suspendForm" action="suspend_user.php" method="POST">
-            <label for="user_id"><span class="form-item">User ID:</span></label>
-            <input type="number" id="modalUserId" name="user_id" required readonly>
-
-            <label for="days"><span class="form-item">Days:</span></label>
-            <input type="number" id="daysInput" name="days" min="0" required>
-
-            <label for="hours"><span class="form-item">Hours:</span></label>
-            <input type="number" name="hours" min="0">
-
-            <button type="submit">Suspend User</button>
-        </form>
-    </div>
 </div>
 
 <script>
+    // Function to unsuspend a user
+    function unsuspendUser(userId) {
+        if (confirm(`Are you sure you want to unsuspend user ID=${userId}?`)) {
+            fetch(`./Supand%20users/unsuspend_user.php?id=${userId}`)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Log the response for debugging
+                    const alertBox = document.getElementById('alertBox');
+                    if (data.includes('successfully')) {
+                        // Update the UI to reflect the unsuspension
+                        document.getElementById(`status${userId}`).innerText = "Active";
+                        document.getElementById(`suspensionTime${userId}`).innerText = "Not Suspended";
+                        alertBox.textContent = "User unsuspended successfully!";
+                        alertBox.className = "alert success";
+                    } else {
+                        alertBox.textContent = "Failed to unsuspend user! " + data; // Append response data
+                        alertBox.className = "alert error";
+                    }
+                    alertBox.style.display = "block";
+                    // Hide the alert box after 5 seconds
+                    setTimeout(() => alertBox.style.display = "none", 5000);
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("An error occurred. Please try again.");
+                });
+        }
+    }
+
+    // Function to suspend a user
+    function suspendUser(userId) {
+        if (confirm(`Are you sure you want to suspend user ID=${userId}?`)) {
+            fetch(`./Supand%20users/suspand_user.php?id=${userId}`)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Log the response for debugging
+                    const alertBox = document.getElementById('alertBox');
+                    if (data.includes('successfully')) {
+                        // Update the UI to reflect the suspension
+                        document.getElementById(`status${userId}`).innerText = "Suspended";
+                        document.getElementById(`suspensionTime${userId}`).innerText = "30 days 0 hours";
+                        alertBox.textContent = "User suspended successfully!";
+                        alertBox.className = "alert success";
+                    } else {
+                        alertBox.textContent = "Failed to suspend user! " + data; // Append response data
+                        alertBox.className = "alert error";
+                    }
+                    alertBox.style.display = "block";
+                    // Hide the alert box after 5 seconds
+                    setTimeout(() => alertBox.style.display = "none", 5000);
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("An error occurred. Please try again.");
+                });
+        }
+    }
+
+    // Function to delete a user
     function deleteUser(userId) {
         if (confirm(`Are you sure you want to delete user ID=${userId}?`)) {
             fetch(`./Remove users/delete.php?id=${userId}`)
@@ -122,49 +168,6 @@
                     console.error(error);
                     alert("An error occurred. Please try again.");
                 });
-        }
-    }
-    
-    function openSuspendModal(userId) {
-        document.getElementById('modalUserId').value = userId;
-        document.getElementById('suspendModal').style.display = 'flex';
-        document.body.classList.add('modal-open');
-    }
-
-    function closeSuspendModal() {
-        document.getElementById('suspendModal').style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        const modal = document.getElementById('suspendModal');
-        if (event.target === modal) {
-            closeSuspendModal();
-        }
-    }
-
-    function suspendUser(userId) {
-        let days = document.getElementById("daysInput").value;
-        if (!days) {
-            alert("Please enter the number of days.");
-            return;
-        }
-        if (confirm(`Are you sure you want to suspend user ID=${userId}?`)) {
-            fetch(`suspend_user.php`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `user_id=${userId}&days=${days}`
-            })
-            .then(response => response.text())
-            .then(data => {
-                if (data.includes('success')) {
-                    document.getElementById(`status${userId}`).innerText = "Suspended";
-                    document.getElementById(`suspensionTime${userId}`).innerText = `${days} days`;
-                    alert('User suspended successfully!');
-                } else {
-                    alert('Error suspending user: ' + data);
-                }
-                closeSuspendModal();
-            });
         }
     }
 </script>

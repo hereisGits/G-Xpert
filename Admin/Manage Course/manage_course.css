@@ -44,15 +44,46 @@ body{
     color: #7f8c8d;
     margin-bottom: 20px;
 }
-
 .card {
-    background: var(--background-color);
-    border: 1px solid #adadadcc;
-    border-radius: var(--border-radius);
-    padding: var(--padding);
-    margin: 20px 0;
-    transition: transform 0.3s ease;
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
 }
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+select {
+    background: #f9f9f9;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+}
+
+select:hover {
+    background: #f1f1f1;
+}
+
+#closeButton {
+    color: #333;
+    transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+#closeButton:hover {
+    transform: scale(1.1);
+    color: #b83232;
+}
+
 
 form {
     margin: 20px auto;
