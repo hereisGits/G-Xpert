@@ -1,8 +1,11 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+$isLoggedIn = isset($_SESSION['user_id']) || isset($_COOKIE['user_cookie']);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,11 +62,6 @@ body {
     text-align: center;
 }
 
-.course-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
 .video-container {
     width: 100%;
     position: relative;
@@ -73,9 +71,36 @@ body {
 
 .video-container video {
     width: 100%;
-    border-radius: 8px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     cursor: pointer;
 }
+
+.play-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.video-container:hover .play-btn {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 .course-content h4 {
     text-align: left;
@@ -86,6 +111,7 @@ body {
 }
 
 .course-content .description {
+    text-align: left;
     color: #7f8c8d;
     font-size: 14px;
     line-height: 1.6;
@@ -129,7 +155,7 @@ body {
     padding: 20px;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .course-list {
         padding: 15px;
@@ -179,37 +205,42 @@ body {
 </style>
 <body>
 <div class="course-list">
-    <div class="video-list" onclick="checkLoginAndRedirect()">
+    <div class="video-list">
         <?php
             $conn = new mysqli("localhost", "root", "", "user_database");
             if ($conn->connect_error) {
                 die('Database Error: ' . $conn->connect_error);
             }
 
-            $sql = "SELECT * FROM courses ORDER BY id DESC";
+            $sql = "SELECT * FROM courses ORDER BY video_id DESC";
             $result = $conn->query($sql);
             $content = "";
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $video_id = ($row['video_id']);
                     $videoPath = urlencode($row['video_path']);
                     $title = urlencode($row['title']);
                     $desc = urlencode($row['description']);
                     $price = urlencode($row['price']);
                     $date = urlencode($row['uploaded_at']);
+                    $videoUrl = "/Server/Code/zProject/Course%20Seller/Registered%20User/Courses/video_play.php?id=$video_id&video=$videoPath&title=$title&desc=$desc&price=$price&date=$date";
 
-                    $content .= "<div class='course-item' onclick='checkLoginAndRedirect()'>
+                    $onclick = $isLoggedIn ? "window.location.href='$videoUrl'" : "showLoginAlert()";
+
+                    $content .= "<div class='course-item'>
                                     <div class='video-container'>
-                                        <a href='video.php?video=$videoPath&title=$title&desc=$desc&price=$price&date=$date'>
+                                        <a href='javascript:void(0);' onclick=\"$onclick\">
                                             <video>
                                                 <source src='http://localhost/server/Code/zProject/Course%20Seller/Admin/Manage%20Course/" . htmlspecialchars($row['video_path']) . "' type='video/mp4'>
                                                 Your browser does not support the video tag.
                                             </video>
+                                            <div class='play-btn'><i class='fa fa-play'></i></div>
                                         </a>
                                     </div>
                                     <div class='course-content'>
                                         <h4>" . htmlspecialchars($row['title']) . "</h4>
-                                        <p class='description'>" . htmlspecialchars($row['description']) . "</p>
+                                        <p class='description' title='" . htmlspecialchars($row['description']) . "'>" . htmlspecialchars($row['description']) . "</p>
                                     </div>
                                     <div class='upload_date'>
                                         <p class='price'> <i class='fa-solid fa-indian-rupee-sign'></i> " . htmlspecialchars($row['price']) . "</p>
@@ -228,12 +259,10 @@ body {
 </div>
 
 <script>
-    function checkLoginAndRedirect() {
-        <?php if (!isset($_SESSION['user_id']) && !isset($_COOKIE['user_cookie'])) { ?>
-            alert("You must log in to access this feature! 🚫");
-            window.location.href = "/Server/Code/zProject/Course%20Seller/Guest%20User/Authorize/Log%20in/login.php";
-        <?php } ?>
-    }
+function showLoginAlert() {
+    alert("You must log in to watch the video.");
+    window.location.href = "/Server/Code/zProject/Course%20Seller/Guest%20User/Authorize/Log%20in/login.php"; 
+}
 </script>
 </body>
 </html>

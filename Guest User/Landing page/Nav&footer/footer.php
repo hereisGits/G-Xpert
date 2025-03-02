@@ -138,34 +138,29 @@
                 <div class="item">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="item">
                     <h3>Community</h3>
                     <ul>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Events</a></li>
                     </ul>
                 </div>
                 <div class="item">
                     <h3>Support</h3>
                     <ul>
-                        <li><a href="help.html">Help Center</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="f#">FAQs</a></li>
                     </ul>
                 </div>
                 <div class="item">
                     <h3>Contact Details</h3>
                     <div class="contact-item">
                         <strong>Email:</strong> <a href="mailto:support@gxpert.com"> support@gxpert.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Tel:</strong> <a href="tel:9824356450"> +1‑XX‑XXX</a>
                     </div>
                     <div class="contact-item social-media">
                         <h3>Follow Us:</h3>

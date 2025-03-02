@@ -1,7 +1,10 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
-require_once '../Manage users/Connection/db_connection.php';
 
+$connection = new mysqli('localhost', 'root', '', 'user_database');
+if(!$connection){
+    die('Database Connection Error:' .$connection->connect_error);
+}
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

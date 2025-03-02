@@ -1,17 +1,17 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-    $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 
     if (!isset($_SESSION['user_id']) && !isset($_COOKIE['user_cookie'])) {
-        header("Location: ../Guest User/Authorize/Log in/login.php");
+        header("Location: /Server/Code/zProject/Course%20Seller/Guest%20User/Authorize/Log%20in/login.php");
         exit();
     }
-    
     if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
         $_SESSION['user_id'] = $_COOKIE['user_cookie'];
     }
+
     $connection = new mysqli('localhost', 'root', '', 'user_database');
     if(!$connection){
         die('Database Connection Error:' .$connection->connect_error);
@@ -29,16 +29,16 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>G-Xpert - Learn New Thing</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Audiowide:wght@400&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-Xpert - Learn New Thing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Audiowide:wght@400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
 <style>
 :root {
     --primary-color:rgb(21, 161, 226);
@@ -333,8 +333,9 @@ body {
     }
 }
 </style>
-</head>
+
 <body>
+    <?php  $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20Seller"; ?>
 <header id="header">
     <div class="nav">
         <div class="logo">

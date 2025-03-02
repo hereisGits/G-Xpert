@@ -1,17 +1,43 @@
 <?php
+session_start(); 
 
-if (isset($_SESSION['admin_id'])) {
-    $stmt = $connection->prepare("SELECT COUNT(*) AS total_users FROM user_table");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $_SESSION['total_users'] = $row['total_users'];
-    }
-    $stmt->close();
-    $connection->close();
+$connection = new mysqli('localhost', 'root', '', 'user_database');
+if ($connection->connect_error) {
+    die('Database Connection error!');
 }
 
+//for total course
+$t_user_stmt = $connection->prepare("SELECT COUNT(*) AS total_users FROM user_table");
+$t_user_stmt->execute();
+$result = $t_user_stmt->get_result();
+
+if ($row = $result->fetch_assoc()) {
+    $_SESSION['total_users'] = $row['total_users'];
+}
+$t_user_stmt->close();
+
+//for active course
+$ta_course_stmt = $connection->prepare('SELECT COUNT(*) AS active_course FROM courses');
+$ta_course_stmt->execute();
+$result = $ta_course_stmt->get_result();
+
+if ($row = $result->fetch_assoc()) {
+    $_SESSION['active_courses'] = $row['active_course'];
+}
+$ta_course_stmt->close();
+
+//for active user
+$active_user_stmt = $connection->prepare("SELECT COUNT(*) AS active_users FROM user_table WHERE updated_at >= NOW() - INTERVAL 30 DAY");
+$active_user_stmt->execute();
+$result = $active_user_stmt->get_result();
+
+if ($row = $result->fetch_assoc()) {
+    $_SESSION['active_users'] = $row['active_users'];
+}
+$active_user_stmt->close(); 
+$connection->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +46,7 @@ if (isset($_SESSION['admin_id'])) {
     <title>Document</title>
 </head>
 <style>
-    :root {
+   :root {
     --stat-card-bg-color: #2e2e2e;
     --stat-card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     --card-text-color: rgb(255, 255, 255);
@@ -28,7 +54,8 @@ if (isset($_SESSION['admin_id'])) {
     --success-color: #2ecc71;
     --warning-color: #f39c12;
     --danger-color: #e74c3c;
-    --font-size-large: 28px;
+    --transition-speed: 0.3s;
+    --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); 
 }
 
 .row {
@@ -43,14 +70,16 @@ if (isset($_SESSION['admin_id'])) {
 .stat-card {
     background-color: var(--stat-card-bg-color);
     color: var(--card-text-color);
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 20px;
     width: 20%;
     min-width: 220px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     cursor: pointer;
+    position: relative; 
+    overflow: hidden; 
 }
 
 .stat-card:hover {
@@ -59,18 +88,35 @@ if (isset($_SESSION['admin_id'])) {
 }
 
 .stat-card h2 {
-    font-size: var(--font-size-large);
+    font-size: var(28px);
     margin-bottom: 10px;
 }
 
 .stat-card p {
     font-size: 18px;
+    text-shadow: var(--text-shadow);
 }
 
 .bg-primary { background-color: var(--blue-color); }
 .bg-success { background-color: var(--success-color); }
 .bg-warning { background-color: var(--warning-color); }
 .bg-danger { background-color: var(--danger-color); }
+
+.stat-card::after { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity var(--transition-speed);
+}
+
+.stat-card:hover::after {
+    opacity: 1; 
+}
 
 @media (max-width: 768px) {
     .row {
@@ -96,16 +142,17 @@ if (isset($_SESSION['admin_id'])) {
         font-size: 16px;
     }
 }
+
 </style>
 </head>
 <body>
     <div class="row">
         <div class="stat-card bg-primary">
-            <h2>20</h2>
+            <h2><?php echo isset($_SESSION['active_users']) ? $_SESSION['active_users'] : '0'; ?></h2>
             <p>Active Users</p>
         </div>
         <div class="stat-card bg-success">
-            <h2>12</h2>
+            <h2><?php echo isset($_SESSION['active_courses']) ? $_SESSION['active_courses'] : '0'; ?></h2>
             <p>Active Courses</p>
         </div>
         <div class="stat-card bg-warning">
@@ -113,7 +160,7 @@ if (isset($_SESSION['admin_id'])) {
             <p>Total Users</p>
         </div>
         <div class="stat-card bg-danger">
-            <h2>Rs. 5,200</h2>
+            <h2>Rs. 0</h2>
             <p>Total Revenue</p>
         </div>
     </div>

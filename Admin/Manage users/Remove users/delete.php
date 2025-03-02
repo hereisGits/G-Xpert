@@ -1,21 +1,25 @@
 <?php
-require_once '../Connection/db_connection.php'; 
+session_start();
 
+require_once '../Connection/db_connection.php';
 if (isset($_GET['id'])) {
     $user_id = intval($_GET['id']);
-   
+    if ($user_id <= 0) {
+        echo "Invalid user ID";
+        exit;
+    }
+
     $query = $connection->prepare("DELETE FROM user_table WHERE user_id = ?");
     $query->bind_param('i', $user_id);
 
     if ($query->execute()) {
-        header("Location: /Server/Code/zProject/Course%20Seller/Admin./Manage%20users/manage_user.php?message=User deleted successfully");
-        exit;
+        echo "User deleted successfully";
     } else {
-        header("Location: /Server/Code/zProject/Course%20Seller/Admin./Manage%20users/manage_user.php?error=Error deleting user");
-        exit;
+        echo "Error deleting user: " . $query->error;
     }
+    $query->close();
 } else {
-    header("Location: /Server/Code/zProject/Course%20Seller/Admin./Manage%20users/manage_user.php?error=No user ID provided");
-    exit;
+    echo "No user ID provided";
 }
+$connection->close();
 ?>

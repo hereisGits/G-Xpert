@@ -1,6 +1,7 @@
 <?php
-session_start();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['user_id']) && !isset($_COOKIE['user_cookie'])) {
     header("Location: ../Guest User/Authorize/Log in/login.php");
@@ -63,6 +64,7 @@ if (isset($_COOKIE['user_cookie']) && !isset($_SESSION['user_id'])) {
 
 
     <?php require_once './head&foot/footer.php';?>
+
     <script src="user_dash.js"></script>
 </body>
 </html>

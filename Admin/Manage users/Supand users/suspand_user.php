@@ -1,27 +1,33 @@
 <?php
 require_once '../Connection/db_connection.php';
 
-$suspensionTimeLeft = "Not Suspended";
-if (isset($row['status']) && $row['status'] == 'suspended' && isset($row['suspended_until'])) {
-    $timeDiff = strtotime($row['suspended_until']) - time();
-    if ($timeDiff > 0) {
-        $daysLeft = floor($timeDiff / (60 * 60 * 24));
-        $hoursLeft = floor(($timeDiff % (60 * 60 * 24)) / (60 * 60));
-        $minutesLeft = floor(($timeDiff % (60 * 60)) / 60);
-        $suspensionTimeLeft = "{$daysLeft} days {$hoursLeft} hours {$minutesLeft} minutes";
-    } else {
-        $suspensionTimeLeft = "Suspension Expired";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userId = $_POST['user_id'] ?? null;
+    $days = (int) ($_POST['days'] ?? 0);
+
+    if (!ctype_digit($userId) || $days <= 0) {
+        die("Invalid input.");
     }
 
-    $query = $connection->prepare("UPDATE user_table SET status = 'suspended', suspended_until = ? WHERE user_id = ?");
-    $query->bind_param('si', $suspendedUntil, $userId);
+    $userId = (int) $userId;
 
-    if ($query->execute()) {
-        echo json_encode(['success' => true, 'suspended_until' => $suspendedUntil]);
-    } else {
-        echo json_encode(['success' => false]);
+    // Check if user exists
+    $stmt = $conn->prepare("SELECT user_id FROM user_table WHERE user_id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    if ($stmt->get_result()->num_rows === 0) {
+        die("User not found.");
     }
 
-    $connection->close();
+    // Suspend user
+    $suspendUntil = date('Y-m-d H:i:s', strtotime("+$days days"));
+    $updateQuery = $conn->prepare("UPDATE user_table SET status='suspended', suspended_until=? WHERE user_id=?");
+    $updateQuery->bind_param("si", $suspendUntil, $userId);
+    
+    echo $updateQuery->execute() ? "User suspended until $suspendUntil" : "Error: " . $conn->error;
+
+    $stmt->close();
+    $updateQuery->close();
+    $conn->close();
 }
 ?>

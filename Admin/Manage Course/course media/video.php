@@ -1,114 +1,362 @@
 <?php
-$video = urldecode($_GET['video']);
-$title = urldecode($_GET['title']);
-$desc = urldecode($_GET['desc']);
-$price = urldecode($_GET['price']);
-$date = urldecode($_GET['date']);
-?>
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+$video_id = isset($_GET['id']) ? $_GET['id'] : '';
+$video = isset($_GET['video']) ? htmlspecialchars(urldecode($_GET['video'])) : '';
+$title = isset($_GET['title']) ? htmlspecialchars(urldecode($_GET['title'])) : '';
+$desc = isset($_GET['desc']) ? htmlspecialchars(urldecode($_GET['desc'])) : '';
+$price = isset($_GET['price']) ? htmlspecialchars(urldecode($_GET['price'])) : '';
+$date = isset($_GET['date']) ? htmlspecialchars(urldecode($_GET['date'])) : '';
+
+if (!isset($_SESSION['like'])) {
+    $_SESSION['like'] = 0; 
+}
+
+if (!isset($_SESSION['dislike'])) {
+    $_SESSION['dislike'] = 0; 
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($title); ?></title>
+    <title><?php echo $video?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1400px;
+        background: #fff; 
+        padding: 20px 20px 100px 20px;
+        gap: 50px;
+        margin: auto;
+    }
+    .video-sec {
+        max-width: 800px;
+        width: 100%;
+        padding: 15px;
+    }
+    .video-container {
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    video {
+        width: 100%;
+    }
+    
+    .div-btn {
+        display: flex;
+        width: 10rem;
+        margin: 0 0 20px;
+        border: 1px solid #333;
+        border-radius: 50px;
+        padding: 8px;
+        gap: 0;
+    }
+    .thumbs {
+        margin: 0 auto;
+        border: none;
+        display: block;
+        text-align: center;
+        background-color: #fff;
+        font-size: 18px;
+        color: #333;
+        text-decoration: none;
+        transition: 0.3s;
+        cursor: pointer;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #121212;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+    .vid-info {
+        padding: 10px;
+        margin-top: -8px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+    h1 {
+        font-size: 24px;
+        margin: 10px 0;
+        color: #333;
+        line-height: 12px;
+    }
+    #desc {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 1.2rem;
+    }
+    #price {
+        color: #27ae60;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .foot {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 5px;
+    }
+    .div-foot {
+        margin: 5px auto;
+        display: flex;
+        background-color: none;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 2px solid rgba(104, 104, 104, 0.25);
+    }
+    
+    .pay-info {
+        flex: 1;
+        padding: 15px;
+    }
+    .pay-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+    .pay-container h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    .pay-container ul {
+        list-style: none;
+        padding: 0;
+    }
+    .pay-container ul li {
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: #555;
+    }
+    .pay-container form {
+        margin-top: 15px;
+    }
+    .pay-container label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-top: 10px;
+    }
+    .pay-container select,
+    .pay-container input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+        outline: none;
+        transition: 0.3s;
+    }
+    .pay-container select:focus,
+    .pay-container input:focus {
+        border-color: #27ae60;
+    }
+    .bank-form, .wallet-form {
+        display: none;
+    }
+    .pay-container .btn {
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        color: white;
+        background: #27ae60;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .pay-container .btn:hover {
+        background: #219150;
+    }
 
+    .feedback {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .feedback button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 0 10px;
+        border: none;
+        background-color:rgb(36, 143, 214);
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .feedback button:hover {
+        background-color:rgb(46, 124, 189);
+    }
+    .feedback form {
+        margin-top: 20px;
+    }
+    .feedback textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        resize: vertical;
+    }
+    .feedback h3 {
+        font-size: 18px;
+        color: #333;
+    }
+    @media (max-width: 768px) {
         .container {
-            max-width: 900px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.1);
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 30px;
+        }
+        .video-sec, .pay-container {
+            max-width: 100%;
+        }
+        .pay-container {
+            text-align: left;
             padding: 20px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
-
-        h1 {
-            color: #fff;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 16px;
-            color: #ccc;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #27ae60;
-        }
-
-        .video-container {
-            width: 100%;
-            margin: 20px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-        }
-
-        video {
-            width: 100%;
-            border-radius: 12px;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background: #27ae60;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #219150;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 15px;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-
 <div class="container">
-    <div class="video-container">
-        <video controls autoplay>
-            <source src="http://localhost/server/Code/zProject/Course%20Seller/Admin/Manage%20Course/<?php echo htmlspecialchars($video); ?>" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <h1><?php echo htmlspecialchars($title); ?></h1>
-    <p><?php echo htmlspecialchars($desc); ?></p>
-    <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo htmlspecialchars($price); ?></p>
-    <p>Uploaded on: <?php echo htmlspecialchars($date); ?></p>
+    <section class="video-sec">
+        <div class="video-container">
+            <?php if (!empty($video) && file_exists($_SERVER['DOCUMENT_ROOT'] . "/Server/Code/zProject/Course Seller/Admin/Manage Course/$video")): ?>
+                <video controls autoplay>
+                    <source src="<?php echo htmlspecialchars('/Server/Code/zProject/Course Seller/Admin/Manage Course/' . $video); ?>" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            <?php else: ?>
+                <div class="video-container">
+                    <p style="color: red; font-size:large; text-align:center;">⚠ Video file not found.</p>
+                    <video controls autoplay>
+                    </video>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="vid-info">
+            <div class="div-btn">
+                <button class="thumbs">
+                    <span id="like-btn"><i class="fa-solid fa-thumbs-up"></i></span> <?php echo $_SESSION['like']; ?>
+                </button> 
+                <span>|</span>
+                <button class="thumbs">
+                    <span  id="dislike-btn"><i class="fa-solid fa-thumbs-down fa-flip-horizontal"></i></span> <?php echo $_SESSION['dislike']; ?>
+                </button> 
+            </div>
 
-    <a href="index.php" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Courses</a>
+            <h1><?php echo $title; ?></h1>
+            <p id="desc"><?php echo $desc; ?></p>
+            <div class="div-foot">
+                <p id="price" class="foot"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $price; ?></p>
+                <p class="foot">Uploaded on: <?php echo $date; ?></p>
+            </div>
+        </div>
+
+        <div class="feedback">
+            <h3>Leave a Comment</h3>
+            <form id="comment-form" action="submit_comment.php" method="POST">
+                <textarea name="comment" placeholder="Write your comment here..." required></textarea>
+                <button type="submit" class="btn">Submit Comment</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="pay-info">
+        <div class="pay-container">
+            <h2>Payment Information</h2>
+            <ul>
+                <li><strong>Price:</strong> ₹<?php echo $price; ?></li>
+                <li><strong>Payment Method:</strong><br> fonePay / Bank / Credit Card / IMEpay</li>
+            </ul>
+            <form action="" method="POST">
+                <label for="payment-method">Choose Payment Method:</label>
+                <select id="payment-method" name="payment_method" onchange="togglePaymentForm()">
+                    <option value="">Select Your Gateway</option>
+                    <option value="bank">Bank Transfer</option>
+                    <option value="wallet">Wallet</option>
+                </select>
+
+                <div id="bank-form" class="bank-form">
+                    <label for="bank-account">Bank Account Number:</label>
+                    <input type="text" id="bank-account" name="bank_account" placeholder="Enter your bank account number" required>
+
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" name="bank_name" placeholder="Enter your bank name" required>
+                </div>
+
+                <div id="wallet-form" class="wallet-form">
+                    <label for="wallet-id">Wallet ID:</label>
+                    <input type="text" id="wallet-id" name="wallet_id" placeholder="Enter your wallet ID" required>
+
+                    <label for="wallet-provider">Wallet Provider:</label>
+                    <input type="text" id="wallet-provider" name="wallet_provider" placeholder="Enter your wallet provider name" required>
+                </div>
+
+                <button type="submit" class="btn"><i class="fa-solid fa-credit-card"></i> Proceed to Pay</button>
+            </form>
+        </div>
+    </section>
 </div>
+
 <?php require_once 'fetch_course.php'; ?>
+
+<script>
+    const likeBtn = document.getElementById('like-btn'); 
+    const dislikeBtn = document.getElementById('dislike-btn');
+
+    likeBtn.style.color = localStorage.getItem('liked') ? '#28a745' : '';
+    dislikeBtn.style.color = localStorage.getItem('disliked') ? '#DC3545' : '';
+
+    likeBtn.onclick = () => {
+        likeBtn.style.color = '#28a745';
+        dislikeBtn.style.color = '';
+        localStorage.setItem('liked', true);
+        localStorage.removeItem('disliked');
+        updateLikes('like');
+    };
+
+    dislikeBtn.onclick = () => {
+    dislikeBtn.style.color = '#DC3545';
+    likeBtn.style.color = '';
+    localStorage.setItem('disliked', true);
+    localStorage.removeItem('liked');
+    updateLikes('dislike');
+};
+
+    function togglePaymentForm() {
+        let paymentMethod = document.getElementById('payment-method').value;
+        if (paymentMethod === 'bank') {
+            document.getElementById('bank-form').style.display = 'block';
+            document.getElementById('wallet-form').style.display = 'none';
+        } else if (paymentMethod === 'wallet') {
+            document.getElementById('wallet-form').style.display = 'block';
+            document.getElementById('bank-form').style.display = 'none';
+        } else {
+            document.getElementById('wallet-form').style.display = 'none';
+            document.getElementById('bank-form').style.display = 'none';
+        }
+    }
+    window.onload = togglePaymentForm;
+
+</script>
+
+</body>
+</html>
+</script>
 </body>
 </html>
