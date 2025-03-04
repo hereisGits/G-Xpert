@@ -22,13 +22,6 @@ $isLoggedIn = isset($_SESSION['user_id']) || isset($_COOKIE['user_cookie']);
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
-
 .course-list {
     width: 100%;
     max-width: 1400px;

@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['username'] = $row['username'];
                 setcookie('admin_cookie', $row['admin_id'], time() + (60 * 60), '/');
 
-                header('Location: ../../Admin_dashboard.php');
+                header('Location: ../../dashboard.php');
                 exit;
             } else {
                 $message = "Incorrect password! Try again.";

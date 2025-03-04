@@ -2,7 +2,7 @@ const popup = document.querySelector('#status-div p');
   if (popup) {
       setTimeout(() => {
           popup.style.display = 'none';
-      }, 2000);
+      }, 5000);
   }
 
 
@@ -31,7 +31,7 @@ const popup = document.querySelector('#status-div p');
         });
     });
 
-    const profileInput = document.getElementById("profile");
+    const profileInput = document.getElementById("profiles");
     const profilePreview = document.getElementById("profile-preview");
 
     profileInput.addEventListener("change", (event) => {
@@ -44,11 +44,4 @@ const popup = document.querySelector('#status-div p');
             reader.readAsDataURL(file);
         }
     });
-
-    const goBackButton = document.querySelector(".goback button");
-    if (goBackButton) {
-        goBackButton.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
 });

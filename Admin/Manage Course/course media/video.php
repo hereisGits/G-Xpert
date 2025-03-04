@@ -331,11 +331,11 @@ if (!isset($_SESSION['dislike'])) {
         <div class="vid-info">
             <!-- <div class="div-btn">
                 <button class="thumbs" id="like-btn">
-                    <i class="fa-solid fa-thumbs-up"></i> <?php echo $_SESSION['like']; ?>
+                    <i class="fa-solid fa-thumbs-up"></i> <?php #echo $_SESSION['like']; ?>
                 </button>
                 <span>|</span>
                 <button class="thumbs" id="dislike-btn">
-                    <i class="fa-solid fa-thumbs-down fa-flip-horizontal"></i> <?php echo $_SESSION['dislike']; ?>
+                    <i class="fa-solid fa-thumbs-down fa-flip-horizontal"></i> <?php #echo $_SESSION['dislike']; ?>
                 </button>
             </div> -->
 

@@ -21,6 +21,47 @@ body{
     margin: 20px;
 }
 
+
+#status-div {
+    position: fixed; 
+    bottom: 20px; 
+    right: 10px; 
+    z-index: 1000; 
+}
+
+.error {
+    padding: 20px 40px; 
+    border-radius: 8px; 
+    color: rgb(255, 255, 255); 
+    background-color: rgb(245, 112, 112);
+    font-size: 16px; 
+    font-weight: bold; 
+    margin: 0; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.success {
+    padding: 20px 40px; 
+    border-radius: 8px; 
+    color: rgb(255, 255, 255); 
+    background-color: rgba(45, 185, 52, 0.842);
+    font-size: 16px; 
+    font-weight: bold; 
+    margin: 0; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#status i {
+    font-size: 20px; 
+    color: white; 
+}
+
 .main-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -44,19 +85,24 @@ body{
     color: #7f8c8d;
     margin-bottom: 20px;
 }
-.card {
+/* .card {
     background: #fff;
     border-radius: 12px;
     padding: 15px;
     font-family: 'Poppins', sans-serif;
 }
 
-.top-bar {
+.card h2{
+    text-align: center;
+} */
+ 
+
+.action-dropdown {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 12px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #5555553f;
 }
 
 select {
@@ -235,43 +281,6 @@ button {
 
 button:hover {
     background: #007bffc9;
-}
-
-#status-div {
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-.message {
-    padding: 20px 30px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(245, 112, 112);
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.success {
-    padding: 20px 30px;
-    color: rgb(255, 255, 255);
-    background-color: rgba(45, 185, 52, 0.842);
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#status i {
-    font-size: 20px;
-    color: white;
 }
 
 
