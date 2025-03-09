@@ -3,7 +3,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Initialize variables from GET parameters
 $video_id = isset($_GET['id']) ? $_GET['id'] : '';
 $video = isset($_GET['video']) ? htmlspecialchars(urldecode($_GET['video'])) : '';
 $title = isset($_GET['title']) ? htmlspecialchars(urldecode($_GET['title'])) : '';
@@ -11,12 +10,7 @@ $desc = isset($_GET['desc']) ? htmlspecialchars(urldecode($_GET['desc'])) : '';
 $price = isset($_GET['price']) ? htmlspecialchars(urldecode($_GET['price'])) : '';
 $date = isset($_GET['date']) ? htmlspecialchars(urldecode($_GET['date'])) : '';
 
-if (!isset($_SESSION['like'])) {
-    $_SESSION['like'] = 0;
-}
-if (!isset($_SESSION['dislike'])) {
-    $_SESSION['dislike'] = 0;
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +20,6 @@ if (!isset($_SESSION['dislike'])) {
     <title><?php echo $video; ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -83,6 +76,7 @@ if (!isset($_SESSION['dislike'])) {
             font-size: 14px;
             color: #555;
             margin-bottom: 1.2rem;
+            text-align: justify
         }
 
         #price {
@@ -168,12 +162,12 @@ if (!isset($_SESSION['dislike'])) {
             background-color: rgb(46, 124, 189);
         }
 
-        .pay-info {
+        .token-info {
             flex: 1;
             padding: 15px;
         }
 
-        .pay-container {
+        .token-container {
             background: white;
             padding: 20px;
             border-radius: 10px;
@@ -183,24 +177,24 @@ if (!isset($_SESSION['dislike'])) {
             width: 100%;
         }
 
-        .pay-container h2 {
+        .token-container h2 {
             font-size: 22px;
             margin-bottom: 15px;
             color: #333;
         }
 
-        .pay-container ul {
+        .token-container ul {
             list-style: none;
             padding: 0;
         }
 
-        .pay-container ul li {
+        .token-container ul li {
             margin-bottom: 8px;
             font-size: 16px;
             color: #555;
         }
 
-        .pay-container label {
+        .token-container label {
             font-size: 14px;
             font-weight: bold;
             color: #333;
@@ -208,8 +202,7 @@ if (!isset($_SESSION['dislike'])) {
             margin-top: 10px;
         }
 
-        .pay-container select,
-        .pay-container input {
+        .token-container input {
             width: 100%;
             padding: 10px;
             font-size: 16px;
@@ -220,17 +213,11 @@ if (!isset($_SESSION['dislike'])) {
             transition: border-color 0.3s;
         }
 
-        .pay-container select:focus,
-        .pay-container input:focus {
+        .token-container input:focus {
             border-color: #27ae60;
         }
 
-        .bank-form,
-        .wallet-form {
-            display: none;
-        }
-
-        .pay-container .btn {
+        .token-container .btn {
             margin-top: 20px;
             width: 100%;
             padding: 12px;
@@ -243,19 +230,19 @@ if (!isset($_SESSION['dislike'])) {
             transition: background-color 0.3s;
         }
 
-        .pay-container .btn:hover {
+        .token-container .btn:hover {
             background: #219150;
         }
 
         .comment-section {
-            border: 2px solid #555; /* Increase border thickness for better visibility */
+            border: 2px solid #555;
             margin-top: 15px;
             padding: 10px;
             border-top: 1px solid #ddd;
-            max-width: 500px; /* Fixed width */
-            height: 300px; /* Fixed height */
-            overflow: auto; /* Enable scrolling if content overflows */
-            background-color: white; /* Ensure the background contrasts with the border */
+            max-width: 500px;
+            height: 300px;
+            overflow: auto;
+            background-color: white;
         }
 
         .comment {
@@ -281,17 +268,6 @@ if (!isset($_SESSION['dislike'])) {
             font-size: 12px;
         }
 
-        .comment p {
-            margin: 5px 0;
-            color: #555;
-        }
-
-        .comment small {
-            color: #777;
-            font-size: 12px;
-        }
-
-
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -301,48 +277,33 @@ if (!isset($_SESSION['dislike'])) {
             }
 
             .video-sec,
-            .pay-container {
+            .token-container {
                 max-width: 100%;
             }
 
-            .pay-container {
+            .token-container {
                 text-align: left;
                 padding: 20px;
             }
         }
-
-
     </style>
 </head>
 <body>
 <div class="container">
     <section class="video-sec">
         <div class="video-container">
-            <?php if (!empty($video) && file_exists($_SERVER['DOCUMENT_ROOT'] . "/Server/Code/zProject/Course Seller/Admin/Manage Course/$video")): ?>
-                <video controls autoplay>
+            <?php if (!empty($video) && file_exists($_SERVER['DOCUMENT_ROOT'] . "/Server/Code/zProject/Course Seller/Admin/Manage Course/" . $video)): ?>
+                    <video controls autoplay>
                     <source src="<?php echo htmlspecialchars('/Server/Code/zProject/Course Seller/Admin/Manage Course/' . $video); ?>" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            <?php else: ?>
-                <p style="color: red; font-size: large; text-align: center;">⚠ Video file not found.</p>
+                <?php else: ?>
+                    <p style="color: red; font-size: large; text-align: center; height: 400px;">⚠ Video file not found.</p>
             <?php endif; ?>
         </div>
-
         <div class="vid-info">
-            <!-- <div class="div-btn">
-                <button class="thumbs" id="like-btn">
-                    <i class="fa-solid fa-thumbs-up"></i> <?php #echo $_SESSION['like']; ?>
-                </button>
-                <span>|</span>
-                <button class="thumbs" id="dislike-btn">
-                    <i class="fa-solid fa-thumbs-down fa-flip-horizontal"></i> <?php #echo $_SESSION['dislike']; ?>
-                </button>
-            </div> -->
-
             <h1><?php echo $title; ?></h1>
             <p id="desc"><?php echo $desc; ?></p>
             <div class="div-foot">
-                <p id="price" class="foot"><i class="fa-solid fa-indian-rupee-sign"></i> <?php echo $price; ?></p>
+                <p id="price" class="foot" title="Tokens">tks: <?php echo $price; ?></p>
                 <p class="foot">Uploaded on: <?php echo $date; ?></p>
             </div>
         </div>
@@ -358,48 +319,26 @@ if (!isset($_SESSION['dislike'])) {
         <div id="comments-section">
             <h3>Comments</h3>
             <div id="comments-list">
-                
+                <!-- Comments will be loaded here -->
             </div>
+        </div>
     </section>
 
-    <section class="pay-info">
-        <div class="pay-container">
-            <h2>Payment Information</h2>
+    <section class="token-info">
+        <div class="token-container">
+            <h2>Token Information</h2>
             <ul>
                 <li><strong>Price:</strong> ₹<?php echo $price; ?></li>
-                <li><strong>Payment Method:</strong><br> fonePay / Bank / Credit Card / IMEpay</li>
+                <li><strong>Tokens you have:</strong> <?php echo $price; ?> Tokens</li>
             </ul>
-            <form action="" method="POST">
-                <label for="payment-method">Choose Payment Method:</label>
-                <select id="payment-method" name="payment_method" onchange="togglePaymentForm()">
-                    <option value="">Select Your Gateway</option>
-                    <option value="bank">Bank Transfer</option>
-                    <option value="wallet">Wallet</option>
-                </select>
-
-                <div id="bank-form" class="bank-form">
-                    <label for="bank-account">Bank Account Number:</label>
-                    <input type="text" id="bank-account" name="bank_account" placeholder="Enter your bank account number" required>
-
-                    <label for="bank-name">Bank Name:</label>
-                    <input type="text" id="bank-name" name="bank_name" placeholder="Enter your bank name" required>
-                </div>
-
-                <div id="wallet-form" class="wallet-form">
-                    <label for="wallet-id">Wallet ID:</label>
-                    <input type="text" id="wallet-id" name="wallet_id" placeholder="Enter your wallet ID" required>
-
-                    <label for="wallet-provider">Wallet Provider:</label>
-                    <input type="text" id="wallet-provider" name="wallet_provider" placeholder="Enter your wallet provider name" required>
-                </div>
-
-                <button type="submit" class="btn"><i class="fa-solid fa-credit-card"></i> Proceed to Pay</button>
+            <form action="process_tokens.php" method="POST">
+                <label for="tokens">Enter Tokens:</label>
+                <input type="number" id="tokens" name="tokens" placeholder="Enter the number of tokens" required>
+                <button type="submit" class="btn"><i class="fa-solid fa-coins"></i> Redeem Tokens</button>
             </form>
-        </div>
         </div>
     </section>
 </div>
-
 <?php require_once 'fetch_course.php'; ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -416,7 +355,7 @@ if (!isset($_SESSION['dislike'])) {
                 success: function (response) {
                     if (response === "success") {
                         loadComments(); 
-                        $('#comment-form textarea').val(''); a
+                        $('#comment-form textarea').val(''); 
                     } else {
                         alert("Error submitting comment.");
                     }
@@ -441,36 +380,6 @@ if (!isset($_SESSION['dislike'])) {
             });
         }
     });
-
-
-    const likeBtn = document.getElementById('like-btn');
-    const dislikeBtn = document.getElementById('dislike-btn');
-
-    likeBtn.style.color = localStorage.getItem('liked') ? '#28a745' : '';
-    dislikeBtn.style.color = localStorage.getItem('disliked') ? '#DC3545' : '';
-
-    likeBtn.onclick = () => {
-        likeBtn.style.color = '#28a745';
-        dislikeBtn.style.color = '';
-        localStorage.setItem('liked', true);
-        localStorage.removeItem('disliked');
-        updateLikes('like');
-    };
-
-    dislikeBtn.onclick = () => {
-        dislikeBtn.style.color = '#DC3545';
-        likeBtn.style.color = '';
-        localStorage.setItem('disliked', true);
-        localStorage.removeItem('liked');
-        updateLikes('dislike');
-    };
-
-    function togglePaymentForm() {
-        const paymentMethod = document.getElementById('payment-method').value;
-        document.getElementById('bank-form').style.display = paymentMethod === 'bank' ? 'block' : 'none';
-        document.getElementById('wallet-form').style.display = paymentMethod === 'wallet' ? 'block' : 'none';
-    }
-    window.onload = togglePaymentForm;
 </script>
 </body>
 </html>

@@ -5,7 +5,7 @@ if ($connection->connect_error) {
 }
 
 //for total course
-$t_user_stmt = $connection->prepare("SELECT COUNT(*) AS total_users FROM user_table");
+$t_user_stmt = $connection->prepare("SELECT COUNT(*) AS total_users FROM users_table");
 $t_user_stmt->execute();
 $result = $t_user_stmt->get_result();
 
@@ -15,7 +15,7 @@ if ($row = $result->fetch_assoc()) {
 $t_user_stmt->close();
 
 //for active course
-$ta_course_stmt = $connection->prepare('SELECT COUNT(*) AS active_course FROM courses');
+$ta_course_stmt = $connection->prepare('SELECT COUNT(*) AS active_course FROM videos_table');
 $ta_course_stmt->execute();
 $result = $ta_course_stmt->get_result();
 
@@ -25,7 +25,7 @@ if ($row = $result->fetch_assoc()) {
 $ta_course_stmt->close();
 
 //for active user
-$active_user_stmt = $connection->prepare("SELECT COUNT(*) AS active_users FROM user_table WHERE updated_at >= NOW() - INTERVAL 30 DAY");
+$active_user_stmt = $connection->prepare("SELECT COUNT(*) AS active_users FROM users_table WHERE updated_at >= NOW() - INTERVAL 30 DAY");
 $active_user_stmt->execute();
 $result = $active_user_stmt->get_result();
 

@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (charCount > maxChars) input.value = input.value.substring(0, maxChars);
         });
     }
-    setupCharCount('courseTitle', 'charCount', 'T-error', 30);
-    setupCharCount('description', 'DecharCount', 'D-error', 100);
+    setupCharCount('courseTitle', 'charCount', 'T-error', 50);
+    setupCharCount('description', 'DecharCount', 'D-error', 500);
 
     document.getElementById("video").addEventListener("change", function(event) {
         const file = event.target.files[0];
@@ -44,11 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
         validateInput("courseTitle", "courseTitle-error");
         validateInput("description", "description-error");
         validateInput("price", "price-error");
+        validateInput("price", "price-error");
+        validateInput("status", "status-error");
+        validateInput("category", "category-error");
     
         const videoInput = document.getElementById("video");
         if (!videoInput.files.length) {
             if (isValid) {
-                alert('Error: Please upload a video!');
+                alert('Please upload a video!');
             }
             isValid = false;
         }

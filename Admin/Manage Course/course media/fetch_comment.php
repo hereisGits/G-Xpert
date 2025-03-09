@@ -7,11 +7,11 @@ if ($conn->connect_error) {
 if (isset($_GET['video_id'])) {
     $video_id = intval($_GET['video_id']);
 
-    $query = "SELECT comment.comments, user_table.username, comment.created_at 
-              FROM comment 
-              JOIN user_table ON comment.user_id = user_table.user_id
-              WHERE comment.video_id = ? 
-              ORDER BY comment.created_at DESC";
+    $query = "SELECT video_feedback.comments, users_table.username, video_feedback.created_at 
+              FROM video_feedback 
+              JOIN users_table ON video_feedback.user_id = users_table.user_id
+              WHERE video_feedback.video_id = ? 
+              ORDER BY video_feedback.created_at DESC";
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $video_id);

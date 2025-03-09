@@ -8,7 +8,7 @@ if ($userId === null) {
 
 $suspendedUntil = date('Y-m-d H:i:s', strtotime('+30 days'));
 
-$query = $connection->prepare("UPDATE user_table SET status = 'suspended', suspended_until = ? WHERE user_id = ?");
+$query = $connection->prepare("UPDATE users_table SET status = 'suspended', suspended_until = ? WHERE user_id = ?");
 $query->bind_param('si', $suspendedUntil, $userId);
 
 if ($query->execute()) {

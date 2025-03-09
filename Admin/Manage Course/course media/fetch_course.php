@@ -6,7 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
 $isLoggedIn = isset($_SESSION['user_id']) || isset($_COOKIE['user_cookie']);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +13,9 @@ $isLoggedIn = isset($_SESSION['user_id']) || isset($_COOKIE['user_cookie']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
 <style>
-    *{
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -196,57 +195,63 @@ $isLoggedIn = isset($_SESSION['user_id']) || isset($_COOKIE['user_cookie']);
     }
 }
 </style>
+</head>
 <body>
 <div class="course-list">
     <div class="video-list">
         <?php
-            $conn = new mysqli("localhost", "root", "", "user_database");
-            if ($conn->connect_error) {
-                die('Database Error: ' . $conn->connect_error);
+        $conn = new mysqli("localhost", "root", "", "user_database");
+        if ($conn->connect_error) {
+            die('Database Error: ' . $conn->connect_error);
+        }
+
+        $sql = "SELECT * FROM videos_table ORDER BY video_id DESC";
+        $result = $conn->query($sql);
+        $content = "";
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $video_id = $row['video_id'];
+                $videoPath = $row['video_path'];
+                $title = $row['title']; 
+                $desc = $row['description']; 
+                $price = $row['price']; 
+                $date = $row['uploaded_at']; 
+
+                $videoUrl = "http://localhost/server/Code/zProject/Course%20Seller/Registered%20User/Courses/video_play.php?id=" . urlencode($video_id) . 
+                            "&video=" . urlencode($videoPath) . 
+                            "&title=" . urlencode($title) . 
+                            "&desc=" . urlencode($desc) . 
+                            "&price=" . urlencode($price) . 
+                            "&date=" . urlencode($date);
+
+                $onclick = $isLoggedIn ? "window.location.href='$videoUrl'" : "showLoginAlert()";
+
+                $content .= "<div class='course-item'>
+                                <div class='video-container'>
+                                    <a href='javascript:void(0);' onclick=\"$onclick\">
+                                        <video>
+                                            <source src='http://localhost/server/Code/zProject/Course%20Seller/Admin/Manage%20Course/". htmlspecialchars($videoPath) . "' type='video/mp4'>
+                                        </video>
+                                        <div class='play-btn'><i class='fa fa-play'></i></div>
+                                    </a>
+                                </div>
+                                <div class='course-content'>
+                                    <h4>" . htmlspecialchars($title) . "</h4>
+                                    <p class='description' title='" . htmlspecialchars($desc) . "'> " . htmlspecialchars($desc) . " </p>
+                            </div>
+                                <div class='upload_date'>
+                                    <p class='price' title='Tokens' style='cursor:pointer;'>tks: " . htmlspecialchars($price) . "</p>
+                                    <p>" . htmlspecialchars($date) . "</p>
+                                </div>
+                            </div>";
             }
+        } else {
+            $content = "<p class='no-courses'>No courses available.</p>";
+        }
 
-            $sql = "SELECT * FROM courses ORDER BY video_id DESC";
-            $result = $conn->query($sql);
-            $content = "";
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $video_id = ($row['video_id']);
-                    $videoPath = urlencode($row['video_path']);
-                    $title = urlencode($row['title']);
-                    $desc = urlencode($row['description']);
-                    $price = urlencode($row['price']);
-                    $date = urlencode($row['uploaded_at']);
-                    $videoUrl = "/Server/Code/zProject/Course%20Seller/Registered%20User/Courses/video_play.php?id=$video_id&video=$videoPath&title=$title&desc=$desc&price=$price&date=$date";
-
-                    $onclick = $isLoggedIn ? "window.location.href='$videoUrl'" : "showLoginAlert()";
-
-                    $content .= "<div class='course-item'>
-                                    <div class='video-container'>
-                                        <a href='javascript:void(0);' onclick=\"$onclick\">
-                                            <video>
-                                                <source src='http://localhost/server/Code/zProject/Course%20Seller/Admin/Manage%20Course/" . htmlspecialchars($row['video_path']) . "' type='video/mp4'>
-                                                Your browser does not support the video tag.
-                                            </video>
-                                            <div class='play-btn'><i class='fa fa-play'></i></div>
-                                        </a>
-                                    </div>
-                                    <div class='course-content'>
-                                        <h4>" . htmlspecialchars($row['title']) . "</h4>
-                                        <p class='description' title='" . htmlspecialchars($row['description']) . "'>" . htmlspecialchars($row['description']) . "</p>
-                                    </div>
-                                    <div class='upload_date'>
-                                        <p class='price'> <i class='fa-solid fa-indian-rupee-sign'></i> " . htmlspecialchars($row['price']) . "</p>
-                                        <p>" . htmlspecialchars($row['uploaded_at']) . "</p>
-                                    </div>
-                                </div>";
-                }
-            } else {
-                $content = "<p class='no-courses'>No courses available.</p>";
-            }
-
-            $conn->close();
-            echo $content;
+        $conn->close();
+        echo $content;
         ?>
     </div>
 </div>

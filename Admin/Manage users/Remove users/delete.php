@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
         exit;
     }
 
-    $query = $connection->prepare("DELETE FROM user_table WHERE user_id = ?");
+    $query = $connection->prepare("DELETE FROM users_table WHERE user_id = ?");
     $query->bind_param('i', $user_id);
 
     if ($query->execute()) {

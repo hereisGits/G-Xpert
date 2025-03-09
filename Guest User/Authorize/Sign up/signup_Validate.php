@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($connection->connect_error) {
                 die("Database connection failed: " . $connection->connect_error);
             } else {
-                $check_user = $connection->prepare("SELECT username, email FROM user_table WHERE username = ? OR email = ?");
+                $check_user = $connection->prepare("SELECT username, email FROM users_table WHERE username = ? OR email = ?");
                 $check_user->bind_param('ss', $user_name, $email);
                 $check_user->execute();
                 $check_user->store_result();
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $check_user->fetch();
                     $status = "The " . ($existing_username == $user_name ? "Username" : "Email") . " already exists.";
                 } else {
-                    $insert_data = $connection->prepare("INSERT INTO user_table(first_name, last_name, username, email, password) VALUES(?, ?, ?, ?, ?)");
+                    $insert_data = $connection->prepare("INSERT INTO users_table(first_name, last_name, username, email, password) VALUES(?, ?, ?, ?, ?)");
                     $insert_data->bind_param("sssss", $first_name, $last_name, $user_name, $email, $password);
                     $insert_data->execute();
 

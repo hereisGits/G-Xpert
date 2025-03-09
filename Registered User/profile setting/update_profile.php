@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if (!isset($_SESSION['user_id']) && !isset($_COOKIE['admin_cookie'])) {
     header('Location: ../../Guest User/Authorize/Log in/login.php');
     exit;
@@ -11,7 +14,7 @@ if ($connection->connect_error) {
 }
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_COOKIE['user_cookie'];
 
-$stmt = $connection->prepare('SELECT * FROM user_table WHERE user_id = ?');
+$stmt = $connection->prepare('SELECT * FROM users_table WHERE user_id = ?');
 $stmt->bind_param('i', $user_id);
 $stmt->execute();
 $result = $stmt->get_result();

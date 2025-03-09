@@ -6,7 +6,7 @@ if ($userId === null) {
     die("User ID is required.");
 }
 
-$query = $connection->prepare("UPDATE user_table SET status = 'active', suspended_until = NULL WHERE user_id = ?");
+$query = $connection->prepare("UPDATE users_table SET status = 'active', suspended_until = NULL WHERE user_id = ?");
 $query->bind_param('i', $userId);
 
 if ($query->execute()) {

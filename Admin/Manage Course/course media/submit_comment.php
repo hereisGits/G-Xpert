@@ -25,11 +25,8 @@ if (isset($_POST['comment']) && isset($_POST['video_id'])) {
     }
 
 
-    $query = "INSERT INTO comments (user_id, video_id, comment) VALUES (?, ?, ?)";
+    $query = "INSERT INTO video_feedback (user_id, video_id, comment) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($query);
-    if ($stmt === false) {
-        die("Prepare failed: " . $conn->error);
-    }
 
     $stmt->bind_param("iis", $user_id, $video_id, $comment);
     if (!$stmt->execute()) {

@@ -42,6 +42,7 @@ $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20
         <li><a href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
         <li><a href="manage_user.php"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
         <li><a href="manage_course.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
+        <li><a href="token_trans.php"><i class="fa-solid fa-coins"></i> Token Transactions</a></li>
         <li><a href="#"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
         <li><a href="#"><i class="fa-solid fa-gears"></i> Settings</a></li>
       </ul>      
@@ -73,8 +74,8 @@ $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/Server/Code/zProject/Course%20
               <p>Total Users</p>
           </div>
           <div class="stat-card bg-danger">
-              <h2>Rs. 0</h2>
-              <p>Total Revenue</p>
+              <h2>tks. 0</h2>
+              <p>Total Tokens</p>
           </div>
       </div>
     </main>

@@ -17,7 +17,7 @@ function checkSuspension() {
 
         $userId = $_SESSION['user_id'];
 
-        $stmt = $connection->prepare("SELECT status, suspended_until FROM user_table WHERE user_id = ?");
+        $stmt = $connection->prepare("SELECT status, suspended_until FROM users_table WHERE user_id = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -32,7 +32,7 @@ function checkSuspension() {
                     header("Location: /Server/Code/zProject/Course%20Seller/Guest%20User/Authorize/Log%20in/login.php?message=You have been suspended until " . date('Y-m-d H:i:s', $suspendedUntil));
                     exit();
                 } else {
-                    $updateStmt = $connection->prepare("UPDATE user_table SET status = 'active', suspended_until = NULL WHERE user_id = ?");
+                    $updateStmt = $connection->prepare("UPDATE users_table SET status = 'active', suspended_until = NULL WHERE user_id = ?");
                     $updateStmt->bind_param('i', $userId);
                     $updateStmt->execute();
                     $updateStmt->close();

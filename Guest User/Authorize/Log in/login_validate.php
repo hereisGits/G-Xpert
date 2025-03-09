@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = $_POST['password'];
 
     
-        $stmt = $connection->prepare("SELECT email, password, user_id, username, status, suspended_until FROM user_table WHERE email = ?");
+        $stmt = $connection->prepare("SELECT email, password, user_id, username, status, suspended_until FROM users_table WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();

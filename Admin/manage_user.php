@@ -7,7 +7,8 @@
         header('Location: ./Authorize/login/Admin_login.php');
         exit;
     }
-    
+    require_once 'Manage users/Connection/db_connection.php';
+
     if (!isset($_SESSION['admin_id']) && isset($_COOKIE['admin_cookie'])) {
         $stmt = $connection->prepare('SELECT admin_id FROM admin_table WHERE username = ?');
         $stmt->bind_param('s', $_COOKIE['admin_cookie']);
@@ -41,6 +42,7 @@
         <li><a href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
         <li><a href="manage_user.php"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
         <li><a href="manage_course.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
+        <li><a href="token_trans.php"><i class="fa-solid fa-coins"></i> Token Transactions</a></li>
         <li><a href="#"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
         <li><a href="#"><i class="fa-solid fa-gears"></i> Settings</a></li>
       </ul>      
@@ -68,7 +70,7 @@
 
     <?php
         require_once 'Manage users/Connection/db_connection.php';
-        $query = $connection->prepare('SELECT * FROM user_table');
+        $query = $connection->prepare('SELECT * FROM users_table');
         $query->execute();
         $result = $query->get_result();
 
@@ -124,7 +126,7 @@
             }
             echo '</table>';
         } else {
-            echo '<p style="text-align: center; color: #888;">No users found</p>';
+            echo '<p style="text-align: center; color: #888; margin-top:20px;">No users found</p>';
         }
 
         $connection->close();

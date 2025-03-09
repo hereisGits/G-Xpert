@@ -17,7 +17,7 @@ if (session_status() == PHP_SESSION_NONE) {
         die('Database Connection Error:' .$connection->connect_error);
     }
     $user_id = $_SESSION['user_id']; 
-    $fetch_data = "SELECT first_name, last_name FROM user_table WHERE user_id = ?";
+    $fetch_data = "SELECT first_name, last_name FROM users_table WHERE user_id = ?";
     $stmt = $connection ->prepare($fetch_data);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();

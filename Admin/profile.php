@@ -2,9 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-echo "<pre>";
-print_r($_FILES); // Debug: Print uploaded file details
-echo "</pre>";
+
 require_once 'Profile/update_profile.php';
 
 if (!isset($_SESSION['admin_id']) && !isset($_COOKIE['admin_cookie'])) {
@@ -56,7 +54,8 @@ $_SESSION['username'] = $_SESSION['username'] ?? 'Admin';
       <ul>
         <li><a href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
         <li><a href="manage_user.php"><i class="fa-solid fa-user-gear"></i> Manage Users</a></li>
-        <li><a href="manage_course.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>
+        <li><a href="manage_course.php"><i class="fa-solid fa-book-open"></i> Manage Courses</a></li>        
+        <li><a href="token_trans.php"><i class="fa-solid fa-coins"></i> Token Transactions</a></li>
         <li><a href="#"><i class="fa-solid fa-square-poll-vertical"></i> Reports</a></li>
         <li><a href="#"><i class="fa-solid fa-gears"></i> Settings</a></li>
       </ul>      
